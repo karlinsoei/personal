@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karlin — [working title]</title>
+  <meta name="description" content="[TODO: one-line description once copy is locked]" />
+  <link rel="stylesheet" href="/src/styles/tokens.css" />
+  <link rel="stylesheet" href="/src/styles/base.css" />
+  <link rel="stylesheet" href="/src/styles/sections.css" />
+</head>
+<body>
+
+  <!-- Chapter indicator — updates active state via IntersectionObserver in main.ts.
+       This is a real sequence (the narrative arc), so numbering earns its place here. -->
+  <nav class="chapter-nav" aria-label="Section navigation">
+    <a href="#intro" data-chapter="01"><span>01</span></a>
+    <a href="#story" data-chapter="02"><span>02</span></a>
+    <a href="#building" data-chapter="03"><span>03</span></a>
+    <a href="#life" data-chapter="04"><span>04</span></a>
+    <a href="#elsewhere" data-chapter="05"><span>05</span></a>
+  </nav>
+
+  <main>
+
+    <!-- 01 — INTRODUCTION -->
+    <section id="intro" class="section section--intro" data-section="01">
+      <div class="section__inner">
+        <h1 class="hero-line" data-reveal>
+          [TODO: opening line — very little copy, strong visual]
+        </h1>
+        <!-- TODO asset: primary intro photo/video -->
+        <div class="media-slot" data-placeholder="intro-hero"></div>
+      </div>
+    </section>
+
+    <!-- 02 — MY STORY -->
+    <section id="story" class="section section--story" data-section="02">
+      <div class="section__inner">
+        <p class="eyebrow" data-reveal>the story</p>
+        <div class="story-beats">
+          <!-- Each beat = one moment in the arc. Content/copy to be refined together. -->
+          <p class="story-beat" data-reveal>[TODO] kid who loved games</p>
+          <p class="story-beat" data-reveal>[TODO] didn't have support</p>
+          <p class="story-beat" data-reveal>[TODO] found people who did</p>
+          <p class="story-beat" data-reveal>[TODO] found a team</p>
+          <div class="media-slot" data-placeholder="story-competition-photo"></div>
+          <p class="story-beat" data-reveal>[TODO] competed, ~$80,000 in esports scholarships</p>
+          <p class="story-beat" data-reveal>[TODO] realized what gaming actually gave him</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 — WHAT I'M BUILDING -->
+    <section id="building" class="section section--building" data-section="03">
+      <div class="section__inner">
+        <p class="eyebrow" data-reveal>what I'm building</p>
+        <h2 data-reveal>[TODO] EKUZO — one or two lines on why it exists]</h2>
+        <div class="media-slot" data-placeholder="ekuzo-photo-1"></div>
+        <div class="media-slot" data-placeholder="ekuzo-photo-2"></div>
+        <a class="outbound-link" href="https://ekuzo.gg" target="_blank" rel="noopener">
+          Visit EKUZO →
+        </a>
+      </div>
+    </section>
+
+    <!-- 04 — LIFE OUTSIDE WORK -->
+    <section id="life" class="section section--life" data-section="04">
+      <div class="section__inner">
+        <p class="eyebrow" data-reveal>outside of work</p>
+        <p class="throughline" data-reveal>
+          [TODO: one line establishing the throughline — getting good at things
+          he was initially bad at]
+        </p>
+        <div class="life-grid">
+          <!-- Each tile is a hobby artifact. Swap media-slots for real assets as they arrive. -->
+          <div class="life-tile" data-reveal>
+            <div class="media-slot" data-placeholder="backflip-video"></div>
+            <p class="life-caption">[TODO] learning backflips</p>
+          </div>
+          <div class="life-tile" data-reveal>
+            <div class="media-slot" data-placeholder="climbing-photo"></div>
+            <p class="life-caption">[TODO] bouldering / climbing</p>
+          </div>
+          <div class="life-tile" data-reveal>
+            <div class="media-slot" data-placeholder="piano-cello-photo"></div>
+            <p class="life-caption">[TODO] piano &amp; cello</p>
+          </div>
+          <div class="life-tile" data-reveal>
+            <div class="media-slot" data-placeholder="s2000-photo"></div>
+            <p class="life-caption">[TODO] Honda S2000 AP2</p>
+          </div>
+          <div class="life-tile" data-reveal>
+            <div class="media-slot" data-placeholder="league-photo"></div>
+            <p class="life-caption">[TODO] League of Legends</p>
+          </div>
+          <div class="life-tile" data-reveal>
+            <p class="life-caption">[TODO] Houston</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 — ELSEWHERE -->
+    <section id="elsewhere" class="section section--elsewhere" data-section="05">
+      <div class="section__inner">
+        <p class="closing-line" data-reveal>[TODO: closing line, in his voice]</p>
+        <ul class="elsewhere-links">
+          <li><a href="mailto:[TODO]" data-copy>[TODO email] — tap to copy</a></li>
+          <li><a href="[TODO linkedin]" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="[TODO instagram]" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://ekuzo.gg" target="_blank" rel="noopener">EKUZO</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

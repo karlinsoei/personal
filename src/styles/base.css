@@ -1,0 +1,85 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--step-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, p, ul {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+/* Visible keyboard focus everywhere — non-negotiable quality floor */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Media placeholder used until real assets are dropped in */
+.media-slot {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--color-border),
+    var(--color-border) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  border: 1px dashed var(--color-border);
+  aspect-ratio: 4 / 3;
+  border-radius: 2px;
+}
+
+.media-slot::before {
+  content: attr(data-placeholder);
+  display: block;
+  font-size: 0.7rem;
+  color: var(--color-ink-muted);
+  padding: 0.5rem;
+  font-family: monospace;
+}
+
+/* Scroll-reveal starting state — animated in via main.ts / GSAP */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--dur-reveal) var(--ease-out),
+              transform var(--dur-reveal) var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-reveal],
+  [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

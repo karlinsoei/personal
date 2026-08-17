@@ -1,0 +1,26 @@
+:root {
+  /* ---- Color — neutrals are locked by the brief, accent is a placeholder ---- */
+  --color-bg: #F6F4EF;         /* off-white — provisional exact value */
+  --color-ink: #16150F;        /* near-black — provisional exact value */
+  --color-accent: #C1432E;     /* PLACEHOLDER ONLY — red vs. alternatives TBD in visual-system pass */
+  --color-ink-muted: color-mix(in srgb, var(--color-ink) 60%, var(--color-bg));
+  --color-border: color-mix(in srgb, var(--color-ink) 12%, var(--color-bg));
+
+  /* ---- Type — system stack until display/body pairing is chosen ---- */
+  --font-display: -apple-system, "SF Pro Display", "Inter", system-ui, sans-serif; /* PLACEHOLDER */
+  --font-body: -apple-system, "SF Pro Text", "Inter", system-ui, sans-serif;       /* PLACEHOLDER */
+
+  --step-body: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  --step-eyebrow: clamp(0.75rem, 0.72rem + 0.1vw, 0.85rem);
+  --step-h2: clamp(1.75rem, 1.4rem + 2vw, 3rem);
+  --step-hero: clamp(2.5rem, 1.8rem + 4.5vw, 6rem);
+
+  /* ---- Layout ---- */
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --section-pad-y: clamp(4rem, 10vh, 8rem);
+  --content-max: 1200px;
+
+  /* ---- Motion — restrained by design; respected via prefers-reduced-motion in base.css ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-reveal: 0.7s;
+}

@@ -44,6 +44,13 @@
   --color-ink-muted: color-mix(in srgb, var(--color-ink) 60%, var(--color-bg));
   --color-border: color-mix(in srgb, var(--color-ink) 12%, var(--color-bg));
 
+  /* Condition tags in section 02. Three distinct hues, picked deliberately
+     away from the vermilion so they read as index tabs rather than as more
+     accent — no reds. All clear 6.3:1 or better on the off-white. */
+  --color-cond-1: #2A4A72;   /* indigo — social anxiety      8.23:1 */
+  --color-cond-2: #6B3A5E;   /* plum   — divorced parents    7.99:1 */
+  --color-cond-3: #7A5030;   /* umber  — bad grades          6.33:1 */
+
   /* ---- Type ---- */
   --font-display: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;

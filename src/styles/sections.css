@@ -101,18 +101,34 @@
   }
 }
 
-/* Margin note. Mono, small, tilted just enough to read as handwriting in the
-   margin rather than as another paragraph. */
-.aside {
+/* Condition tags. Same chip device as the game titles, but colour-coded and
+   stacked in the margin with staggered indents so they read as tags dropped
+   beside the statement rather than as a tidy list. */
+.conditions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.cond {
+  display: inline-block;
   font-family: var(--font-mono);
   font-size: var(--step-caption);
-  line-height: 1.55;
-  color: var(--color-ink-muted);
-  max-width: 30ch;
-  padding-left: 0.9rem;
-  border-left: 1px solid var(--color-border);
-  transform: rotate(-0.7deg);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  padding: 0.42em 0.72em;
+  border: 1.5px solid var(--cond);
+  border-radius: 3px;
+  color: var(--cond);
+  background: color-mix(in srgb, var(--cond) 7%, var(--color-bg));
 }
+
+.cond:nth-child(1) { --cond: var(--color-cond-1); transform: rotate(-1.3deg); }
+.cond:nth-child(2) { --cond: var(--color-cond-2); transform: rotate(0.9deg); margin-left: 1.7rem; }
+.cond:nth-child(3) { --cond: var(--color-cond-3); transform: rotate(-0.6deg); margin-left: 0.8rem; }
 
 /* ---- 01 Intro ---- */
 .hero-line {
@@ -157,9 +173,12 @@
   margin: 0;
   font-family: var(--font-display);
   font-variation-settings: var(--fraunces-display);
-  font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.45rem);
-  font-weight: 500;
-  line-height: 1.15;
+  /* Caps run wider, so this steps down from the sentence-case size it had. */
+  font-size: clamp(0.95rem, 0.82rem + 0.5vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.18;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
   color: var(--color-ink);
 }
 
@@ -677,7 +696,7 @@
 @media (prefers-reduced-motion: reduce) {
   .elsewhere-links a { transition: none; }
   /* The tilts are decorative; straighten them when motion is unwelcome. */
-  .aside,
+  .cond,
   .roster,
   .shout,
   .game {

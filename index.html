@@ -54,12 +54,11 @@
     <!-- 01 — INTRODUCTION -->
     <section id="intro" class="section section--intro" data-section="01">
       <div class="section__inner">
-        <div class="spread spread--intro">
-          <div class="spread__main">
+        <div class="intro-grid">
+          <div class="intro-grid__text">
             <h1 class="hero-line" data-reveal>
               Hi, I'm Karlin, the kid who played too much.
             </h1>
-          </div>
 
           <!-- The counter-voice, off to the side rather than stacked under the
                headline — the first instance of the page's aside pattern. -->
@@ -131,6 +130,21 @@
                 <circle class="dood__fill" cx="122" cy="110" r="4.6" />
               </svg>
               <figcaption class="shout__who">— mom, on repeat</figcaption>
+            </div>
+          </figure>
+          </div>
+
+          <!-- Portrait. The hatched slot stays behind the image so the layout
+               still reads if the file is missing; drop the photo at
+               public/assets/images/karlin-hero.jpg and it takes over.
+               width/height are the source pixels and reserve the space, so
+               nothing shifts when it decodes. -->
+          <figure class="hero-portrait" data-reveal>
+            <div class="media-slot media-slot--portrait" data-placeholder="karlin-hero.jpg">
+              <img class="hero-portrait__img"
+                   src="/assets/images/karlin-hero.jpg"
+                   alt="Karlin sitting on a bench outdoors, an autumn maple behind him"
+                   width="1333" height="2000" decoding="async" />
             </div>
           </figure>
         </div>

@@ -310,31 +310,59 @@
           </div>
         </dl>
 
-        <div class="work-grid">
-          <div class="work-col" data-reveal>
-            <h3 class="work-col__head">What that's looked like</h3>
-            <ul class="work-list">
-              <li>Building gaming and competitive esports programs with schools, families, and community organizations.</li>
-              <li>Designing curriculum and learning experiences around games, together with coaches.</li>
-              <li>Organizing teams, leagues, competitions, camps, and events.</li>
-              <li>Creating structured online spaces built around social skills and development.</li>
-            </ul>
-          </div>
+        <h3 class="block-label" data-reveal>What that's looked like</h3>
 
-          <div class="work-col" data-reveal>
-            <h3 class="work-col__head">What I've come to believe</h3>
-            <ul class="work-list work-list--beliefs">
-              <li>The impact doesn't stop at the kid. Parents, schools, and coaches need it just as much.</li>
-              <li>Kids work incredibly hard when they care about the outcome and are given real ownership.</li>
-              <li>My story isn't unique. The magic can be replicated.</li>
-            </ul>
-          </div>
+        <!-- Ruled grid, not cards. Modules share hairlines the way a printed
+             table does, and the spans alternate 7/5 then 5/7 so the rhythm is
+             a magazine spread rather than an even tile layout. Each module
+             holds its label at the top and its line at the bottom, with the
+             whitespace between doing the work. -->
+        <div class="modules">
+          <article class="mod" data-reveal>
+            <h4 class="mod__label">Programs</h4>
+            <p class="mod__desc">Schools, families &amp; community organizations</p>
+          </article>
+          <article class="mod" data-reveal>
+            <h4 class="mod__label">Coaching</h4>
+            <p class="mod__desc">Coaches, mentorship &amp; structured development</p>
+          </article>
+          <article class="mod" data-reveal>
+            <h4 class="mod__label">Competition</h4>
+            <p class="mod__desc">Teams, leagues, camps &amp; events</p>
+          </article>
+          <article class="mod" data-reveal>
+            <h4 class="mod__label">Curriculum</h4>
+            <p class="mod__desc">Learning experiences designed around games</p>
+          </article>
         </div>
 
-        <figure class="media-figure media-figure--wide" data-reveal>
+        <figure class="plate" data-reveal>
           <div class="media-slot" data-placeholder="program-photo"></div>
           <figcaption class="media-caption">Program photo — coaching, a camp, or a league night.</figcaption>
         </figure>
+
+        <!-- Deliberately a different register from the grid above: no boxes,
+             oversized ghost numerals, one statement per full-width row. -->
+        <h3 class="block-label block-label--major" data-reveal>What I've come to believe</h3>
+
+        <ol class="beliefs">
+          <li class="belief" data-reveal>
+            <span class="belief__num">01</span>
+            <p class="belief__text">Kids work incredibly hard when they care about the outcome.</p>
+          </li>
+          <li class="belief" data-reveal>
+            <span class="belief__num">02</span>
+            <p class="belief__text">A good coach changes everything.</p>
+          </li>
+          <li class="belief" data-reveal>
+            <span class="belief__num">03</span>
+            <p class="belief__text">The impact doesn't stop at the kid. Parents, schools, and coaches matter too.</p>
+          </li>
+          <li class="belief" data-reveal>
+            <span class="belief__num">04</span>
+            <p class="belief__text">My story isn't unique. The conditions that created it can be replicated.</p>
+          </li>
+        </ol>
       </div>
     </section>
 

@@ -62,13 +62,38 @@ explicitly.
    in the margin
 02 Where I Came From — the narrative spine, beats with margin material
    (game chips, the roster, an aside) set beside them
-03 What I've Been Doing Since — the work and the authority for it, as two
-   scannable columns plus a stat row. No company named.
+03 What I've Been Doing Since — the work and the authority for it. Stat
+   row, then a ruled module grid, then a plate, then the beliefs. No
+   company named.
 04 Outside the Game — playful, photo-driven, annotation-style captions,
    closing on the "I love my mom" coda
 05 Elsewhere — quiet close, contact links, tap-to-copy email
 
 Fixed chapter nav (01→05) tracks scroll position.
+
+**Section 03 is a ruled editorial grid, explicitly not a bento of cards.**
+The first version of this section was four paragraphs in two columns and
+was rejected for reading as prose rather than as something scannable. What
+replaced it has two deliberately different registers:
+
+- *What that's looked like* — four modules (Programs, Coaching, Competition,
+  Curriculum) on a 12-column grid, spans alternating 7/5 then 5/7 so the
+  proportions read as a spread rather than a tile layout. Square corners,
+  hairline rules shared between cells, no fills, no shadows, no icons, no
+  rounded anything. Each module holds a mono label at the top and a Fraunces
+  line at the foot, with the whitespace between doing the work. Borders sit
+  on the cells rather than using a gap-and-background trick, because each
+  module reveals independently and a hidden cell has to leave clean paper
+  behind it.
+- *What I've come to believe* — no boxes at all, on purpose; the grid above
+  already spent that device. Four full-width ruled rows, each with an
+  oversized ghost numeral (26% ink, a page-number weight) beside the
+  statement. This is the "separate visual moment" the two halves needed.
+
+A letterboxed plate sits between them and splits the section in two.
+**Do not add per-module metrics.** Numbers next to each module would look
+right, but there is no data for them and inventing it is not an option; the
+stat row carries the only two figures that exist.
 
 **Pacing is a requirement, not a preference.** The whole thing has to land
 in under a minute. Sections size to their content — they are explicitly not

@@ -455,40 +455,151 @@
   margin: 0;
 }
 
-.work-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: clamp(1.75rem, 4vw, 3.5rem);
-  margin-bottom: clamp(2.25rem, 5vw, 3.5rem);
-}
-
-.work-col__head {
+/* Section label — an exhibition caption, not a heading. */
+.block-label {
   font-family: var(--font-mono);
   font-size: var(--step-eyebrow);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: var(--track-eyebrow);
   color: var(--color-ink-muted);
-  margin: 0 0 1.1rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid var(--color-border);
+  margin: 0 0 clamp(1rem, 2.5vw, 1.5rem);
 }
 
-.work-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+/* The beliefs are a separate moment, so their label gets real air above it. */
+.block-label--major {
+  margin-top: clamp(3.5rem, 9vw, 7rem);
+}
+
+/* ---- Work modules --------------------------------------------------------
+   A ruled grid rather than a set of cards: square corners, hairline rules
+   shared between cells, no fills, no shadows, no icons. The spans alternate
+   7/5 then 5/7 across a 12-column grid so the proportions read as a spread
+   instead of a tile layout.
+
+   Borders live on the cells (not a gap-and-background trick) because each
+   module reveals independently — a hidden cell has to leave clean paper
+   behind it, not a block of rule colour.
+--------------------------------------------------------------------------- */
+.modules {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  border-top: 1px solid var(--color-border);
+}
+
+.mod {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  min-height: clamp(118px, 13.5vw, 172px);
+  padding: clamp(0.9rem, 2vw, 1.4rem) clamp(1.1rem, 2.4vw, 2rem)
+           clamp(1.1rem, 2.4vw, 1.6rem);
+  border-bottom: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
 }
 
-.work-list li {
+.mod:nth-child(1) { grid-column: span 7; }
+.mod:nth-child(2) { grid-column: span 5; }
+.mod:nth-child(3) { grid-column: span 5; }
+.mod:nth-child(4) { grid-column: span 7; }
+
+/* First cell of each row sits flush with the section's left edge. */
+.mod:nth-child(2n + 1) {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.mod__label {
+  font-family: var(--font-mono);
+  font-size: var(--step-eyebrow);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-ink);
+  margin: 0;
+}
+
+/* Pushed to the foot of the box — the gap above it is the point. */
+.mod__desc {
   font-family: var(--font-display);
   font-variation-settings: var(--fraunces-quiet);
   font-size: var(--step-lede);
-  line-height: 1.4;
-  max-width: 40ch;
+  line-height: 1.3;
+  letter-spacing: var(--track-display);
+  max-width: 24ch;
+  margin: auto 0 0;
+}
+
+@media (max-width: 760px) {
+  .mod,
+  .mod:nth-child(1),
+  .mod:nth-child(2),
+  .mod:nth-child(3),
+  .mod:nth-child(4) {
+    grid-column: span 12;
+    border-left: 0;
+    padding-left: 0;
+    min-height: 0;
+  }
+  .mod__desc { margin-top: 0.6rem; }
+}
+
+/* A full-measure plate between the two halves, breaking the section in two. */
+.plate {
+  margin: clamp(2.5rem, 6vw, 4rem) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Letterboxed rather than the default 4:3 — at full measure a 4:3 slot is
+   900px tall and swallows the section. */
+.plate .media-slot {
+  aspect-ratio: 16 / 6;
+}
+
+/* ---- Beliefs -------------------------------------------------------------
+   No boxes at all here, on purpose — the grid above already spent that
+   device. These are full-width ruled rows with a ghost numeral, the way a
+   magazine sets a numbered list across a spread.
+--------------------------------------------------------------------------- */
+.beliefs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.belief {
+  display: grid;
+  grid-template-columns: minmax(3rem, 5.5rem) minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 3rem);
+  align-items: baseline;
+  padding: clamp(1.4rem, 3.5vw, 2.4rem) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.belief__num {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-display);
+  font-size: clamp(1.9rem, 1.4rem + 2.2vw, 3.4rem);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: var(--track-hero);
+  font-variant-numeric: tabular-nums;
+  /* A page-number ghost: present, but never competing with the statement. */
+  color: color-mix(in srgb, var(--color-ink) 26%, var(--color-bg));
+}
+
+.belief__text {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-display);
+  font-size: clamp(1.35rem, 1.05rem + 1.5vw, 2.35rem);
+  font-weight: 450;
+  line-height: 1.2;
+  letter-spacing: var(--track-display);
+  text-wrap: balance;
+  max-width: 30ch;
+  margin: 0;
 }
 
 /* ---- 04 Outside the game ---- */

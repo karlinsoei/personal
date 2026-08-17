@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Karlin Oei</title>
   <meta name="description" content="I got good at the one thing nobody took seriously. Now I run EKUZO, so the next kid doesn't have to get lucky about it." />
+
+  <!-- Set before first paint. The scroll-reveal hidden state is gated behind
+       this class, so if JS never runs the page still renders its content
+       rather than going blank. -->
+  <script>
+    document.documentElement.classList.add("js");
+    // Second failsafe, for the case the class alone can't cover: if the module
+    // never boots at all (chunk 404, parse error), nothing downstream can
+    // un-hide anything. Drop the class on a timer instead. main.ts cancels
+    // this the moment it takes over.
+    window.__revealFailsafe = setTimeout(function () {
+      document.documentElement.classList.remove("js");
+    }, 3000);
+  </script>
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Karlin Oei" />
+  <meta property="og:description" content="I got good at the one thing nobody took seriously. Now I run EKUZO, so the next kid doesn't have to get lucky about it." />
+  <!-- TODO: og:image — needs a real 1200×630 asset before this gets shared anywhere. -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#F6F4EF" />
+
   <link rel="stylesheet" href="/src/styles/tokens.css" />
   <link rel="stylesheet" href="/src/styles/base.css" />
   <link rel="stylesheet" href="/src/styles/sections.css" />

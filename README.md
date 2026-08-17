@@ -13,6 +13,13 @@ Personal site — one scrolling narrative, five chapters. Static, no backend.
   dependencies and bundled by Vite, so there are no CDN requests at runtime
 - No database, no auth, no CMS
 
+The scroll reveals are progressive enhancement, not a dependency. The hidden
+starting state is gated behind a `.js` class set inline in `<head>`, and a
+3-second failsafe drops that class if the module never boots. Verified
+against three cases: JS disabled, bundle blocked, and normal load — the
+first two render all content, the third still animates on scroll. If you
+touch `main.ts` or the `[data-reveal]` rules in `base.css`, re-check that.
+
 ## Structure
 
 ```

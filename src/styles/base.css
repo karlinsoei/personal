@@ -61,13 +61,18 @@ button:focus-visible {
   font-family: var(--font-mono);
 }
 
-/* Scroll-reveal starting state — animated in via main.ts / GSAP */
-[data-reveal] {
+/* Scroll-reveal starting state — animated in via main.ts / GSAP.
+   Gated behind `.js`, which an inline script in <head> sets before first
+   paint. Without that gate the hidden state is the default, so any failure
+   to run JS — disabled, blocked, a CDN hiccup, a throw inside GSAP — leaves
+   a reader looking at a blank cream page instead of the site. The content
+   is the product here; the animation is decoration on top of it. */
+.js [data-reveal] {
   opacity: 0;
   transform: translateY(24px);
 }
 
-[data-reveal].is-revealed {
+.js [data-reveal].is-revealed {
   opacity: 1;
   transform: translateY(0);
   transition: opacity var(--dur-reveal) var(--ease-out),
@@ -78,8 +83,9 @@ button:focus-visible {
   html {
     scroll-behavior: auto;
   }
-  [data-reveal],
-  [data-reveal].is-revealed {
+  /* Selector must match `.js [data-reveal]` specificity to win over it. */
+  .js [data-reveal],
+  .js [data-reveal].is-revealed {
     opacity: 1;
     transform: none;
     transition: none;

@@ -77,6 +77,39 @@ function initCopyEmail() {
   });
 }
 
-initReveals();
-initChapterNav();
-initCopyEmail();
+/**
+ * Content is the product; the reveal is decoration on top of it. So every
+ * entry point below is wrapped — if the animation layer throws, the words
+ * still end up on screen rather than staying at opacity 0 forever.
+ */
+function revealEverything() {
+  document
+    .querySelectorAll<HTMLElement>("[data-reveal]")
+    .forEach((el) => el.classList.add("is-revealed"));
+}
+
+// The module booted, so the inline failsafe in index.html isn't needed.
+const w = window as unknown as { __revealFailsafe?: number };
+if (w.__revealFailsafe) {
+  clearTimeout(w.__revealFailsafe);
+  delete w.__revealFailsafe;
+}
+
+try {
+  initReveals();
+} catch (err) {
+  console.error("Scroll reveals failed to initialise; showing all content.", err);
+  revealEverything();
+}
+
+try {
+  initChapterNav();
+} catch (err) {
+  console.error("Chapter nav failed to initialise.", err);
+}
+
+try {
+  initCopyEmail();
+} catch (err) {
+  console.error("Tap-to-copy failed to initialise.", err);
+}

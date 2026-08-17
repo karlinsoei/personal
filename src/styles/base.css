@@ -61,6 +61,18 @@ button:focus-visible {
   font-family: var(--font-mono);
 }
 
+/* Once a real image lands in the slot, the placeholder chrome gets out of the
+   way. Without this the label is a block in normal flow, so it pushes the
+   photo down and the hatched border shows around it. */
+.media-slot:has(img) {
+  background: none;
+  border: 0;
+}
+
+.media-slot:has(img)::before {
+  content: none;
+}
+
 /* Scroll-reveal starting state — animated in via main.ts / GSAP.
    Gated behind `.js`, which an inline script in <head> sets before first
    paint. Without that gate the hidden state is the default, so any failure

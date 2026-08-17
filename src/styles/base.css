@@ -14,6 +14,8 @@ body {
   font-size: var(--step-body);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  /* Lets Fraunces' opsz axis track the rendered size on its own. */
+  font-optical-sizing: auto;
 }
 
 h1, h2, h3, p, ul {
@@ -56,7 +58,7 @@ button:focus-visible {
   font-size: 0.7rem;
   color: var(--color-ink-muted);
   padding: 0.5rem;
-  font-family: monospace;
+  font-family: var(--font-mono);
 }
 
 /* Scroll-reveal starting state — animated in via main.ts / GSAP */

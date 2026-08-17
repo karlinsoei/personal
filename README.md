@@ -9,6 +9,8 @@ Personal site — one scrolling narrative, five chapters. Static, no backend.
   (fade + rise) rather than scattered per-element animation
 - **Plain CSS with custom properties** — see `src/styles/tokens.css`, the
   single place color and type get defined
+- **Fraunces + IBM Plex Mono, self-hosted via Fontsource** — installed as npm
+  dependencies and bundled by Vite, so there are no CDN requests at runtime
 - No database, no auth, no CMS
 
 ## Structure
@@ -23,13 +25,11 @@ public/assets/images/     drop photos here
 public/assets/video/      drop video here (e.g. the backflip clip)
 ```
 
-## Status: scaffold + accent locked
+## Status: visual system locked, content open
 
-The plumbing is done, and the accent colour is settled — seal vermilion
-`#C1432E` (see `tokens.css` for why that one). Still open:
+Plumbing, accent colour, and typography are all settled — see `tokens.css`,
+which carries the reasoning for each. Still open:
 
-- **Typography** — currently system fonts as a placeholder. Display/body
-  pairing to be chosen in the visual-system pass.
 - **All copy** — every `[TODO]` in `index.html` is a content placeholder,
   not a draft to publish. The story-beat language, EKUZO framing, and
   closing line all need actual writing.

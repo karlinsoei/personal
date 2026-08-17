@@ -1,23 +1,73 @@
+/* Self-hosted through npm — no CDN link, no third-party request at runtime.
+   `full` carries all four Fraunces axes (opsz, wght, SOFT, WONK); unicode-range
+   in the Fontsource CSS means only the latin subset actually downloads. */
+@import "@fontsource-variable/fraunces/full.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/600.css";
+
+/* ---- Faces — two of them, with strictly separate jobs --------------------
+
+   FRAUNCES carries the voice: hero line, story beats, section headings, the
+   closing line. Old-style serif, warm, and genuinely odd in the right places.
+   Two of its axes do real work here:
+
+     opsz  — the hero at ~5.5rem and a story beat at 1.75rem get different
+             letter contrast automatically, instead of one set of shapes
+             scaled up and down. This is the "precise typographic rhythm"
+             in the brief, handled by the typeface rather than by hand-tuning
+             each size.
+     WONK  — swaps in the angled, slightly-off alternates. This is the
+             "slightly weird" the tone asks for. It's on for display type,
+             where it reads as character, and off below that, where it would
+             just read as noise.
+
+   IBM PLEX MONO carries the apparatus: chapter numerals, eyebrows, captions,
+   links. Structural text only, never narrative. Fixed-width is the honest
+   choice for a real 01–05 sequence, and mono reads as annotation in section
+   04's captions rather than as body copy competing with the beats.
+
+   The split is the point: nothing on this site is set in a neutral sans, so
+   every piece of text is either the voice or the apparatus, never in between.
+--------------------------------------------------------------------------- */
+
 :root {
-  /* ---- Color — neutrals are locked by the brief, accent is a placeholder ---- */
+  /* ---- Color — neutrals locked by the brief ---- */
   --color-bg: #F6F4EF;         /* off-white — provisional exact value */
   --color-ink: #16150F;        /* near-black — provisional exact value */
+
   /* Seal vermilion — LOCKED. Picked on separation from the ink (3.58:1), not on
      background contrast (4.65:1, which every candidate cleared). The accent only
      ever appears small — 0.7rem chapter numerals, 1px underlines, the seal mark —
      so distance from the ink beside it is what keeps it reading as colour. */
   --color-accent: #C1432E;
+
   --color-ink-muted: color-mix(in srgb, var(--color-ink) 60%, var(--color-bg));
   --color-border: color-mix(in srgb, var(--color-ink) 12%, var(--color-bg));
 
-  /* ---- Type — system stack until display/body pairing is chosen ---- */
-  --font-display: -apple-system, "SF Pro Display", "Inter", system-ui, sans-serif; /* PLACEHOLDER */
-  --font-body: -apple-system, "SF Pro Text", "Inter", system-ui, sans-serif;       /* PLACEHOLDER */
+  /* ---- Type ---- */
+  --font-display: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-body: var(--font-mono);
 
-  --step-body: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
-  --step-eyebrow: clamp(0.75rem, 0.72rem + 0.1vw, 0.85rem);
+  /* Fraunces axis presets. SOFT rounds the terminals a little (warmth without
+     mush); WONK is the character switch described above. */
+  --fraunces-display: "SOFT" 28, "WONK" 1;
+  --fraunces-quiet: "SOFT" 14, "WONK" 0;
+
+  /* Mono runs optically larger than a sans at the same px, so the apparatus
+     sizes below sit deliberately lower than they would for a sans. */
+  --step-body: clamp(0.9rem, 0.86rem + 0.18vw, 1rem);
+  --step-eyebrow: clamp(0.68rem, 0.66rem + 0.1vw, 0.75rem);
+  --step-caption: clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);
   --step-h2: clamp(1.75rem, 1.4rem + 2vw, 3rem);
-  --step-hero: clamp(2.5rem, 1.8rem + 4.5vw, 6rem);
+  --step-hero: clamp(2.4rem, 1.75rem + 4.1vw, 5.5rem);
+
+  /* Tracking — display serif wants negative, uppercase mono wants positive.
+     Mono is already wide, so the uppercase tracking is gentler than the
+     0.12em a sans eyebrow would take. */
+  --track-hero: -0.025em;
+  --track-display: -0.015em;
+  --track-eyebrow: 0.1em;
 
   /* ---- Layout ---- */
   --gutter: clamp(1.25rem, 4vw, 4rem);

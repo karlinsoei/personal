@@ -94,10 +94,23 @@ Fixed chapter nav (01→05) tracks scroll position — already implemented.
   as confusable in practice, oxblood `#8C2F2A` is the fallback: same
   seal-ink logic, clearly further from orange.
 
+- **Typography: Fraunces (voice) + IBM Plex Mono (apparatus).** Self-hosted
+  via npm, no CDN. The rule is that the two never overlap: Fraunces sets
+  narrative only — hero, story beats, headings, closing line — and Plex Mono
+  sets everything structural — chapter numerals, eyebrows, captions, links.
+  Nothing is set in a neutral sans.
+  Rationale: the brief wants warmth and weirdness *and* "precise typographic
+  rhythm," which pull against each other. Splitting the roles resolves it —
+  Fraunces absorbs all the personality (WONK 1 swaps in the splayed `g` and
+  angled terminals; SOFT 28 rounds the terminals), while a fixed-width face
+  enforces the rhythm structurally. Fraunces' `opsz` axis is why it beat
+  Instrument Serif: with `font-optical-sizing: auto` the 5.5rem hero and a
+  1.75rem beat get genuinely different cuts instead of one set of shapes
+  scaled, which is the rhythm argument done by the typeface rather than by
+  hand. Cost: 151 KB total on first load, 0 third-party requests.
+
 ## OPEN — do not decide these unilaterally
 
-- **Typography.** Currently system fonts as a placeholder. No display/body
-  pairing has been chosen yet.
 - **All copy.** Every `[TODO]` in index.html is a placeholder, not a draft.
   The story-beat language especially needs real writing, not filler.
 

@@ -11,8 +11,9 @@
 }
 
 .chapter-nav a {
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
   font-size: 0.7rem;
+  font-variant-numeric: tabular-nums;
   letter-spacing: 0.05em;
   text-decoration: none;
   color: var(--color-ink-muted);
@@ -49,9 +50,10 @@
 }
 
 .eyebrow {
+  font-family: var(--font-mono);
   font-size: var(--step-eyebrow);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--track-eyebrow);
   color: var(--color-ink-muted);
   margin-bottom: 1rem;
 }
@@ -59,10 +61,12 @@
 /* ---- 01 Intro ---- */
 .hero-line {
   font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-display);
   font-size: var(--step-hero);
-  font-weight: 600;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  line-height: 1.03;
+  letter-spacing: var(--track-hero);
+  text-wrap: balance;
   max-width: 16ch;
 }
 
@@ -81,9 +85,12 @@
 
 .story-beat {
   font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-display);
   font-size: var(--step-h2);
-  font-weight: 500;
+  font-weight: 450;
   line-height: 1.15;
+  letter-spacing: var(--track-display);
+  text-wrap: balance;
 }
 
 .story-beats .media-slot {
@@ -94,8 +101,12 @@
 /* ---- 03 Building ---- */
 .section--building h2 {
   font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-display);
   font-size: var(--step-h2);
-  font-weight: 500;
+  font-weight: 450;
+  line-height: 1.15;
+  letter-spacing: var(--track-display);
+  text-wrap: balance;
   max-width: 20ch;
   margin-bottom: 2rem;
 }
@@ -108,6 +119,8 @@
 .outbound-link {
   display: inline-block;
   margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--step-body);
   text-decoration: none;
   border-bottom: 1px solid currentColor;
   font-weight: 600;
@@ -116,8 +129,12 @@
 /* ---- 04 Life outside work ---- */
 .throughline {
   font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-display);
   font-size: var(--step-h2);
-  font-weight: 500;
+  font-weight: 450;
+  line-height: 1.15;
+  letter-spacing: var(--track-display);
+  text-wrap: balance;
   max-width: 30ch;
   margin-bottom: clamp(2rem, 5vw, 3.5rem);
 }
@@ -128,17 +145,25 @@
   gap: clamp(1rem, 3vw, 2rem);
 }
 
+/* Mono here is doing the annotation job the brief asks for — these read as
+   margin notes on the photos, not as captions competing with the beats. */
 .life-caption {
   margin-top: 0.6rem;
-  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: var(--step-caption);
+  line-height: 1.4;
   color: var(--color-ink-muted);
 }
 
 /* ---- 05 Elsewhere ---- */
 .closing-line {
   font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-display);
   font-size: var(--step-h2);
-  font-weight: 500;
+  font-weight: 450;
+  line-height: 1.15;
+  letter-spacing: var(--track-display);
+  text-wrap: balance;
   max-width: 24ch;
   margin-bottom: 2.5rem;
 }
@@ -149,7 +174,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  font-size: 1.1rem;
+  font-family: var(--font-mono);
+  font-size: var(--step-body);
 }
 
 .elsewhere-links a {

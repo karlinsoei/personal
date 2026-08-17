@@ -56,51 +56,39 @@ the interest seriously. Gaming was that. Backflips/climbing/cello are that
 now. Don't let section 04 read as a disconnected hobby list — tie it back
 explicitly.
 
-## Information architecture (5 sections, one scroll)
+## Information architecture (6 sections, one scroll)
 
-01 Introduction — the hook, plus the parents' line as a hand-drawn shout
-   in the margin
-02 Where I Came From — the narrative spine, beats with margin material
-   (game chips, the roster, an aside) set beside them
-03 What I've Been Doing Since — the work and the authority for it. Stat
-   row, then a ruled module grid, then a plate, then the beliefs. No
-   company named.
-04 Outside the Game — playful, photo-driven, annotation-style captions,
-   closing on the "I love my mom" coda
-05 Elsewhere — quiet close, contact links, tap-to-copy email
+01 Introduction — the hook, the portrait, and the parents' line as a
+   hand-drawn shout in the margin
+02 Where I Came From — the teenage years in chronological order: struggle,
+   conditions, Call of Duty, the early-gaming reel, League at 15, what it
+   felt like a combination of, and the LIFE pivot with what the game taught
+03 College — the team, the achievements ledger, the scholarship figure, the
+   championships reel, and the question that turned into the work
+04 The Work — the question, a ruled bento of stats and programmes, then the
+   beliefs as their own numbered moment. No company named.
+05 Still Learning — playful, photo-driven, annotation-style captions
+06 Elsewhere — the portrait returns, the closing lines, contact links
 
-Fixed chapter nav (01→05) tracks scroll position.
+Fixed chapter nav (01→06) tracks scroll position. College earned its own
+chapter rather than being buried at the end of the childhood section.
 
-**Section 03 is a ruled editorial grid, explicitly not a bento of cards.**
-The first version of this section was four paragraphs in two columns and
-was rejected for reading as prose rather than as something scannable. What
-replaced it has two deliberately different registers:
+**The emotional progression is the spec, not the section list:** isolation →
+refuge → curiosity → challenge → confidence → belonging → wondering →
+building. Layout decisions serve that order. When something needs to move,
+move it to where it belongs in that progression rather than where it fits.
 
-- *What that's looked like* — four modules (Programs, Coaching, Competition,
-  Curriculum) on a 12-column grid, spans alternating 7/5 then 5/7 so the
-  proportions read as a spread rather than a tile layout. Square corners,
-  hairline rules shared between cells, no fills, no shadows, no icons, no
-  rounded anything. Each module holds a mono label at the top and a Fraunces
-  line at the foot, with the whitespace between doing the work. Borders sit
-  on the cells rather than using a gap-and-background trick, because each
-  module reveals independently and a hidden cell has to leave clean paper
-  behind it.
-- *What I've come to believe* — no boxes at all, on purpose; the grid above
-  already spent that device. Four full-width ruled rows, each with an
-  oversized ghost numeral (26% ink, a page-number weight) beside the
-  statement. This is the "separate visual moment" the two halves needed.
+**Faith is Karlin.** It's the tag he played under, so the roster is five
+people, not five plus him — a small vermilion arrow marks which one. Do not
+add a sixth face and do not repeat the name anywhere else. Roster order is
+the League role order the team actually played: Willwin (top) through Keen
+(support).
 
-A letterboxed plate sits between them and splits the section in two.
-**Do not add per-module metrics.** Numbers next to each module would look
-right, but there is no data for them and inventing it is not an option; the
-stat row carries the only two figures that exist.
-
-**Pacing is a requirement, not a preference.** The whole thing has to land
-in under a minute. Sections size to their content — they are explicitly not
-min-height: 100vh, which paced the earlier draft at roughly one idea per
-screen and made it far too slow. Secondary material goes in the margin
-column beside the narrative (the `.spread` pattern), never stacked beneath
-it. When adding content, add it to a margin, not to the scroll.
+**Pacing is a requirement, not a preference.** Sections size to their
+content — explicitly not min-height: 100vh, which paced an earlier draft at
+one idea per screen. Secondary material goes in a margin column beside the
+narrative (`.spread`) or in the chronicle's single flex gap, never stacked
+with hand-tuned margins.
 
 ## Known content/asset details
 

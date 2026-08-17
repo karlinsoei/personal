@@ -828,10 +828,12 @@
   border-left: 1px solid var(--color-border);
 }
 
-.mod:nth-child(1) { grid-column: span 7; }
-.mod:nth-child(2) { grid-column: span 5; }
-.mod:nth-child(3) { grid-column: span 5; }
-.mod:nth-child(4) { grid-column: span 7; }
+.mod:nth-child(1) { grid-column: span 6; }
+.mod:nth-child(2) { grid-column: span 6; }
+.mod:nth-child(3) { grid-column: span 7; }
+.mod:nth-child(4) { grid-column: span 5; }
+.mod:nth-child(5) { grid-column: span 5; }
+.mod:nth-child(6) { grid-column: span 7; }
 
 /* First cell of each row sits flush with the section's left edge. */
 .mod:nth-child(2n + 1) {
@@ -865,7 +867,9 @@
   .mod:nth-child(1),
   .mod:nth-child(2),
   .mod:nth-child(3),
-  .mod:nth-child(4) {
+  .mod:nth-child(4),
+  .mod:nth-child(5),
+  .mod:nth-child(6) {
     grid-column: span 12;
     border-left: 0;
     padding-left: 0;
@@ -964,19 +968,16 @@
   color: var(--color-ink-muted);
 }
 
-/* Sits outside the grid on purpose: it isn't a skill like the others, and
-   it's the callback that closes the loop the shout in section 01 opened. */
+/* The callback that closes the loop the shout in section 01 opened. Quieter
+   than the line above it — it's an aside, not the closing statement. */
 .coda {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
-  font-size: var(--step-h2);
-  font-weight: 450;
-  line-height: 1.15;
-  letter-spacing: var(--track-display);
-  margin-top: clamp(2.5rem, 6vw, 4rem);
-  padding-top: clamp(1.75rem, 4vw, 2.5rem);
-  border-top: 1px solid var(--color-border);
-  max-width: 24ch;
+  font-variation-settings: var(--fraunces-quiet);
+  font-size: var(--step-lede);
+  line-height: 1.35;
+  color: var(--color-ink-muted);
+  margin: 0;
+  max-width: 26ch;
 }
 
 /* ---- 05 Elsewhere ---- */
@@ -1035,5 +1036,273 @@
   .roster,
   .shout {
     transform: none;
+  }
+}
+
+/* ---- Chapter marker -------------------------------------------------------
+   A time stamp inside a section, marking a jump forward in the story. Ruled
+   above so it reads as a break rather than another label.
+--------------------------------------------------------------------------- */
+.chapter-marker {
+  width: 100%;
+  margin: clamp(0.75rem, 2vw, 1.5rem) 0 0;
+  padding-top: clamp(1.1rem, 3vw, 1.9rem);
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: var(--step-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--track-eyebrow);
+  color: var(--color-ink-muted);
+}
+
+/* Three short declarations, set tight so they read as a drumbeat rather than
+   as three separate beats in the chronicle's normal rhythm. */
+.cadence {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.cadence__line {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-display);
+  font-size: clamp(1.2rem, 1rem + 1vw, 1.85rem);
+  font-weight: 450;
+  line-height: 1.2;
+  letter-spacing: var(--track-display);
+  margin: 0;
+}
+
+/* The opening beat of a section, a step up from the rest. */
+.story-beat--lead {
+  font-size: var(--step-h2);
+  max-width: 22ch;
+}
+
+/* ---- Lessons --------------------------------------------------------------
+   What the game taught, as three transformations. The arrow is the content —
+   each column is a before and an after, not a heading and a paragraph.
+--------------------------------------------------------------------------- */
+.lessons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
+  width: 100%;
+  padding-top: clamp(1.25rem, 3vw, 2rem);
+  border-top: 1px solid var(--color-border);
+}
+
+.lesson {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.lesson__from {
+  font-family: var(--font-mono);
+  font-size: var(--step-eyebrow);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--track-eyebrow);
+  color: var(--color-ink-muted);
+  margin: 0;
+}
+
+.lesson__arrow {
+  width: 15px;
+  height: auto;
+  fill: none;
+  stroke: var(--color-ink-muted);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lesson__to {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-display);
+  font-size: var(--step-lede);
+  font-weight: 450;
+  line-height: 1.25;
+  letter-spacing: var(--track-display);
+  max-width: 18ch;
+  margin: 0;
+}
+
+/* ---- The "me" marker ------------------------------------------------------
+   Vermilion because it's the same signal the chapter nav carries: you are
+   here. Faith is the tag Karlin played under, so the row is five people, not
+   five plus him.
+--------------------------------------------------------------------------- */
+.roster__me {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  margin-top: 0.15rem;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+}
+
+.roster__me svg {
+  width: 11px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---- Achievements ---------------------------------------------------------
+   Ruled top and bottom, the same ledger device as the stat row — facts, set
+   as facts.
+--------------------------------------------------------------------------- */
+.achievements {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  gap: clamp(1.1rem, 3vw, 2.5rem);
+  width: 100%;
+  margin: 0;
+  padding: clamp(1.15rem, 3vw, 1.6rem) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.achievement__label {
+  font-family: var(--font-mono);
+  font-size: var(--step-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--track-eyebrow);
+  color: var(--color-ink-muted);
+  margin-bottom: 0.3rem;
+}
+
+.achievement__value {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-display);
+  font-size: clamp(1.35rem, 1.1rem + 1.1vw, 2.1rem);
+  font-weight: 450;
+  line-height: 1.1;
+  letter-spacing: var(--track-display);
+  margin: 0;
+}
+
+/* The scholarship figure, given the room a headline gets. */
+.figure-big {
+  width: 100%;
+}
+
+.figure-big__num {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-display);
+  font-size: clamp(2.6rem, 1.8rem + 4vw, 5.5rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--track-hero);
+  font-variant-numeric: tabular-nums;
+  margin: 0 0 0.4rem;
+}
+
+.figure-big__label {
+  font-family: var(--font-mono);
+  font-size: var(--step-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--track-eyebrow);
+  color: var(--color-ink-muted);
+  margin: 0;
+}
+
+/* The question variant of the pivot: a sentence, so it drops the uppercase
+   and takes a smaller size than LIFE — that word still has to be the loudest
+   thing in the story. */
+.pivot__word--ask {
+  text-transform: none;
+  font-size: clamp(1.85rem, 1.25rem + 2.9vw, 3.9rem);
+  line-height: 1.05;
+  max-width: 17ch;
+}
+
+/* ---- Module variants ------------------------------------------------------ */
+.mod__figure {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-display);
+  font-size: clamp(2.1rem, 1.6rem + 2.2vw, 3.4rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--track-hero);
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+}
+
+/* Stats read top-down; the description belongs under its figure, not pushed
+   to the foot of the box the way the labelled modules are. */
+.mod--stat .mod__desc {
+  margin: 0.7rem 0 0;
+}
+
+/* A fixed height, not an aspect ratio. The cells are deliberately unequal
+   widths, so an aspect ratio would give each row two different photo heights
+   and drop the labels onto different baselines. One height keeps the grid
+   reading as a ledger. */
+.mod__media {
+  height: clamp(132px, 15vw, 200px);
+  margin-bottom: clamp(0.85rem, 2vw, 1.2rem);
+  border: 0;
+  border-radius: 0;
+}
+
+/* ---- Belief sub-lines ----------------------------------------------------- */
+.belief__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.belief__sub {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-quiet);
+  font-size: var(--step-lede);
+  line-height: 1.35;
+  color: var(--color-ink-muted);
+  max-width: 42ch;
+  margin: 0;
+}
+
+/* ---- Closing --------------------------------------------------------------
+   Bookends the opening: the portrait returns, smaller and beside the words
+   rather than opposite a headline.
+--------------------------------------------------------------------------- */
+.closing {
+  display: grid;
+  grid-template-columns: minmax(0, 0.5fr) minmax(0, 1fr);
+  gap: clamp(1.75rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.closing__portrait {
+  margin: 0;
+  width: 100%;
+  max-width: 270px;
+}
+
+.closing__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(0.9rem, 2.5vw, 1.4rem);
+  min-width: 0;
+}
+
+@media (max-width: 760px) {
+  .closing {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .closing__portrait {
+    max-width: 200px;
   }
 }

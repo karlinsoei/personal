@@ -39,14 +39,15 @@
 </head>
 <body>
 
-  <!-- Chapter indicator — updates active state via IntersectionObserver in main.ts.
-       This is a real sequence (the narrative arc), so numbering earns its place here. -->
+  <!-- Chapter indicator. Six chapters now: the college years earned their own
+       stop rather than being buried at the end of the childhood section. -->
   <nav class="chapter-nav" aria-label="Section navigation">
     <a href="#intro" data-chapter="01" aria-label="01, Introduction"><span>01</span></a>
     <a href="#story" data-chapter="02" aria-label="02, Where I came from"><span>02</span></a>
-    <a href="#work" data-chapter="03" aria-label="03, What I've been doing since"><span>03</span></a>
-    <a href="#life" data-chapter="04" aria-label="04, Outside the game"><span>04</span></a>
-    <a href="#elsewhere" data-chapter="05" aria-label="05, Elsewhere"><span>05</span></a>
+    <a href="#college" data-chapter="03" aria-label="03, College"><span>03</span></a>
+    <a href="#work" data-chapter="04" aria-label="04, The work"><span>04</span></a>
+    <a href="#life" data-chapter="05" aria-label="05, Still learning"><span>05</span></a>
+    <a href="#elsewhere" data-chapter="06" aria-label="06, Elsewhere"><span>06</span></a>
   </nav>
 
   <main>
@@ -78,9 +79,6 @@
             </div>
 
             <div class="shout__source">
-              <!-- Drawn from a photo, kept to a doodle rather than a likeness:
-                   the bob, the round wire frames, the pendant. Same wobbly
-                   single-weight line as the bubble it hangs off. -->
               <svg class="dood mom" viewBox="0 0 200 210" role="img"
                    aria-label="Line drawing of Karlin's mother">
                 <!-- Excitement lines, the same device as the reference. -->
@@ -134,11 +132,6 @@
           </figure>
           </div>
 
-          <!-- Portrait. The hatched slot stays behind the image so the layout
-               still reads if the file is missing; drop the photo at
-               public/assets/images/karlin-hero.jpg and it takes over.
-               width/height are the source pixels and reserve the space, so
-               nothing shifts when it decodes. -->
           <figure class="hero-portrait" data-reveal>
             <div class="media-slot media-slot--portrait" data-placeholder="karlin-hero">
               <picture>
@@ -154,7 +147,6 @@
             </div>
           </figure>
         </div>
-
       </div>
     </section>
 
@@ -163,20 +155,15 @@
       <div class="section__inner">
         <h2 class="eyebrow" data-reveal>where I came from</h2>
 
-        <!-- The chronological run, isolation through to the pivot. One flex
-             column so every beat, tag row and media block is spaced by a
-             single gap rather than by margins tuned element by element. -->
         <div class="chronicle">
 
         <!-- ISOLATION -->
         <p class="story-beat" data-reveal>I struggled as a teen.</p>
 
-        <!-- Conditions sit directly under the statement now rather than in the
-             margin, so the chronology reads straight down the page. -->
         <div class="conditions" data-reveal>
           <span class="cond">Social anxiety</span>
-          <span class="cond">Bad grades</span>
           <span class="cond">Divorced parents</span>
+          <span class="cond">Bad grades</span>
         </div>
 
         <!-- REFUGE -->
@@ -189,11 +176,9 @@
           I didn't like or fit in with the &ldquo;normal&rdquo; kid stuff.
         </p>
 
-        <!-- Early gaming. Scroll-snap strip, so it works as a swipeable reel
-             with no JS at all; the controls are the enhancement on top. -->
         <figure class="reel" data-reel data-reveal>
           <div class="reel__viewport" data-reel-viewport tabindex="0"
-               role="group" aria-label="Early gaming, scrollable">
+               role="group" aria-label="Childhood and teenage years, scrollable">
             <div class="reel__track">
               <div class="reel__slide">
                 <div class="media-slot" data-placeholder="early-gaming-1"></div>
@@ -207,11 +192,13 @@
               <div class="reel__slide">
                 <div class="media-slot" data-placeholder="early-gaming-3"></div>
               </div>
+              <div class="reel__slide">
+                <div class="media-slot" data-placeholder="early-gaming-4"></div>
+              </div>
             </div>
           </div>
-
           <figcaption class="reel__bar">
-            <span class="reel__index" data-reel-index aria-live="polite">01 / 04</span>
+            <span class="reel__index" data-reel-index aria-live="polite">01 / 05</span>
             <span class="reel__rule" aria-hidden="true">
               <span class="reel__rule-fill" data-reel-fill></span>
             </span>
@@ -227,6 +214,8 @@
         </figure>
 
         <!-- CURIOSITY -->
+        <p class="chapter-marker" data-reveal>age 15</p>
+
         <p class="story-beat" data-reveal>At 15, I was introduced to</p>
         <p class="tag-drop" data-reveal>
           <span class="tag tag--game tag--hero">League of Legends</span>
@@ -234,49 +223,101 @@
 
         <p class="story-beat" data-reveal>It felt like a combination of:</p>
 
-        <!-- Read as a formula rather than a list — the plus signs are the point. -->
         <div class="formula" data-reveal>
           <span class="tag tag--mix">Basketball</span>
           <span class="formula__op" aria-hidden="true">+</span>
           <span class="tag tag--mix">Chess</span>
           <span class="formula__op" aria-hidden="true">+</span>
           <span class="tag tag--mix">D&amp;D</span>
+          <span class="formula__op" aria-hidden="true">+</span>
+          <span class="tag tag--mix">Video games</span>
         </div>
 
         <!-- CHALLENGE -->
-        <p class="story-beat" data-reveal>I'd never been captivated this way before.</p>
+        <p class="story-beat" data-reveal>Nothing had ever captivated me this way before.</p>
 
-        <p class="story-beat story-beat--run" data-reveal>
-          I was excited to learn, compete, and challenge myself. As I got better,
-          I started building confidence and realized the game was a reflection of
-          something much bigger:
-        </p>
+        <!-- Three short lines rather than a paragraph: the rhythm is the point. -->
+        <div class="cadence" data-reveal>
+          <p class="cadence__line">I wanted to learn.</p>
+          <p class="cadence__line">I wanted to compete.</p>
+          <p class="cadence__line">I was inspired to get better.</p>
+        </div>
 
         <!-- The pivot the whole site turns on. Carried by scale and framing
-             rather than colour — the accent is already committed to the hinge
-             at the end of this section. -->
+             rather than colour — the accent is committed to the hinge later. -->
         <div class="pivot" data-reveal>
           <p class="pivot__word">Life</p>
         </div>
 
+        <p class="story-beat" data-reveal>
+          League started teaching me things that extended beyond the game.
+        </p>
+
+        <!-- What the game taught, as three transformations rather than prose. -->
+        <div class="lessons" data-reveal>
+          <div class="lesson">
+            <p class="lesson__from">Failure &amp; grit</p>
+            <svg class="lesson__arrow" viewBox="0 0 20 34" aria-hidden="true">
+              <path d="M10 3 L10 29 M3 22 L10 31 L17 22" />
+            </svg>
+            <p class="lesson__to">Try again.</p>
+          </div>
+          <div class="lesson">
+            <p class="lesson__from">Teamwork &amp; collaboration</p>
+            <svg class="lesson__arrow" viewBox="0 0 20 34" aria-hidden="true">
+              <path d="M10 3 L10 29 M3 22 L10 31 L17 22" />
+            </svg>
+            <p class="lesson__to">People matter.</p>
+          </div>
+          <div class="lesson">
+            <p class="lesson__from">Confidence</p>
+            <svg class="lesson__arrow" viewBox="0 0 20 34" aria-hidden="true">
+              <path d="M10 3 L10 29 M3 22 L10 31 L17 22" />
+            </svg>
+            <p class="lesson__to">I can do what I put my mind to.</p>
+          </div>
+        </div>
+
         </div><!-- /.chronicle -->
+      </div>
+    </section>
+
+    <!-- 03 — COLLEGE -->
+    <section id="college" class="section section--college" data-section="03">
+      <div class="section__inner">
+        <h2 class="eyebrow" data-reveal>college</h2>
+
+        <div class="chronicle">
 
         <!-- BELONGING -->
-        <div class="spread">
-          <div class="spread__main">
-            <p class="story-beat" data-reveal>
-              In college, I found a team who loved competing as much as I did.
-            </p>
-          </div>
-          <!-- The roster sits in the margin as a credit line, not a sentence. -->
-          <aside class="roster" data-reveal>
-            <span class="roster__label">the team</span>
-            <!-- Same drawing language as mom, one step smaller. Each is drawn
-                 to the two or three features that actually tell them apart —
-                 hair shape, glasses, mouth — not to a likeness. -->
-            <ul class="roster__names">
-              <li>
-                <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Faith">
+        <p class="story-beat story-beat--lead" data-reveal>
+          In college, I found a team who loved competing as much as I did.
+        </p>
+
+        <aside class="roster" data-reveal>
+          <span class="roster__label">the team</span>
+          <ul class="roster__names">
+                <li>
+                  <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Willwin">
+                  <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
+                           C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
+                           C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
+                  <!-- chin-length bob, centre part -->
+                  <path class="dood__fill" d="M48 138 C40 110, 45 72, 68 54 C84 43, 116 43, 132 54
+                           C155 72, 160 110, 152 138 L142 138
+                           C147 112, 145 88, 139 76 C133 65, 118 60, 100 60
+                           C82 60, 67 65, 61 76 C55 88, 53 112, 58 138 Z" />
+                  <rect class="dood__line dood__line--thin" x="60" y="97" width="37" height="22" rx="3" />
+                  <rect class="dood__line dood__line--thin" x="103" y="97" width="37" height="22" rx="3" />
+                  <path class="dood__line dood__line--thin" d="M97 106 L103 106" />
+                  <circle class="dood__fill" cx="78" cy="108" r="4.4" />
+                  <circle class="dood__fill" cx="122" cy="108" r="4.4" />
+                  <path class="dood__line" d="M89 138 C94 142, 106 142, 111 138" />
+                </svg>
+                  <span class="roster__name">Willwin</span>
+                </li>
+                <li class="roster__member--me">
+                  <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Faith">
                   <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
                            C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
                            C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
@@ -289,10 +330,46 @@
                   <circle class="dood__fill" cx="120" cy="108" r="5" />
                   <path class="dood__line" d="M86 134 C92 144, 108 144, 114 134" />
                 </svg>
-                <span class="roster__name">Faith</span>
-              </li>
-              <li>
-                <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Keen">
+                  <span class="roster__name">Faith</span>
+                  <span class="roster__me"><svg viewBox="0 0 24 26" aria-hidden="true"><path d="M12 24 L12 7 M6 13 L12 5 L18 13" /></svg>me</span>
+                </li>
+                <li>
+                  <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="xKace">
+                  <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
+                           C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
+                           C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
+                  <!-- straight fringe, bowl cut -->
+                  <path class="dood__fill" d="M50 104 C44 78, 51 54, 72 45 C84 40, 116 40, 128 45
+                           C149 54, 156 78, 150 104 C148 90, 146 80, 143 74
+                           C138 65, 129 64, 119 66 C111 68, 89 68, 81 66
+                           C71 64, 62 65, 57 74 C54 80, 52 90, 50 104 Z" />
+                  <circle class="dood__fill" cx="80" cy="108" r="5" />
+                  <circle class="dood__fill" cx="120" cy="108" r="5" />
+                  <path class="dood__line" d="M87 138 L113 138" />
+                </svg>
+                  <span class="roster__name">xKace</span>
+                </li>
+                <li>
+                  <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="TheJons">
+                  <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
+                           C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
+                           C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
+                  <!-- fair, and lumpy across the top for curl -->
+                  <path class="dood__hair--fair" d="M53 100 C47 84, 45 66, 56 57
+                           C58 47, 70 43, 79 49 C83 40, 98 38, 105 46
+                           C113 39, 126 43, 130 53 C142 55, 149 64, 147 76
+                           C150 86, 149 92, 147 100 C145 88, 142 78, 137 72
+                           C129 62, 116 58, 100 58 C84 58, 70 63, 62 74
+                           C57 82, 55 91, 53 100 Z" />
+                  <circle class="dood__fill" cx="80" cy="108" r="5" />
+                  <circle class="dood__fill" cx="120" cy="108" r="5" />
+                  <!-- big open grin -->
+                  <path class="dood__line" d="M80 132 C88 149, 112 149, 120 132" />
+                </svg>
+                  <span class="roster__name">TheJons</span>
+                </li>
+                <li>
+                  <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Keen">
                   <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
                            C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
                            C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
@@ -311,204 +388,208 @@
                   <!-- mid kiss -->
                   <ellipse class="dood__line" cx="100" cy="139" rx="7.5" ry="6.5" />
                 </svg>
-                <span class="roster__name">Keen</span>
-              </li>
-              <li>
-                <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="xKace">
-                  <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
-                           C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
-                           C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
-                  <!-- straight fringe, bowl cut -->
-                  <path class="dood__fill" d="M50 104 C44 78, 51 54, 72 45 C84 40, 116 40, 128 45
-                           C149 54, 156 78, 150 104 C148 90, 146 80, 143 74
-                           C138 65, 129 64, 119 66 C111 68, 89 68, 81 66
-                           C71 64, 62 65, 57 74 C54 80, 52 90, 50 104 Z" />
-                  <circle class="dood__fill" cx="80" cy="108" r="5" />
-                  <circle class="dood__fill" cx="120" cy="108" r="5" />
-                  <path class="dood__line" d="M87 138 L113 138" />
-                </svg>
-                <span class="roster__name">xKace</span>
-              </li>
-              <li>
-                <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Willwin">
-                  <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
-                           C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
-                           C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
-                  <!-- chin-length bob, centre part -->
-                  <path class="dood__fill" d="M48 138 C40 110, 45 72, 68 54 C84 43, 116 43, 132 54
-                           C155 72, 160 110, 152 138 L142 138
-                           C147 112, 145 88, 139 76 C133 65, 118 60, 100 60
-                           C82 60, 67 65, 61 76 C55 88, 53 112, 58 138 Z" />
-                  <rect class="dood__line dood__line--thin" x="60" y="97" width="37" height="22" rx="3" />
-                  <rect class="dood__line dood__line--thin" x="103" y="97" width="37" height="22" rx="3" />
-                  <path class="dood__line dood__line--thin" d="M97 106 L103 106" />
-                  <circle class="dood__fill" cx="78" cy="108" r="4.4" />
-                  <circle class="dood__fill" cx="122" cy="108" r="4.4" />
-                  <path class="dood__line" d="M89 138 C94 142, 106 142, 111 138" />
-                </svg>
-                <span class="roster__name">Willwin</span>
-              </li>
-              <li>
-                <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="TheJons">
-                  <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
-                           C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
-                           C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
-                  <!-- fair, and lumpy across the top for curl -->
-                  <path class="dood__hair--fair" d="M53 100 C47 84, 45 66, 56 57
-                           C58 47, 70 43, 79 49 C83 40, 98 38, 105 46
-                           C113 39, 126 43, 130 53 C142 55, 149 64, 147 76
-                           C150 86, 149 92, 147 100 C145 88, 142 78, 137 72
-                           C129 62, 116 58, 100 58 C84 58, 70 63, 62 74
-                           C57 82, 55 91, 53 100 Z" />
-                  <circle class="dood__fill" cx="80" cy="108" r="5" />
-                  <circle class="dood__fill" cx="120" cy="108" r="5" />
-                  <!-- big open grin -->
-                  <path class="dood__line" d="M80 132 C88 149, 112 149, 120 132" />
-                </svg>
-                <span class="roster__name">TheJons</span>
-              </li>
-            </ul>
-          </aside>
+                  <span class="roster__name">Keen</span>
+                </li>
+          </ul>
+        </aside>
+
+        <dl class="achievements" data-reveal>
+          <div class="achievement">
+            <dt class="achievement__label">Varsity</dt>
+            <dd class="achievement__value">Captain</dd>
+          </div>
+          <div class="achievement">
+            <dt class="achievement__label">Nationally</dt>
+            <dd class="achievement__value">Top 8</dd>
+          </div>
+          <div class="achievement">
+            <dt class="achievement__label">Peak rank in League</dt>
+            <dd class="achievement__value">Challenger</dd>
+          </div>
+        </dl>
+
+        <div class="figure-big" data-reveal>
+          <p class="figure-big__num">~$80,000</p>
+          <p class="figure-big__label">in esports scholarships</p>
         </div>
 
-        <div class="punch" data-reveal>
-          <p class="punch__line">We competed. We won $80,000 in scholarships.</p>
-          <p class="punch__kicker">For <em>gaming</em>.</p>
-        </div>
+        <figure class="reel" data-reel data-reveal>
+          <div class="reel__viewport" data-reel-viewport tabindex="0"
+               role="group" aria-label="Championships and team, scrollable">
+            <div class="reel__track">
+              <div class="reel__slide">
+                <div class="media-slot" data-placeholder="college-1"></div>
+              </div>
+              <div class="reel__slide">
+                <div class="media-slot" data-placeholder="college-2"></div>
+              </div>
+              <div class="reel__slide">
+                <div class="media-slot media-slot--clip" data-placeholder="college-clip"></div>
+              </div>
+              <div class="reel__slide">
+                <div class="media-slot" data-placeholder="college-3"></div>
+              </div>
+            </div>
+          </div>
+          <figcaption class="reel__bar">
+            <span class="reel__index" data-reel-index aria-live="polite">01 / 04</span>
+            <span class="reel__rule" aria-hidden="true">
+              <span class="reel__rule-fill" data-reel-fill></span>
+            </span>
+            <span class="reel__nav">
+              <button type="button" class="reel__btn" data-reel-prev aria-label="Previous">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19" /></svg>
+              </button>
+              <button type="button" class="reel__btn" data-reel-next aria-label="Next">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19" /></svg>
+              </button>
+            </span>
+          </figcaption>
+        </figure>
 
-        <p class="story-beat story-beat--hinge" data-reveal>
-          The thing I'd been told to stop doing was finally treated as
-          <em>worth being good at</em>.
+        <!-- WONDERING -->
+        <p class="story-beat" data-reveal>
+          I was incredibly lucky to find magic with that team.
         </p>
+
+        <p class="story-beat story-beat--run" data-reveal>
+          That experience changed my life. It made me wonder…
+        </p>
+
+        <div class="pivot pivot--ask" data-reveal>
+          <p class="pivot__word pivot__word--ask">&ldquo;What if I never had that?&rdquo;</p>
+        </div>
+
+        <p class="story-beat" data-reveal>
+          So I've spent the last six years trying to make that a reality for
+          other kids.
+        </p>
+
+        </div><!-- /.chronicle -->
       </div>
     </section>
 
-    <!-- 03 — THE WORK -->
-    <section id="work" class="section section--work" data-section="03">
+    <!-- 04 — THE WORK -->
+    <section id="work" class="section section--work" data-section="04">
       <div class="section__inner">
-        <!-- No eyebrow and no heading here on purpose: the eyebrow duplicated
-             the "what that's looked like" label a few hundred pixels down, and
-             the heading's only fact — six years — is already in the stat row.
-             The question opens the section instead. -->
         <h2 class="question question--lead" data-reveal>
           What happens when you take a kid's passion for games seriously?
         </h2>
 
-        <dl class="stat-row" data-reveal>
-          <div class="stat">
-            <dt class="stat__label">young people</dt>
-            <dd class="stat__value">1,000+</dd>
-          </div>
-          <div class="stat">
-            <dt class="stat__label">years in it</dt>
-            <dd class="stat__value">6</dd>
-          </div>
-        </dl>
-
-        <h3 class="block-label" data-reveal>What that's looked like</h3>
-
-        <!-- Ruled grid, not cards. Modules share hairlines the way a printed
-             table does, and the spans alternate 7/5 then 5/7 so the rhythm is
-             a magazine spread rather than an even tile layout. Each module
-             holds its label at the top and its line at the bottom, with the
-             whitespace between doing the work. -->
+        <!-- Ruled grid, not cards. Stats and modules share one ledger; spans
+             alternate so the proportions read as a spread, not a tile layout. -->
         <div class="modules">
+          <article class="mod mod--stat" data-reveal>
+            <p class="mod__figure">1,000+</p>
+            <p class="mod__desc">Young people in programs I've helped build</p>
+          </article>
+          <article class="mod mod--stat" data-reveal>
+            <p class="mod__figure">6 years</p>
+            <p class="mod__desc">Working on the same question</p>
+          </article>
+
           <article class="mod" data-reveal>
-            <h4 class="mod__label">Programs</h4>
-            <p class="mod__desc">Schools, families &amp; community organizations</p>
+            <div class="media-slot mod__media" data-placeholder="programs-photo"></div>
+            <h3 class="mod__label">Programs</h3>
+            <p class="mod__desc">Schools, families &amp; communities</p>
           </article>
           <article class="mod" data-reveal>
-            <h4 class="mod__label">Coaching</h4>
-            <p class="mod__desc">Coaches, mentorship &amp; structured development</p>
+            <div class="media-slot mod__media" data-placeholder="learning-photo"></div>
+            <h3 class="mod__label">Learning</h3>
+            <p class="mod__desc">Experiences designed around games</p>
           </article>
           <article class="mod" data-reveal>
-            <h4 class="mod__label">Competition</h4>
+            <div class="media-slot mod__media" data-placeholder="competition-photo"></div>
+            <h3 class="mod__label">Competition</h3>
             <p class="mod__desc">Teams, leagues, camps &amp; events</p>
           </article>
           <article class="mod" data-reveal>
-            <h4 class="mod__label">Curriculum</h4>
-            <p class="mod__desc">Learning experiences designed around games</p>
+            <div class="media-slot mod__media" data-placeholder="coaching-photo"></div>
+            <h3 class="mod__label">Coaching</h3>
+            <p class="mod__desc">Mentorship &amp; development</p>
           </article>
         </div>
 
-        <figure class="plate" data-reveal>
-          <div class="media-slot" data-placeholder="program-photo"></div>
-          <figcaption class="media-caption">Program photo — coaching, a camp, or a league night.</figcaption>
-        </figure>
-
-        <!-- Deliberately a different register from the grid above: no boxes,
-             oversized ghost numerals, one statement per full-width row. -->
+        <!-- A different register from the grid: no boxes, oversized ghost
+             numerals, one statement per full-width ruled row. -->
         <h3 class="block-label block-label--major" data-reveal>What I've come to believe</h3>
 
         <ol class="beliefs">
           <li class="belief" data-reveal>
             <span class="belief__num" aria-hidden="true">01</span>
-            <p class="belief__text">Kids work incredibly hard when they care about the outcome.</p>
+            <div class="belief__body">
+              <p class="belief__text">Kids don't hate working hard.</p>
+              <p class="belief__sub">They hate working hard on things they don't care about.</p>
+            </div>
           </li>
           <li class="belief" data-reveal>
             <span class="belief__num" aria-hidden="true">02</span>
-            <p class="belief__text">A good coach changes everything.</p>
+            <div class="belief__body">
+              <p class="belief__text">A good coach changes everything.</p>
+            </div>
           </li>
           <li class="belief" data-reveal>
             <span class="belief__num" aria-hidden="true">03</span>
-            <p class="belief__text">The impact doesn't stop at the kid. Parents, schools, and coaches matter too.</p>
-          </li>
-          <li class="belief" data-reveal>
-            <span class="belief__num" aria-hidden="true">04</span>
-            <p class="belief__text">My story isn't unique. The conditions that created it can be replicated.</p>
+            <div class="belief__body">
+              <p class="belief__text">I wasn't special. I found the right environment.</p>
+              <p class="belief__sub">More kids deserve one.</p>
+            </div>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- 04 — OUTSIDE THE GAME -->
-    <section id="life" class="section section--life" data-section="04">
+    <!-- 05 — STILL LEARNING -->
+    <section id="life" class="section section--life" data-section="05">
       <div class="section__inner">
-        <h2 class="eyebrow" data-reveal>outside the game</h2>
-        <p class="throughline" data-reveal>
-          Still doing the same thing, really — picking up something I'm bad at
-          and staying long enough to get good.
+        <h2 class="throughline" data-reveal>Still learning.</h2>
+        <p class="story-beat story-beat--run" data-reveal>
+          Turns out I still like picking up things I'm bad at and staying long
+          enough to get good.
         </p>
 
         <div class="life-grid">
           <div class="life-tile" data-reveal>
-            <div class="media-slot" data-placeholder="backflip-video"></div>
-            <p class="life-caption">Currently learning backflips.</p>
+            <div class="media-slot media-slot--clip" data-placeholder="backflip-clip"></div>
+            <p class="life-caption">Landed? Mostly.</p>
           </div>
           <div class="life-tile" data-reveal>
-            <div class="media-slot" data-placeholder="climbing-photo"></div>
-            <p class="life-caption">Recently got into bouldering.</p>
-          </div>
-          <div class="life-tile" data-reveal>
-            <div class="media-slot" data-placeholder="piano-cello-photo"></div>
-            <p class="life-caption">Piano and cello.</p>
+            <div class="media-slot" data-placeholder="bouldering-photo"></div>
+            <p class="life-caption">Falling, but higher.</p>
           </div>
           <div class="life-tile" data-reveal>
             <div class="media-slot" data-placeholder="s2000-photo"></div>
-            <p class="life-caption">A Honda S2000 AP2, which I love.</p>
+            <p class="life-caption">Honda S2000 AP2. Still learning to drive it properly.</p>
+          </div>
+          <div class="life-tile" data-reveal>
+            <div class="media-slot" data-placeholder="piano-cello-photo"></div>
+            <p class="life-caption">Piano, then cello. The cello came late.</p>
           </div>
         </div>
-
-        <!-- Deliberately outside the grid. It isn't a skill, and it's the
-             callback that closes the loop opened by the shout in section 01. -->
-        <p class="coda" data-reveal>And I love my mom.</p>
       </div>
     </section>
 
-    <!-- 05 — ELSEWHERE -->
-    <section id="elsewhere" class="section section--elsewhere" data-section="05">
+    <!-- 06 — ELSEWHERE -->
+    <section id="elsewhere" class="section section--elsewhere" data-section="06">
       <div class="section__inner">
-        <h2 class="closing-line" data-reveal>
-          If you're building something in this direction too, I'd genuinely
-          like to hear about it.
-        </h2>
-        <ul class="elsewhere-links" data-reveal>
-          <!-- TODO: real handles — see DIRECTION.md "assets still needed".
-               The tap-to-copy handler in main.ts no-ops while the [TODO] guard is present. -->
-          <li><a href="mailto:[TODO]" data-copy>[TODO email] — tap to copy</a></li>
-          <li><a href="[TODO linkedin]" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="[TODO instagram]" target="_blank" rel="noopener">Instagram</a></li>
-        </ul>
+        <div class="closing">
+          <figure class="closing__portrait" data-reveal>
+            <div class="media-slot media-slot--portrait" data-placeholder="closing-portrait"></div>
+          </figure>
+
+          <div class="closing__text">
+            <h2 class="closing-line" data-reveal>And I still play games.</h2>
+            <p class="coda" data-reveal>I love my mom, too.</p>
+
+            <ul class="elsewhere-links" data-reveal>
+              <!-- TODO: real handles — see DIRECTION.md "assets still needed".
+                   The tap-to-copy handler no-ops while the [TODO] guard is present. -->
+              <li><a href="mailto:[TODO]" data-copy>[TODO email] — tap to copy</a></li>
+              <li><a href="[TODO linkedin]" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="[TODO instagram]" target="_blank" rel="noopener">Instagram</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 

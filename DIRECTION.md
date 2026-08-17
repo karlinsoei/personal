@@ -109,10 +109,32 @@ Fixed chapter nav (01→05) tracks scroll position — already implemented.
   scaled, which is the rhythm argument done by the typeface rather than by
   hand. Cost: 151 KB total on first load, 0 third-party requests.
 
+- **Copy: drafted, needs your pass.** Every `[TODO]` in index.html is now
+  written except the section 05 handles (see below). Voice is first-person,
+  fragmented, short beats rather than paragraphs. Section 02 splits the arc
+  into nine beats; the accent falls on exactly one phrase in the whole site
+  — "worth being good at" — because that's the hinge the narrative turns on.
+  Section 04 closes with a line tying the hobby grid back to the throughline
+  so it doesn't read as a disconnected list. The $5,000 check caption names
+  it as the Alumni Track pitch prize explicitly, so it can't be mistaken for
+  the scholarship figure.
+  **Written from the arc in this document only.** Nothing beyond what's
+  recorded here was invented — no years, no team names, no placements, no
+  rank. The emotional specifics ("landing maybe one in four", "four seconds
+  before something went badly wrong") are plausible-sounding guesses and
+  should be corrected to whatever is actually true.
+
 ## OPEN — do not decide these unilaterally
 
-- **All copy.** Every `[TODO]` in index.html is a placeholder, not a draft.
-  The story-beat language especially needs real writing, not filler.
+- **Section 05 handles.** Email, LinkedIn, and Instagram are still `[TODO]`
+  in index.html. Deliberately not filled in — publishing a personal email
+  address is the user's call, not a default. The tap-to-copy handler in
+  main.ts no-ops while the `[TODO` guard is present, so the page is safe to
+  ship in this state; it starts working the moment a real address lands.
+- **The seal mark.** Still only a "possibly" in the Asian-influence note
+  above. Nothing has been built. The accent colour was chosen partly on the
+  logic that vermilion *is* seal ink, so if the mark never ships, that
+  argument goes partly unspent.
 
 ## Assets still needed from the user
 

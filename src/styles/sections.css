@@ -70,9 +70,35 @@
   max-width: 16ch;
 }
 
+.intro-meta {
+  font-family: var(--font-mono);
+  font-size: var(--step-caption);
+  letter-spacing: 0.06em;
+  color: var(--color-ink-muted);
+  margin-top: 1.5rem;
+}
+
 .section--intro .media-slot {
   margin-top: 2.5rem;
   max-width: 480px;
+}
+
+/* ---- Shared: a media slot with its annotation ---- */
+.media-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Captions are apparatus, never voice — mono, quiet, sized down. */
+.media-caption {
+  font-family: var(--font-mono);
+  font-size: var(--step-caption);
+  line-height: 1.45;
+  color: var(--color-ink-muted);
+  max-width: 42ch;
+  margin: 0;
 }
 
 /* ---- 02 Story ---- */
@@ -80,9 +106,12 @@
   display: flex;
   flex-direction: column;
   gap: clamp(1.5rem, 4vw, 3rem);
-  max-width: 44ch;
 }
 
+/* Measure lives on the beat, not the container. `ch` resolves against the
+   element's own font, and the container inherits the mono body face — putting
+   it on the wrapper measured 44 mono characters and squeezed the Fraunces
+   beats into a third of the width they want. */
 .story-beat {
   font-family: var(--font-display);
   font-variation-settings: var(--fraunces-display);
@@ -91,11 +120,19 @@
   line-height: 1.15;
   letter-spacing: var(--track-display);
   text-wrap: balance;
+  max-width: 24ch;
 }
 
-.story-beats .media-slot {
+.story-beats .media-figure {
   max-width: 400px;
   align-self: flex-start;
+}
+
+/* The one accented phrase in the narrative — the hinge the whole site turns on.
+   Boldness spent here and nowhere else in running text. */
+.story-beat em {
+  font-style: normal;
+  color: var(--color-accent);
 }
 
 /* ---- 03 Building ---- */
@@ -111,9 +148,22 @@
   margin-bottom: 2rem;
 }
 
-.section--building .media-slot {
-  margin-bottom: 1.5rem;
-  max-width: 640px;
+.building-note {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-quiet);
+  font-size: var(--step-lede);
+  line-height: 1.45;
+  max-width: 46ch;
+  color: var(--color-ink-muted);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.building-media {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  margin-bottom: 2rem;
+  max-width: 900px;
 }
 
 .outbound-link {
@@ -124,6 +174,9 @@
   text-decoration: none;
   border-bottom: 1px solid currentColor;
   font-weight: 600;
+  /* The one call to action on the page — this and the chapter numerals are
+     where the accent's small surface area actually gets spent. */
+  color: var(--color-accent);
 }
 
 /* ---- 04 Life outside work ---- */
@@ -155,6 +208,17 @@
   color: var(--color-ink-muted);
 }
 
+/* Ties the grid back to the throughline so section 04 doesn't read as a
+   disconnected hobby list — see DIRECTION.md. */
+.life-closer {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-quiet);
+  font-size: var(--step-lede);
+  line-height: 1.45;
+  max-width: 44ch;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
 /* ---- 05 Elsewhere ---- */
 .closing-line {
   font-family: var(--font-display);
@@ -183,4 +247,14 @@
   border-bottom: 1px solid var(--color-border);
   padding-bottom: 0.2rem;
   display: inline-block;
+  transition: color 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
+}
+
+.elsewhere-links a:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .elsewhere-links a { transition: none; }
 }

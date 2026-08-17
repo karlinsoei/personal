@@ -25,17 +25,22 @@ public/assets/images/     drop photos here
 public/assets/video/      drop video here (e.g. the backflip clip)
 ```
 
-## Status: visual system locked, content open
+## Status: visual system locked, copy drafted, assets pending
 
-Plumbing, accent colour, and typography are all settled — see `tokens.css`,
-which carries the reasoning for each. Still open:
+Plumbing, accent colour, and typography are settled — see `tokens.css`,
+which carries the reasoning for each. Copy is written throughout. Still open:
 
-- **All copy** — every `[TODO]` in `index.html` is a content placeholder,
-  not a draft to publish. The story-beat language, EKUZO framing, and
-  closing line all need actual writing.
+- **Section 05 handles** — email, LinkedIn, and Instagram are still `[TODO]`
+  in `index.html`, left for the owner to fill in. The tap-to-copy handler
+  no-ops while the `[TODO` guard is present, so the page is safe to ship as
+  is.
 - **Real assets** — `.media-slot` divs are hatched placeholders marking
   where photos/video go (see `data-placeholder` attribute on each for what's
-  expected there).
+  expected there). This is the main thing standing between the current build
+  and a shippable site.
+- **Copy accuracy** — the writing follows the arc in `DIRECTION.md` and
+  invents no dates, teams, or placements, but the incidental details are
+  guesses and want a pass from the owner.
 
 ## Running it
 

@@ -126,14 +126,6 @@
   max-width: 15ch;
 }
 
-.intro-meta {
-  font-family: var(--font-mono);
-  font-size: var(--step-caption);
-  letter-spacing: 0.06em;
-  color: var(--color-ink-muted);
-  margin-top: 1.5rem;
-}
-
 /* The parents' line, as a hand-drawn shout in the margin. The bubble is the
    one graphic flourish on the page, so it gets the accent; the narrative
    accent is spent separately on the hinge in section 02. */

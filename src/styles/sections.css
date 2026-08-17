@@ -173,14 +173,13 @@
   }
 }
 
-/* Condition tags. Same chip device as the game titles, but colour-coded and
-   stacked in the margin with staggered indents so they read as tags dropped
-   beside the statement rather than as a tidy list. */
+/* Condition tags, colour-coded and sitting directly under the statement so
+   the chronology reads straight down the page. */
 .conditions {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.55rem;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .cond {
@@ -199,8 +198,105 @@
 }
 
 .cond:nth-child(1) { --cond: var(--color-cond-1); transform: rotate(-1.3deg); }
-.cond:nth-child(2) { --cond: var(--color-cond-2); transform: rotate(0.9deg); margin-left: 1.7rem; }
-.cond:nth-child(3) { --cond: var(--color-cond-3); transform: rotate(-0.6deg); margin-left: 0.8rem; }
+.cond:nth-child(2) { --cond: var(--color-cond-2); transform: rotate(0.9deg); }
+.cond:nth-child(3) { --cond: var(--color-cond-3); transform: rotate(-0.6deg); }
+
+/* ---- Tags -----------------------------------------------------------------
+   The block-level relative of .cond: same chip language, but standing on its
+   own line rather than tagging a statement. Used for the game titles and for
+   the three things League felt like a combination of.
+--------------------------------------------------------------------------- */
+.tag {
+  --tag: var(--color-ink);
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--step-caption);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  color: var(--tag);
+  border: 1.5px solid var(--tag);
+  border-radius: 3px;
+  padding: 0.45em 0.78em;
+  background: color-mix(in srgb, var(--tag) 6%, var(--color-bg));
+}
+
+.tag--game {
+  font-size: clamp(0.82rem, 0.74rem + 0.35vw, 1.02rem);
+  transform: rotate(-1.2deg);
+}
+
+/* League gets the largest tag on the page — it's the turn in the story. */
+.tag--hero {
+  font-size: clamp(1rem, 0.82rem + 0.85vw, 1.65rem);
+  padding: 0.5em 0.9em;
+  transform: rotate(-2deg);
+}
+
+.tag--mix {
+  font-size: clamp(0.85rem, 0.76rem + 0.4vw, 1.08rem);
+}
+
+/* A tag standing above the line it belongs to. */
+.tag-beat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+/* Pushed off the left margin so it sits off-centre against the beats. */
+.tag-drop {
+  margin: 0 0 0 clamp(1rem, 7vw, 5.5rem);
+}
+
+/* Reads as a formula rather than a list — the operators carry the meaning. */
+.formula {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.7rem;
+}
+
+.formula .tag:nth-of-type(1) { transform: rotate(-1.4deg); }
+.formula .tag:nth-of-type(2) { transform: rotate(1deg); }
+.formula .tag:nth-of-type(3) { transform: rotate(-0.7deg); }
+
+.formula__op {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-quiet);
+  font-size: clamp(1.2rem, 1rem + 0.8vw, 1.7rem);
+  line-height: 1;
+  color: var(--color-ink-muted);
+}
+
+/* ---- The pivot ------------------------------------------------------------
+   Where the story turns from a game to what the game was actually teaching.
+   Carried by scale and framing rather than colour: the accent is already
+   committed to the hinge at the end of this section, and two coloured
+   climaxes in one section cancel each other out.
+--------------------------------------------------------------------------- */
+.pivot {
+  /* Extra above and below the chronicle's own gap — this is a chapter break,
+     not another beat. */
+  width: 100%;
+  margin: clamp(1.25rem, 3.5vw, 2.5rem) 0;
+  padding: clamp(1.4rem, 4vw, 2.75rem) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.pivot__word {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-display);
+  font-size: clamp(3.25rem, 2.2rem + 6vw, 8rem);
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  margin: 0;
+}
 
 /* ---- 01 Intro ---- */
 .hero-line {
@@ -351,6 +447,17 @@
 }
 
 /* ---- 02 Story ---- */
+
+/* The chronological run. A single gap governs the whole sequence, so beats,
+   tag rows and media blocks stay evenly spaced without per-element margins. */
+.chronicle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1.4rem, 3vw, 2.25rem);
+  margin-bottom: clamp(2rem, 5vw, 3.25rem);
+}
+
 .story-beat {
   font-family: var(--font-display);
   font-variation-settings: var(--fraunces-display);
@@ -375,26 +482,165 @@
   color: var(--color-accent);
 }
 
-/* Game titles raised off the baseline as chips, so they read as artefacts
-   dropped into the sentence rather than as more prose. */
-.game {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.4em;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-  vertical-align: 0.55em;
-  padding: 0.3em 0.55em;
-  border: 1px solid var(--color-border);
-  border-radius: 3px;
-  background: color-mix(in srgb, var(--color-ink) 4%, var(--color-bg));
-  transform: rotate(-1.4deg);
+/* The one long paragraph in the section. Stepped down from beat size so it
+   doesn't run to six lines and stall the chronology. */
+.story-beat--run {
+  font-variation-settings: var(--fraunces-quiet);
+  font-size: var(--step-lede);
+  line-height: 1.4;
+  max-width: 44ch;
 }
 
-.game:nth-of-type(even) {
-  transform: rotate(1.1deg);
+/* ---- Reel -----------------------------------------------------------------
+   A scroll-snap strip, not a JS slider. The viewport scrolls natively, so it
+   works with no JS, with touch, with a trackpad and with arrow keys once
+   focused. The counter, progress rule and buttons are the enhancement on top,
+   and the buttons stay hidden until JS confirms it can drive them.
+--------------------------------------------------------------------------- */
+.reel {
+  margin: 0;
+  width: 100%;
+  max-width: 640px;
+}
+
+.reel__viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+}
+
+.reel__viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.reel__viewport:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.reel__track {
+  display: flex;
+}
+
+.reel__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+/* The frame lives on the viewport, so the slots inside go unadorned. */
+.reel__slide .media-slot {
+  border: 0;
+  border-radius: 0;
+  /* 3:2 rather than the default 4:3 — a 640px-wide 4:3 plate runs to 480px
+     tall and stalls the chronology. */
+  aspect-ratio: 3 / 2;
+}
+
+/* Marks a slot as holding a clip rather than a still. */
+.media-slot--clip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-left: 20px solid var(--color-ink-muted);
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  opacity: 0.55;
+}
+
+.reel__bar {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.7rem, 2vw, 1.2rem);
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--step-caption);
+  color: var(--color-ink-muted);
+}
+
+.reel__index {
+  flex: 0 0 auto;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+
+.reel__rule {
+  position: relative;
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--color-border);
+  overflow: visible;
+}
+
+/* Vermilion here is the same signal it carries in the chapter nav: you are
+   here. It's the only accent the reel uses. */
+.reel__rule-fill {
+  position: absolute;
+  left: 0;
+  top: -1px;
+  height: 3px;
+  background: var(--color-accent);
+  transition: transform 0.35s var(--ease-out);
+}
+
+.reel__nav {
+  display: none;
+  flex: 0 0 auto;
+  gap: 0.3rem;
+}
+
+.js .reel__nav {
+  display: flex;
+}
+
+.reel__btn {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
+}
+
+.reel__btn svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.reel__btn:not(:disabled):hover {
+  border-color: var(--color-ink);
+}
+
+.reel__btn:disabled {
+  color: var(--color-border);
+  cursor: default;
+}
+
+@media (max-width: 720px) {
+  .reel__btn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reel__viewport { scroll-behavior: auto; }
+  .reel__rule-fill { transition: none; }
 }
 
 /* The roster as a credit line in the margin, not a sentence. */
@@ -785,9 +1031,9 @@
   .elsewhere-links a { transition: none; }
   /* The tilts are decorative; straighten them when motion is unwelcome. */
   .cond,
+  .tag,
   .roster,
-  .shout,
-  .game {
+  .shout {
     transform: none;
   }
 }

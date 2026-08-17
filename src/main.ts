@@ -68,6 +68,76 @@ function initChapterNav() {
 }
 
 /**
+ * Reel — the early-gaming strip.
+ *
+ * The scrolling is CSS (scroll-snap on an overflow container), so the thing
+ * already works with no JS, with touch, with a trackpad, and with arrow keys
+ * once the viewport has focus. Everything here is enhancement: the counter,
+ * the progress rule, and the two buttons — which stay hidden until the `.js`
+ * class confirms there's something to drive them.
+ */
+function initReels() {
+  document.querySelectorAll<HTMLElement>("[data-reel]").forEach((reel) => {
+    const viewport = reel.querySelector<HTMLElement>("[data-reel-viewport]");
+    const slides = Array.from(reel.querySelectorAll<HTMLElement>(".reel__slide"));
+    if (!viewport || slides.length === 0) return;
+
+    const indexEl = reel.querySelector<HTMLElement>("[data-reel-index]");
+    const fill = reel.querySelector<HTMLElement>("[data-reel-fill]");
+    const prev = reel.querySelector<HTMLButtonElement>("[data-reel-prev]");
+    const next = reel.querySelector<HTMLButtonElement>("[data-reel-next]");
+
+    const pad = (n: number) => String(n).padStart(2, "0");
+    let current = 0;
+
+    const render = () => {
+      if (indexEl) {
+        indexEl.textContent = `${pad(current + 1)} / ${pad(slides.length)}`;
+      }
+      if (fill) {
+        fill.style.width = `${100 / slides.length}%`;
+        fill.style.transform = `translateX(${current * 100}%)`;
+      }
+      if (prev) prev.disabled = current === 0;
+      if (next) next.disabled = current === slides.length - 1;
+    };
+
+    const go = (i: number) => {
+      current = Math.max(0, Math.min(slides.length - 1, i));
+      viewport.scrollTo({
+        left: slides[current].offsetLeft - slides[0].offsetLeft,
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+      });
+      render();
+    };
+
+    prev?.addEventListener("click", () => go(current - 1));
+    next?.addEventListener("click", () => go(current + 1));
+
+    // Swiping and trackpad scrolling bypass the buttons entirely, so the
+    // readout has to follow the scroll position rather than our own counter.
+    let frame = 0;
+    viewport.addEventListener(
+      "scroll",
+      () => {
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() => {
+          const step = viewport.clientWidth || 1;
+          const i = Math.round(viewport.scrollLeft / step);
+          if (i !== current && i >= 0 && i < slides.length) {
+            current = i;
+            render();
+          }
+        });
+      },
+      { passive: true }
+    );
+
+    render();
+  });
+}
+
+/**
  * Tap-to-copy email — small human gesture, borrowed intentionally from the
  * reference site rather than a generic mailto-only link.
  */
@@ -117,6 +187,13 @@ try {
   initChapterNav();
 } catch (err) {
   console.error("Chapter nav failed to initialise.", err);
+}
+
+try {
+  initReels();
+} catch (err) {
+  // The strip still scrolls natively; only the readout and buttons are lost.
+  console.error("Reel controls failed to initialise.", err);
 }
 
 try {

@@ -74,7 +74,7 @@
               </svg>
               <!-- Sentence case in the markup, shouted via CSS — screen
                    readers spell out literal all-caps strings. -->
-              <blockquote class="shout__text">Stop wasting your life playing video games!</blockquote>
+              <blockquote class="shout__text">&ldquo;Stop wasting your life playing video games!&rdquo;</blockquote>
             </div>
 
             <div class="shout__source">
@@ -163,34 +163,109 @@
       <div class="section__inner">
         <h2 class="eyebrow" data-reveal>where I came from</h2>
 
-        <div class="spread">
-          <div class="spread__main">
-            <p class="story-beat" data-reveal>Childhood was tough.</p>
-            <p class="story-beat" data-reveal>
-              <span class="game">League of Legends</span> and
-              <span class="game">Call of Duty</span> became my refuge — and,
-              it turned out, my way out.
-            </p>
-          </div>
-          <!-- The conditions, as colour-coded tags in the margin — the same
-               chip device as the game titles, so the section reads as a
-               statement with its circumstances tagged beside it. -->
-          <aside class="conditions" data-reveal>
-            <span class="cond">Social anxiety</span>
-            <span class="cond">Divorced parents</span>
-            <span class="cond">Bad grades</span>
-          </aside>
+        <!-- The chronological run, isolation through to the pivot. One flex
+             column so every beat, tag row and media block is spaced by a
+             single gap rather than by margins tuned element by element. -->
+        <div class="chronicle">
+
+        <!-- ISOLATION -->
+        <p class="story-beat" data-reveal>I struggled as a teen.</p>
+
+        <!-- Conditions sit directly under the statement now rather than in the
+             margin, so the chronology reads straight down the page. -->
+        <div class="conditions" data-reveal>
+          <span class="cond">Social anxiety</span>
+          <span class="cond">Bad grades</span>
+          <span class="cond">Divorced parents</span>
         </div>
 
-        <figure class="media-figure media-figure--wide" data-reveal>
-          <div class="media-slot" data-placeholder="story-competition-photo"></div>
-          <figcaption class="media-caption">Mid-match, orange jerseys.</figcaption>
+        <!-- REFUGE -->
+        <div class="tag-beat" data-reveal>
+          <span class="tag tag--game">Call of Duty</span>
+          <p class="story-beat">became my refuge.</p>
+        </div>
+
+        <p class="story-beat" data-reveal>
+          I didn't like or fit in with the &ldquo;normal&rdquo; kid stuff.
+        </p>
+
+        <!-- Early gaming. Scroll-snap strip, so it works as a swipeable reel
+             with no JS at all; the controls are the enhancement on top. -->
+        <figure class="reel" data-reel data-reveal>
+          <div class="reel__viewport" data-reel-viewport tabindex="0"
+               role="group" aria-label="Early gaming, scrollable">
+            <div class="reel__track">
+              <div class="reel__slide">
+                <div class="media-slot" data-placeholder="early-gaming-1"></div>
+              </div>
+              <div class="reel__slide">
+                <div class="media-slot" data-placeholder="early-gaming-2"></div>
+              </div>
+              <div class="reel__slide">
+                <div class="media-slot media-slot--clip" data-placeholder="early-gaming-clip"></div>
+              </div>
+              <div class="reel__slide">
+                <div class="media-slot" data-placeholder="early-gaming-3"></div>
+              </div>
+            </div>
+          </div>
+
+          <figcaption class="reel__bar">
+            <span class="reel__index" data-reel-index aria-live="polite">01 / 04</span>
+            <span class="reel__rule" aria-hidden="true">
+              <span class="reel__rule-fill" data-reel-fill></span>
+            </span>
+            <span class="reel__nav">
+              <button type="button" class="reel__btn" data-reel-prev aria-label="Previous">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19" /></svg>
+              </button>
+              <button type="button" class="reel__btn" data-reel-next aria-label="Next">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19" /></svg>
+              </button>
+            </span>
+          </figcaption>
         </figure>
 
+        <!-- CURIOSITY -->
+        <p class="story-beat" data-reveal>At 15, I was introduced to</p>
+        <p class="tag-drop" data-reveal>
+          <span class="tag tag--game tag--hero">League of Legends</span>
+        </p>
+
+        <p class="story-beat" data-reveal>It felt like a combination of:</p>
+
+        <!-- Read as a formula rather than a list — the plus signs are the point. -->
+        <div class="formula" data-reveal>
+          <span class="tag tag--mix">Basketball</span>
+          <span class="formula__op" aria-hidden="true">+</span>
+          <span class="tag tag--mix">Chess</span>
+          <span class="formula__op" aria-hidden="true">+</span>
+          <span class="tag tag--mix">D&amp;D</span>
+        </div>
+
+        <!-- CHALLENGE -->
+        <p class="story-beat" data-reveal>I'd never been captivated this way before.</p>
+
+        <p class="story-beat story-beat--run" data-reveal>
+          I was excited to learn, compete, and challenge myself. As I got better,
+          I started building confidence and realized the game was a reflection of
+          something much bigger:
+        </p>
+
+        <!-- The pivot the whole site turns on. Carried by scale and framing
+             rather than colour — the accent is already committed to the hinge
+             at the end of this section. -->
+        <div class="pivot" data-reveal>
+          <p class="pivot__word">Life</p>
+        </div>
+
+        </div><!-- /.chronicle -->
+
+        <!-- BELONGING -->
         <div class="spread">
           <div class="spread__main">
             <p class="story-beat" data-reveal>
-              Then in college I found five guys who loved it as much as I did.
+              In college, I found a team who loved competing as much as I did.
             </p>
           </div>
           <!-- The roster sits in the margin as a credit line, not a sentence. -->

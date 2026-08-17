@@ -50,6 +50,8 @@ button:focus-visible {
   border: 1px dashed var(--color-border);
   aspect-ratio: 4 / 3;
   border-radius: 2px;
+  /* Anchor for markers layered over the slot, e.g. the clip triangle. */
+  position: relative;
 }
 
 .media-slot::before {

@@ -28,14 +28,24 @@
 @media (max-width: 720px) {
   .chapter-nav {
     top: auto;
-    bottom: clamp(1rem, 4vw, 2rem);
+    bottom: clamp(0.5rem, 3vw, 1.25rem);
     right: 50%;
     transform: translateX(50%);
     flex-direction: row;
+    gap: 0;
     background: color-mix(in srgb, var(--color-bg) 88%, transparent);
     backdrop-filter: blur(6px);
-    padding: 0.5rem 0.9rem;
+    padding: 0.15rem 0.4rem;
     border-radius: 999px;
+  }
+
+  /* The numerals are 15x17px of ink. On a phone the tap target has to be the
+     44px box around them, not the glyph itself. */
+  .chapter-nav a {
+    display: grid;
+    place-items: center;
+    min-width: 44px;
+    min-height: 44px;
   }
 }
 
@@ -45,6 +55,17 @@
    idea per screen — too slow for a site meant to land in under a minute. */
 .section {
   padding: var(--section-pad-y) var(--gutter);
+}
+
+/* The chapter nav is fixed to the right edge. Between the tablet breakpoint
+   and ~1330px the content's right edge runs underneath it — a measured 2–7px
+   overlap across that entire range, which clips the last character of
+   anything reaching the margin (the roster names were losing letters at
+   880px). Above ~1360px the centred 1200px measure clears it on its own. */
+@media (min-width: 721px) and (max-width: 1360px) {
+  .section {
+    padding-right: calc(var(--gutter) + 2.75rem);
+  }
 }
 
 /* Still a commanding opening, but no longer sized to hold a hero photo it
@@ -61,9 +82,12 @@
   width: 100%;
 }
 
+/* An <h2> for document structure, but sized and weighted as a quiet label —
+   so the outline is real without the visual becoming a heading. */
 .eyebrow {
   font-family: var(--font-mono);
   font-size: var(--step-eyebrow);
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: var(--track-eyebrow);
   color: var(--color-ink-muted);
@@ -608,8 +632,10 @@
   line-height: 0.9;
   letter-spacing: var(--track-hero);
   font-variant-numeric: tabular-nums;
-  /* A page-number ghost: present, but never competing with the statement. */
-  color: color-mix(in srgb, var(--color-ink) 26%, var(--color-bg));
+  /* A page-number ghost, but a legible one. This was 26% ink, which measured
+     1.76:1 and failed WCAG — these render at 30–54px, so they're large text
+     and owe 3:1. 50% gives 3.40:1 and still sits well behind the statement. */
+  color: color-mix(in srgb, var(--color-ink) 50%, var(--color-bg));
 }
 
 .belief__text {
@@ -692,11 +718,23 @@
 }
 
 .elsewhere-links a {
+  position: relative;
   text-decoration: none;
   border-bottom: 1px solid var(--color-border);
   padding-bottom: 0.2rem;
   display: inline-block;
   transition: color 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
+}
+
+/* These sit ~26px tall. Extend the hit area to 44px with a pseudo-element
+   rather than padding, which would push the underline away from the text. */
+@media (max-width: 720px) {
+  .elsewhere-links { gap: 0.4rem; }
+  .elsewhere-links a::after {
+    content: "";
+    position: absolute;
+    inset: -9px -4px;
+  }
 }
 
 .elsewhere-links a:hover {

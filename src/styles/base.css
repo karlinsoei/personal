@@ -18,7 +18,7 @@ body {
   font-optical-sizing: auto;
 }
 
-h1, h2, h3, p, ul {
+h1, h2, h3, h4, p, ul, ol, figure, blockquote, dd, dl {
   margin: 0;
 }
 

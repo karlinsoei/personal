@@ -42,11 +42,11 @@
   <!-- Chapter indicator — updates active state via IntersectionObserver in main.ts.
        This is a real sequence (the narrative arc), so numbering earns its place here. -->
   <nav class="chapter-nav" aria-label="Section navigation">
-    <a href="#intro" data-chapter="01"><span>01</span></a>
-    <a href="#story" data-chapter="02"><span>02</span></a>
-    <a href="#work" data-chapter="03"><span>03</span></a>
-    <a href="#life" data-chapter="04"><span>04</span></a>
-    <a href="#elsewhere" data-chapter="05"><span>05</span></a>
+    <a href="#intro" data-chapter="01" aria-label="01, Introduction"><span>01</span></a>
+    <a href="#story" data-chapter="02" aria-label="02, Where I came from"><span>02</span></a>
+    <a href="#work" data-chapter="03" aria-label="03, What I've been doing since"><span>03</span></a>
+    <a href="#life" data-chapter="04" aria-label="04, Outside the game"><span>04</span></a>
+    <a href="#elsewhere" data-chapter="05" aria-label="05, Elsewhere"><span>05</span></a>
   </nav>
 
   <main>
@@ -141,7 +141,7 @@
     <!-- 02 — WHERE I CAME FROM -->
     <section id="story" class="section section--story" data-section="02">
       <div class="section__inner">
-        <p class="eyebrow" data-reveal>where I came from</p>
+        <h2 class="eyebrow" data-reveal>where I came from</h2>
 
         <div class="spread">
           <div class="spread__main">
@@ -179,7 +179,7 @@
             <!-- Same drawing language as mom, one step smaller. Each is drawn
                  to the two or three features that actually tell them apart —
                  hair shape, glasses, mouth — not to a likeness. -->
-            <ol class="roster__names">
+            <ul class="roster__names">
               <li>
                 <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Faith">
                   <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
@@ -272,7 +272,7 @@
                 </svg>
                 <span class="roster__name">TheJons</span>
               </li>
-            </ol>
+            </ul>
           </aside>
         </div>
 
@@ -295,9 +295,9 @@
              the "what that's looked like" label a few hundred pixels down, and
              the heading's only fact — six years — is already in the stat row.
              The question opens the section instead. -->
-        <p class="question question--lead" data-reveal>
+        <h2 class="question question--lead" data-reveal>
           What happens when you take a kid's passion for games seriously?
-        </p>
+        </h2>
 
         <dl class="stat-row" data-reveal>
           <div class="stat">
@@ -347,19 +347,19 @@
 
         <ol class="beliefs">
           <li class="belief" data-reveal>
-            <span class="belief__num">01</span>
+            <span class="belief__num" aria-hidden="true">01</span>
             <p class="belief__text">Kids work incredibly hard when they care about the outcome.</p>
           </li>
           <li class="belief" data-reveal>
-            <span class="belief__num">02</span>
+            <span class="belief__num" aria-hidden="true">02</span>
             <p class="belief__text">A good coach changes everything.</p>
           </li>
           <li class="belief" data-reveal>
-            <span class="belief__num">03</span>
+            <span class="belief__num" aria-hidden="true">03</span>
             <p class="belief__text">The impact doesn't stop at the kid. Parents, schools, and coaches matter too.</p>
           </li>
           <li class="belief" data-reveal>
-            <span class="belief__num">04</span>
+            <span class="belief__num" aria-hidden="true">04</span>
             <p class="belief__text">My story isn't unique. The conditions that created it can be replicated.</p>
           </li>
         </ol>
@@ -369,7 +369,7 @@
     <!-- 04 — OUTSIDE THE GAME -->
     <section id="life" class="section section--life" data-section="04">
       <div class="section__inner">
-        <p class="eyebrow" data-reveal>outside the game</p>
+        <h2 class="eyebrow" data-reveal>outside the game</h2>
         <p class="throughline" data-reveal>
           Still doing the same thing, really — picking up something I'm bad at
           and staying long enough to get good.
@@ -403,10 +403,10 @@
     <!-- 05 — ELSEWHERE -->
     <section id="elsewhere" class="section section--elsewhere" data-section="05">
       <div class="section__inner">
-        <p class="closing-line" data-reveal>
+        <h2 class="closing-line" data-reveal>
           If you're building something in this direction too, I'd genuinely
           like to hear about it.
-        </p>
+        </h2>
         <ul class="elsewhere-links" data-reveal>
           <!-- TODO: real handles — see DIRECTION.md "assets still needed".
                The tap-to-copy handler in main.ts no-ops while the [TODO] guard is present. -->

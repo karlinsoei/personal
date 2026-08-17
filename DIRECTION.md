@@ -80,13 +80,22 @@ Fixed chapter nav (01→05) tracks scroll position — already implemented.
 - One-page scroll, not multi-page.
 - Chapter numbering (01–05) is justified per design-skill guidance because
   it's a real sequence (the narrative arc), not decoration.
+- **Accent color: seal vermilion `#C1432E`.** Compared against oxblood,
+  ink indigo, and deep jade on the real ground. Won on separation from the
+  ink (3.58:1 vs. 2.49 next-best) — the ratio that matters here, since the
+  accent only ever appears at small sizes. Ink indigo had the best
+  background contrast and was ruled out anyway: at 2.02:1 against the ink it
+  stops reading as colour in the chapter nav. Vermilion also makes the
+  Asian influence a material rather than a motif — vermilion *is* seal ink,
+  so the stamp mark has a reason to exist.
+  **Caveat:** the EKUZO-confusion check was never actually run — ekuzo.gg
+  was unreachable from the build session, so their orange was never sampled.
+  Locked on the user's call with that test outstanding. If the two do read
+  as confusable in practice, oxblood `#8C2F2A` is the fallback: same
+  seal-ink logic, clearly further from orange.
 
 ## OPEN — do not decide these unilaterally
 
-- **Accent color.** `--color-accent` in tokens.css is a placeholder red.
-  Red is one option, not a commitment. Worth a real comparison (e.g.
-  against EKUZO's own orange branding, to make sure the two don't get
-  confused) before locking it.
 - **Typography.** Currently system fonts as a placeholder. No display/body
   pairing has been chosen yet.
 - **All copy.** Every `[TODO]` in index.html is a placeholder, not a draft.

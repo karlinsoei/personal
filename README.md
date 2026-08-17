@@ -8,8 +8,7 @@ Personal site — one scrolling narrative, five chapters. Static, no backend.
 - **GSAP / ScrollTrigger** — scroll-triggered reveals, one consistent effect
   (fade + rise) rather than scattered per-element animation
 - **Plain CSS with custom properties** — see `src/styles/tokens.css`, the
-  single place color and type get defined so the accent color is a one-line
-  swap later
+  single place color and type get defined
 - No database, no auth, no CMS
 
 ## Structure
@@ -24,12 +23,11 @@ public/assets/images/     drop photos here
 public/assets/video/      drop video here (e.g. the backflip clip)
 ```
 
-## Status: technical scaffold only
+## Status: scaffold + accent locked
 
-This pass locks the **plumbing**, not the design. Specifically still open:
+The plumbing is done, and the accent colour is settled — seal vermilion
+`#C1432E` (see `tokens.css` for why that one). Still open:
 
-- **Accent color** — `--color-accent` in `tokens.css` is a placeholder red,
-  not a decision. Red is one option on the table, not committed.
 - **Typography** — currently system fonts as a placeholder. Display/body
   pairing to be chosen in the visual-system pass.
 - **All copy** — every `[TODO]` in `index.html` is a content placeholder,

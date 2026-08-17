@@ -2,7 +2,11 @@
   /* ---- Color — neutrals are locked by the brief, accent is a placeholder ---- */
   --color-bg: #F6F4EF;         /* off-white — provisional exact value */
   --color-ink: #16150F;        /* near-black — provisional exact value */
-  --color-accent: #C1432E;     /* PLACEHOLDER ONLY — red vs. alternatives TBD in visual-system pass */
+  /* Seal vermilion — LOCKED. Picked on separation from the ink (3.58:1), not on
+     background contrast (4.65:1, which every candidate cleared). The accent only
+     ever appears small — 0.7rem chapter numerals, 1px underlines, the seal mark —
+     so distance from the ink beside it is what keeps it reading as colour. */
+  --color-accent: #C1432E;
   --color-ink-muted: color-mix(in srgb, var(--color-ink) 60%, var(--color-bg));
   --color-border: color-mix(in srgb, var(--color-ink) 12%, var(--color-bg));
 

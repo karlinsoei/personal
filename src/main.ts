@@ -32,7 +32,16 @@ function initReveals() {
 }
 
 /**
- * Chapter nav active state — tracks which section is centered in viewport.
+ * Chapter nav active state — highlights whichever section is crossing the
+ * middle of the viewport.
+ *
+ * This used to use `threshold: 0.5`, which is a trap: the ratio is measured
+ * against the *target's* own height, so a section taller than the viewport can
+ * never be 50% visible and simply never activates. Sections 02 and 03 are both
+ * well over a screen tall, so their numerals stayed dead.
+ *
+ * Collapsing the root to a thin band across the viewport's middle and watching
+ * for any intersection at all makes activation independent of section height.
  */
 function initChapterNav() {
   const sections = document.querySelectorAll<HTMLElement>("main .section");
@@ -40,17 +49,19 @@ function initChapterNav() {
     ".chapter-nav a"
   );
 
+  const setActive = (id: string) => {
+    links.forEach((link) => {
+      link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`);
+    });
+  };
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const id = entry.target.id;
-        links.forEach((link) => {
-          link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`);
-        });
+        if (entry.isIntersecting) setActive((entry.target as HTMLElement).id);
       });
     },
-    { threshold: 0.5 }
+    { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
   );
 
   sections.forEach((section) => observer.observe(section));

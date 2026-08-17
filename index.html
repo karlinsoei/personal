@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Karlin Oei</title>
-  <meta name="description" content="I got good at the one thing nobody took seriously. Now I run EKUZO, so the next kid doesn't have to get lucky about it." />
+  <meta name="description" content="I'm Karlin — the kid who played too much. Six years spent finding out what happens when you take a kid's passion for games seriously." />
 
   <!-- Set before first paint. The scroll-reveal hidden state is gated behind
        this class, so if JS never runs the page still renders its content
@@ -22,10 +22,16 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Karlin Oei" />
-  <meta property="og:description" content="I got good at the one thing nobody took seriously. Now I run EKUZO, so the next kid doesn't have to get lucky about it." />
+  <meta property="og:description" content="I'm Karlin — the kid who played too much. Six years spent finding out what happens when you take a kid's passion for games seriously." />
   <!-- TODO: og:image — needs a real 1200×630 asset before this gets shared anywhere. -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#F6F4EF" />
+
+  <!-- Inline so there's no binary asset to keep in sync. Without this the
+       browser requests /favicon.ico on every visit and takes a 404.
+       Safari's SVG-favicon support is patchy; a real .png/.ico fallback is
+       still worth adding once there's a proper mark to render. -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23C1432E'/><text x='16' y='24' font-family='Georgia,serif' font-size='21' font-weight='600' fill='%23F6F4EF' text-anchor='middle'>K</text></svg>" />
 
   <link rel="stylesheet" href="/src/styles/tokens.css" />
   <link rel="stylesheet" href="/src/styles/base.css" />
@@ -38,7 +44,7 @@
   <nav class="chapter-nav" aria-label="Section navigation">
     <a href="#intro" data-chapter="01"><span>01</span></a>
     <a href="#story" data-chapter="02"><span>02</span></a>
-    <a href="#building" data-chapter="03"><span>03</span></a>
+    <a href="#work" data-chapter="03"><span>03</span></a>
     <a href="#life" data-chapter="04"><span>04</span></a>
     <a href="#elsewhere" data-chapter="05"><span>05</span></a>
   </nav>
@@ -48,100 +54,177 @@
     <!-- 01 — INTRODUCTION -->
     <section id="intro" class="section section--intro" data-section="01">
       <div class="section__inner">
-        <h1 class="hero-line" data-reveal>
-          Everything I'm good at, I was bad at first.
-        </h1>
-        <p class="intro-meta" data-reveal>Karlin Oei — Houston, Texas</p>
+        <div class="spread spread--intro">
+          <div class="spread__main">
+            <h1 class="hero-line" data-reveal>
+              Hi, I'm Karlin. I'm the kid who played too much.
+            </h1>
+            <p class="intro-meta" data-reveal>Houston, Texas</p>
+          </div>
+
+          <!-- The counter-voice, off to the side rather than stacked under the
+               headline — the first instance of the page's aside pattern. -->
+          <figure class="shout" data-reveal>
+            <div class="shout__bubble-wrap">
+              <svg class="shout__bubble" viewBox="0 0 320 150" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M14 30 C 12 15, 24 8, 40 7 L 279 5 C 297 4, 307 13, 306 30
+                         L 308 96 C 309 112, 298 120, 281 121 L 128 124 L 72 145
+                         L 84 123 L 37 124 C 21 124, 12 115, 13 99 Z"
+                      fill="none" stroke="currentColor" stroke-width="2.4"
+                      stroke-linejoin="round" stroke-linecap="round"
+                      vector-effect="non-scaling-stroke" />
+              </svg>
+              <blockquote class="shout__text">Stop wasting your life playing games!</blockquote>
+            </div>
+            <figcaption class="shout__who">— mom &amp; dad, on repeat</figcaption>
+          </figure>
+        </div>
+
         <!-- TODO asset: primary intro photo/video -->
-        <div class="media-slot" data-placeholder="intro-hero"></div>
+        <div class="media-slot media-slot--intro" data-placeholder="intro-hero" data-reveal></div>
       </div>
     </section>
 
-    <!-- 02 — MY STORY -->
+    <!-- 02 — WHERE I CAME FROM -->
     <section id="story" class="section section--story" data-section="02">
       <div class="section__inner">
-        <p class="eyebrow" data-reveal>the story</p>
-        <div class="story-beats">
-          <p class="story-beat" data-reveal>I was the kid who played too much.</p>
-          <p class="story-beat" data-reveal>For years that was the whole conversation. Too much.</p>
-          <p class="story-beat" data-reveal>Then I found people who asked what rank I was, not how many hours.</p>
-          <p class="story-beat" data-reveal>Then a team. Which is a different thing from friends who play.</p>
-          <p class="story-beat" data-reveal>A team notices when you don't show up.</p>
-          <figure class="media-figure" data-reveal>
-            <div class="media-slot" data-placeholder="story-competition-photo"></div>
-            <figcaption class="media-caption">Mid-match. Orange jerseys, and about four seconds before something went badly wrong.</figcaption>
-          </figure>
-          <p class="story-beat" data-reveal>We competed. It turned into roughly $80,000 in esports scholarships.</p>
-          <p class="story-beat" data-reveal>The scholarships weren't the thing.</p>
-          <p class="story-beat" data-reveal>The thing was that someone finally treated what I loved as <em>worth being good at</em>.</p>
-          <p class="story-beat" data-reveal>That's what changed. Not the game.</p>
-        </div>
-      </div>
-    </section>
+        <p class="eyebrow" data-reveal>where I came from</p>
 
-    <!-- 03 — WHAT I'M BUILDING -->
-    <section id="building" class="section section--building" data-section="03">
-      <div class="section__inner">
-        <p class="eyebrow" data-reveal>what I'm building</p>
-        <h2 data-reveal>EKUZO is me trying to build on purpose the thing that happened to me by luck.</h2>
-        <p class="building-note" data-reveal>
-          Youth esports, coached properly — the part where someone takes it seriously,
-          made repeatable instead of left to chance.
+        <div class="spread">
+          <div class="spread__main">
+            <p class="story-beat" data-reveal>
+              Childhood was hard. Social anxiety, and parents who split up.
+            </p>
+            <p class="story-beat" data-reveal>
+              <span class="game">League of Legends</span> and
+              <span class="game">Call of Duty</span> became my refuge — and,
+              it turned out, my way out.
+            </p>
+          </div>
+          <aside class="aside" data-reveal>
+            Not a metaphor. It was where I actually talked to people.
+          </aside>
+        </div>
+
+        <figure class="media-figure media-figure--wide" data-reveal>
+          <div class="media-slot" data-placeholder="story-competition-photo"></div>
+          <figcaption class="media-caption">Mid-match, orange jerseys.</figcaption>
+        </figure>
+
+        <div class="spread">
+          <div class="spread__main">
+            <p class="story-beat" data-reveal>
+              Then in college I found five guys who loved it as much as I did.
+            </p>
+          </div>
+          <!-- The roster sits in the margin as a credit line, not a sentence. -->
+          <aside class="roster" data-reveal>
+            <span class="roster__label">the team</span>
+            <ol class="roster__names">
+              <li>Willwin</li>
+              <li>Faith</li>
+              <li>xKace</li>
+              <li>TheJons</li>
+              <li>Keen</li>
+            </ol>
+          </aside>
+        </div>
+
+        <div class="punch" data-reveal>
+          <p class="punch__line">We competed. We won $80,000 in scholarships.</p>
+          <p class="punch__kicker">For <em>gaming</em>.</p>
+        </div>
+
+        <p class="story-beat story-beat--hinge" data-reveal>
+          The thing I'd been told to stop doing was finally treated as
+          <em>worth being good at</em>.
         </p>
-        <div class="building-media">
-          <figure class="media-figure" data-reveal>
-            <div class="media-slot" data-placeholder="ekuzo-photo-1"></div>
-            <figcaption class="media-caption">Houston vs Seattle. Our own poster, our own kids.</figcaption>
-          </figure>
-          <figure class="media-figure" data-reveal>
-            <div class="media-slot" data-placeholder="ekuzo-photo-2"></div>
-            <figcaption class="media-caption">Alumni Track pitch competition — $5,000. Not the scholarship money. Different story, different number.</figcaption>
-          </figure>
-        </div>
-        <a class="outbound-link" href="https://ekuzo.gg" target="_blank" rel="noopener">
-          Visit EKUZO →
-        </a>
       </div>
     </section>
 
-    <!-- 04 — LIFE OUTSIDE WORK -->
+    <!-- 03 — THE WORK -->
+    <section id="work" class="section section--work" data-section="03">
+      <div class="section__inner">
+        <p class="eyebrow" data-reveal>what I've been doing since</p>
+
+        <h2 data-reveal>
+          So I spent six years trying to understand why that mattered.
+        </h2>
+
+        <p class="question" data-reveal>
+          What happens when you take a kid's passion for games seriously?
+        </p>
+
+        <dl class="stat-row" data-reveal>
+          <div class="stat">
+            <dt class="stat__label">young people</dt>
+            <dd class="stat__value">1,000+</dd>
+          </div>
+          <div class="stat">
+            <dt class="stat__label">years in it</dt>
+            <dd class="stat__value">6</dd>
+          </div>
+        </dl>
+
+        <div class="work-grid">
+          <div class="work-col" data-reveal>
+            <h3 class="work-col__head">What that's looked like</h3>
+            <ul class="work-list">
+              <li>Building gaming and competitive esports programs with schools, families, and community organizations.</li>
+              <li>Designing curriculum and learning experiences around games, together with coaches.</li>
+              <li>Organizing teams, leagues, competitions, camps, and events.</li>
+              <li>Creating structured online spaces built around social skills and development.</li>
+            </ul>
+          </div>
+
+          <div class="work-col" data-reveal>
+            <h3 class="work-col__head">What I've come to believe</h3>
+            <ul class="work-list work-list--beliefs">
+              <li>The impact doesn't stop at the kid. Parents, schools, and coaches need it just as much.</li>
+              <li>Kids work incredibly hard when they care about the outcome and are given real ownership.</li>
+              <li>My story isn't unique. The magic can be replicated.</li>
+            </ul>
+          </div>
+        </div>
+
+        <figure class="media-figure media-figure--wide" data-reveal>
+          <div class="media-slot" data-placeholder="program-photo"></div>
+          <figcaption class="media-caption">Program photo — coaching, a camp, or a league night.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 04 — OUTSIDE THE GAME -->
     <section id="life" class="section section--life" data-section="04">
       <div class="section__inner">
-        <p class="eyebrow" data-reveal>outside of work</p>
+        <p class="eyebrow" data-reveal>outside the game</p>
         <p class="throughline" data-reveal>
-          I never stopped doing the thing — picking something I'm embarrassingly bad at,
-          then staying long enough to get good.
+          Still doing the same thing, really — picking up something I'm bad at
+          and staying long enough to get good.
         </p>
+
         <div class="life-grid">
-          <!-- Each tile is a hobby artifact. Swap media-slots for real assets as they arrive. -->
           <div class="life-tile" data-reveal>
             <div class="media-slot" data-placeholder="backflip-video"></div>
-            <p class="life-caption">Backflips. Landing maybe one in four. The other three are also on video.</p>
+            <p class="life-caption">Currently learning backflips.</p>
           </div>
           <div class="life-tile" data-reveal>
             <div class="media-slot" data-placeholder="climbing-photo"></div>
-            <p class="life-caption">Bouldering. Bad at the problems that need patience, which is most of them.</p>
+            <p class="life-caption">Recently got into bouldering.</p>
           </div>
           <div class="life-tile" data-reveal>
             <div class="media-slot" data-placeholder="piano-cello-photo"></div>
-            <p class="life-caption">Piano first, then cello — started late enough that it stayed humbling.</p>
+            <p class="life-caption">Piano and cello.</p>
           </div>
           <div class="life-tile" data-reveal>
             <div class="media-slot" data-placeholder="s2000-photo"></div>
-            <p class="life-caption">Honda S2000, AP2. Learning to actually drive it is its own long project.</p>
-          </div>
-          <div class="life-tile" data-reveal>
-            <div class="media-slot" data-placeholder="league-photo"></div>
-            <p class="life-caption">Still playing League. Still reviewing my own replays like film study.</p>
-          </div>
-          <div class="life-tile" data-reveal>
-            <p class="life-caption">Houston. Home, and where the kids we coach actually are.</p>
+            <p class="life-caption">A Honda S2000 AP2, which I love.</p>
           </div>
         </div>
-        <p class="life-closer" data-reveal>
-          It's the same pattern every time: be bad at it in public, find the people
-          who take it seriously, stay.
-        </p>
+
+        <!-- Deliberately outside the grid. It isn't a skill, and it's the
+             callback that closes the loop opened by the shout in section 01. -->
+        <p class="coda" data-reveal>And I love my mom.</p>
       </div>
     </section>
 
@@ -149,15 +232,15 @@
     <section id="elsewhere" class="section section--elsewhere" data-section="05">
       <div class="section__inner">
         <p class="closing-line" data-reveal>
-          If you're building something in this direction too, I'd genuinely like to hear about it.
+          If you're building something in this direction too, I'd genuinely
+          like to hear about it.
         </p>
-        <ul class="elsewhere-links">
+        <ul class="elsewhere-links" data-reveal>
           <!-- TODO: real handles — see DIRECTION.md "assets still needed".
                The tap-to-copy handler in main.ts no-ops while the [TODO] guard is present. -->
           <li><a href="mailto:[TODO]" data-copy>[TODO email] — tap to copy</a></li>
           <li><a href="[TODO linkedin]" target="_blank" rel="noopener">LinkedIn</a></li>
           <li><a href="[TODO instagram]" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://ekuzo.gg" target="_blank" rel="noopener">EKUZO</a></li>
         </ul>
       </div>
     </section>

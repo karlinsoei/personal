@@ -37,38 +37,53 @@ Nothing ornamental "for the sake of it."
 
 ## The narrative arc (the spine of the whole site, not just section 02)
 
-Kid who loved games → wasn't taken seriously → found people who did → found
-a team → competed → ~$80,000 in esports scholarships → realized what gaming
-actually gave him → built EKUZO to give that to someone else.
+Kid who played too much → told to stop → social anxiety and divorced parents,
+with League and Call of Duty as refuge → found five guys in college who cared
+about it too → competed → $80,000 in scholarships, for gaming → the thing he'd
+been told to stop doing was finally treated as worth being good at → six years
+spent working out why that mattered.
 
-**Connective throughline for the whole site, including "Life Outside Work":**
+**No company is named anywhere on the site.** The organisation Karlin runs is
+deliberately unnamed; the work is described as "the past six years" and by
+what it consists of. This is a change from the earlier draft, which built
+section 03 around EKUZO by name and linked out to ekuzo.gg. Both are gone.
+If a name is ever reinstated, it is a content decision, not a layout one —
+section 03's structure works either way.
+
+**Connective throughline for the whole site, including section 04:**
 getting good at things he was initially bad at, because someone finally took
 the interest seriously. Gaming was that. Backflips/climbing/cello are that
-now. EKUZO exists to give other kids that same shot. Don't let section 04
-read as a disconnected hobby list — tie it back to this line explicitly.
+now. Don't let section 04 read as a disconnected hobby list — tie it back
+explicitly.
 
-## Information architecture (5 sections, one scroll, already scaffolded)
+## Information architecture (5 sections, one scroll)
 
-01 Introduction — minimal copy, strong visual, the hook
-02 My Story — the narrative spine, broken into short beats not paragraphs
-03 What I'm Building — establishes EKUZO and why it matters, then links out
-   to ekuzo.gg. Not a product pitch.
-04 Life Outside Work — most playful section, photo/video-driven, annotation
-   -style captions
+01 Introduction — the hook, plus the parents' line as a hand-drawn shout
+   in the margin
+02 Where I Came From — the narrative spine, beats with margin material
+   (game chips, the roster, an aside) set beside them
+03 What I've Been Doing Since — the work and the authority for it, as two
+   scannable columns plus a stat row. No company named.
+04 Outside the Game — playful, photo-driven, annotation-style captions,
+   closing on the "I love my mom" coda
 05 Elsewhere — quiet close, contact links, tap-to-copy email
 
-Fixed chapter nav (01→05) tracks scroll position — already implemented.
+Fixed chapter nav (01→05) tracks scroll position.
+
+**Pacing is a requirement, not a preference.** The whole thing has to land
+in under a minute. Sections size to their content — they are explicitly not
+min-height: 100vh, which paced the earlier draft at roughly one idea per
+screen and made it far too slow. Secondary material goes in the margin
+column beside the narrative (the `.spread` pattern), never stacked beneath
+it. When adding content, add it to a margin, not to the scroll.
 
 ## Known content/asset details
 
-- The $5,000 "EKUSO" check photo is a pitch-competition prize (Alumni
-  Track), NOT the scholarship — it belongs in section 03, not 02. Don't
-  conflate the two dollar figures.
 - The close-up League photo (orange jerseys, mid-match) is the strongest
   candidate for section 02's competition beat.
-- The "Houston vs Seattle" youth esports poster is existing EKUZO
-  marketing collateral — useful in section 03, and its torn-paper/scrapbook
-  treatment is a possible visual reference for section 04's photo grid.
+- Section 03 needs a program photo — coaching, a camp, or a league night.
+- The five teammates are credited by tag in section 02: Willwin, Faith,
+  xKace, TheJons, Keen.
 
 ## Locked decisions
 
@@ -88,11 +103,12 @@ Fixed chapter nav (01→05) tracks scroll position — already implemented.
   stops reading as colour in the chapter nav. Vermilion also makes the
   Asian influence a material rather than a motif — vermilion *is* seal ink,
   so the stamp mark has a reason to exist.
-  **Caveat:** the EKUZO-confusion check was never actually run — ekuzo.gg
-  was unreachable from the build session, so their orange was never sampled.
-  Locked on the user's call with that test outstanding. If the two do read
-  as confusable in practice, oxblood `#8C2F2A` is the fallback: same
-  seal-ink logic, clearly further from orange.
+  **The brand-collision caveat is now moot.** The original worry was that
+  vermilion would be confused with EKUZO's orange; that test was never run
+  (ekuzo.gg was unreachable from the build session). Since no company is
+  named or linked on the site any more, there is nothing left to collide
+  with. Oxblood `#8C2F2A` remains recorded as the fallback if the concern
+  ever returns.
 
 - **Typography: Fraunces (voice) + IBM Plex Mono (apparatus).** Self-hosted
   via npm, no CDN. The rule is that the two never overlap: Fraunces sets
@@ -115,20 +131,23 @@ Fixed chapter nav (01→05) tracks scroll position — already implemented.
   enough. Recorded as his call on a visual comparison — not a verified
   match, since no one on the build side ever saw the reference type.
 
-- **Copy: drafted, needs your pass.** Every `[TODO]` in index.html is now
-  written except the section 05 handles (see below). Voice is first-person,
-  fragmented, short beats rather than paragraphs. Section 02 splits the arc
-  into nine beats; the accent falls on exactly one phrase in the whole site
-  — "worth being good at" — because that's the hinge the narrative turns on.
-  Section 04 closes with a line tying the hobby grid back to the throughline
-  so it doesn't read as a disconnected list. The $5,000 check caption names
-  it as the Alumni Track pitch prize explicitly, so it can't be mistaken for
-  the scholarship figure.
-  **Written from the arc in this document only.** Nothing beyond what's
-  recorded here was invented — no years, no team names, no placements, no
-  rank. The emotional specifics ("landing maybe one in four", "four seconds
-  before something went badly wrong") are plausible-sounding guesses and
-  should be corrected to whatever is actually true.
+- **Copy: rewritten from the owner's own draft.** The text is his, lightly
+  edited for grammar and length; it is not invented voice. Accent falls on
+  exactly one phrase in the whole site — "worth being good at" — because
+  that's the hinge the narrative turns on. "For gaming." is carried by scale
+  rather than colour, deliberately: two shouts in one section cancel each
+  other out.
+  **Edits made to his draft, all of which he should sanity-check:**
+  "my exposition" → "my way out" (the original reads as a slip for
+  "exposure"; the replacement keeps the intended sense of games being both
+  escape *and* the way outward). "The thing that I was hated for was finally
+  seen and treated the way I loved as worth being good at" was two merged
+  constructions and is now "The thing I'd been told to stop doing was
+  finally treated as worth being good at". "what happens what you take" →
+  "when you take". The fourth work bullet ended mid-phrase ("social, skills,
+  and developmental") and was completed as "social skills and development".
+  **Nothing was invented.** Earlier drafts carried made-up colour ("landing
+  maybe one in four") — all of it is gone, replaced by his own text.
 
 ## OPEN — do not decide these unilaterally
 
@@ -141,6 +160,16 @@ Fixed chapter nav (01→05) tracks scroll position — already implemented.
   above. Nothing has been built. The accent colour was chosen partly on the
   logic that vermilion *is* seal ink, so if the mark never ships, that
   argument goes partly unspent.
+- **The shout bubble is hand-authored SVG, not illustration.** The brief
+  asked for "a doodle of a mom and dad yelling at me". Drawing figures
+  badly would be worse than not drawing them, so what shipped is a wobbly
+  speech bubble carrying the line itself. If real illustration is wanted —
+  figures, more doodles in other margins — that's a commission or the
+  owner's own hand, and the `.spread` margin column is where it goes.
+- **Game titles are set as type, not logos.** The brief floated using the
+  League and Call of Duty logos. Those are trademarks belonging to Riot and
+  Activision, so they're set as mono chips instead. Using the real marks is
+  a permissions question, not a design one.
 
 ## Assets still needed from the user
 
@@ -149,8 +178,8 @@ Fixed chapter nav (01→05) tracks scroll position — already implemented.
 - Piano/cello photo or clip
 - Honda S2000 AP2 photos
 - More candid/informal personal photos (everything currently on hand is
-  event/press photography — great for section 03, but section 04 needs
-  unposed material)
+  event/press photography — section 04 needs unposed material)
 - Additional League/UTD esports photos beyond what's already provided
+- A program photo for section 03 — coaching, a camp, or a league night
 - EKUZO logo + program/coaching photos beyond the poster
 - LinkedIn, Instagram, and email for section 05

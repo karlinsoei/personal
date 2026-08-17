@@ -11,10 +11,9 @@
        rather than going blank. -->
   <script>
     document.documentElement.classList.add("js");
-    // Second failsafe, for the case the class alone can't cover: if the module
-    // never boots at all (chunk 404, parse error), nothing downstream can
-    // un-hide anything. Drop the class on a timer instead. main.ts cancels
-    // this the moment it takes over.
+    // Second failsafe: if the module never boots at all (chunk 404, parse
+    // error), nothing downstream can un-hide anything. Drop the class on a
+    // timer instead. main.ts cancels this the moment it takes over.
     window.__revealFailsafe = setTimeout(function () {
       document.documentElement.classList.remove("js");
     }, 3000);
@@ -27,10 +26,6 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#F6F4EF" />
 
-  <!-- Inline so there's no binary asset to keep in sync. Without this the
-       browser requests /favicon.ico on every visit and takes a 404.
-       Safari's SVG-favicon support is patchy; a real .png/.ico fallback is
-       still worth adding once there's a proper mark to render. -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23C1432E'/><text x='16' y='24' font-family='Georgia,serif' font-size='21' font-weight='600' fill='%23F6F4EF' text-anchor='middle'>K</text></svg>" />
 
   <link rel="stylesheet" href="/src/styles/tokens.css" />
@@ -39,8 +34,6 @@
 </head>
 <body>
 
-  <!-- Chapter indicator. Six chapters now: the college years earned their own
-       stop rather than being buried at the end of the childhood section. -->
   <nav class="chapter-nav" aria-label="Section navigation">
     <a href="#intro" data-chapter="01" aria-label="01, Introduction"><span>01</span></a>
     <a href="#story" data-chapter="02" aria-label="02, Where I came from"><span>02</span></a>
@@ -61,25 +54,23 @@
               Hi, I'm Karlin, the kid who played too much.
             </h1>
 
-          <!-- The counter-voice, off to the side rather than stacked under the
-               headline — the first instance of the page's aside pattern. -->
-          <figure class="shout" data-reveal>
-            <div class="shout__bubble-wrap">
-              <svg class="shout__bubble" viewBox="0 0 320 150" preserveAspectRatio="none" aria-hidden="true">
-                <path d="M14 30 C 12 15, 24 8, 40 7 L 279 5 C 297 4, 307 13, 306 30
-                         L 308 96 C 309 112, 298 120, 281 121 L 128 124 L 72 145
-                         L 84 123 L 37 124 C 21 124, 12 115, 13 99 Z"
-                      fill="none" stroke="currentColor" stroke-width="2.4"
-                      stroke-linejoin="round" stroke-linecap="round"
-                      vector-effect="non-scaling-stroke" />
-              </svg>
-              <!-- Sentence case in the markup, shouted via CSS — screen
-                   readers spell out literal all-caps strings. -->
-              <blockquote class="shout__text">&ldquo;Stop wasting your life playing video games!&rdquo;</blockquote>
-            </div>
+            <figure class="shout" data-reveal>
+              <div class="shout__bubble-wrap">
+                <svg class="shout__bubble" viewBox="0 0 320 150" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M14 30 C 12 15, 24 8, 40 7 L 279 5 C 297 4, 307 13, 306 30
+                           L 308 96 C 309 112, 298 120, 281 121 L 128 124 L 72 145
+                           L 84 123 L 37 124 C 21 124, 12 115, 13 99 Z"
+                        fill="none" stroke="currentColor" stroke-width="2.4"
+                        stroke-linejoin="round" stroke-linecap="round"
+                        vector-effect="non-scaling-stroke" />
+                </svg>
+                <!-- Sentence case in the markup, shouted via CSS — screen
+                     readers spell out literal all-caps strings. -->
+                <blockquote class="shout__text">&ldquo;Stop wasting your life playing video games!&rdquo;</blockquote>
+              </div>
 
-            <div class="shout__source">
-              <svg class="dood mom" viewBox="0 0 200 210" role="img"
+              <div class="shout__source">
+                <svg class="dood mom" viewBox="0 0 200 210" role="img"
                    aria-label="Line drawing of Karlin's mother">
                 <!-- Excitement lines, the same device as the reference. -->
                 <g class="dood__spark">
@@ -127,9 +118,9 @@
                 <circle class="dood__fill" cx="78" cy="110" r="4.6" />
                 <circle class="dood__fill" cx="122" cy="110" r="4.6" />
               </svg>
-              <figcaption class="shout__who">— mom, on repeat</figcaption>
-            </div>
-          </figure>
+                <figcaption class="shout__who">— mom, on repeat</figcaption>
+              </div>
+            </figure>
           </div>
 
           <figure class="hero-portrait" data-reveal>
@@ -154,32 +145,38 @@
     <section id="story" class="section section--story" data-section="02">
       <div class="section__inner">
         <h2 class="eyebrow" data-reveal>where I came from</h2>
-
-        <div class="chronicle">
-
-        <!-- ISOLATION -->
-        <p class="story-beat" data-reveal>I struggled as a teen.</p>
-
-        <div class="conditions" data-reveal>
-          <span class="cond">Social anxiety</span>
-          <span class="cond">Divorced parents</span>
-          <span class="cond">Bad grades</span>
+        <div class="stage" data-reveal>
+          <p class="story-beat story-beat--major">I struggled as a teen.</p>
+          <div class="conditions">
+            <span class="cond">Social anxiety</span>
+            <span class="cond">Divorced parents</span>
+            <span class="cond">Bad grades</span>
+          </div>
         </div>
-
-        <!-- REFUGE -->
-        <div class="tag-beat" data-reveal>
+        <div class="path" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 24 120">
+            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
+            <path d="M5.5 96 L12 112 L18.5 96" />
+          </svg>
+        </div>
+        <div class="stage" data-reveal>
           <span class="tag tag--game">Call of Duty</span>
-          <p class="story-beat">became my refuge.</p>
+          <p class="story-beat story-beat--major">became my refuge.</p>
+          <p class="story-beat story-beat--aside">
+            I didn't like or fit in with the &ldquo;normal&rdquo; kid stuff.
+          </p>
         </div>
-
-        <p class="story-beat" data-reveal>
-          I didn't like or fit in with the &ldquo;normal&rdquo; kid stuff.
-        </p>
-
-        <figure class="reel" data-reel data-reveal>
-          <div class="reel__viewport" data-reel-viewport tabindex="0"
-               role="group" aria-label="Childhood and teenage years, scrollable">
-            <div class="reel__track">
+        <div class="path" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 24 120">
+            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
+            <path d="M5.5 96 L12 112 L18.5 96" />
+          </svg>
+        </div>
+        <div class="stage stage--media" data-reveal>
+          <figure class="reel" data-reel>
+            <div class="reel__viewport" data-reel-viewport tabindex="0"
+                 role="group" aria-label="Childhood and teenage years, scrollable">
+              <div class="reel__track">
               <div class="reel__slide">
                 <div class="media-slot" data-placeholder="early-gaming-1"></div>
               </div>
@@ -195,90 +192,106 @@
               <div class="reel__slide">
                 <div class="media-slot" data-placeholder="early-gaming-4"></div>
               </div>
+              </div>
             </div>
+            <figcaption class="reel__bar">
+              <span class="reel__index" data-reel-index aria-live="polite">01 / 05</span>
+              <span class="reel__rule" aria-hidden="true">
+                <span class="reel__rule-fill" data-reel-fill></span>
+              </span>
+              <span class="reel__nav">
+                <button type="button" class="reel__btn" data-reel-prev aria-label="Previous">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19" /></svg>
+                </button>
+                <button type="button" class="reel__btn" data-reel-next aria-label="Next">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19" /></svg>
+                </button>
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="path" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 24 120">
+            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
+            <path d="M5.5 96 L12 112 L18.5 96" />
+          </svg>
+          <span class="path__label">age 15</span>
+        </div>
+        <div class="stage" data-reveal>
+          <p class="story-beat">At 15, I was introduced to</p>
+          <p class="tag-drop">
+            <span class="tag tag--game tag--hero">League of Legends</span>
+          </p>
+        </div>
+        <div class="path" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 24 120">
+            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
+            <path d="M5.5 96 L12 112 L18.5 96" />
+          </svg>
+        </div>
+        <div class="stage" data-reveal>
+          <p class="story-beat">It felt like a combination of:</p>
+          <div class="formula">
+            <span class="tag tag--mix">Basketball</span>
+            <span class="formula__op" aria-hidden="true">+</span>
+            <span class="tag tag--mix">Chess</span>
+            <span class="formula__op" aria-hidden="true">+</span>
+            <span class="tag tag--mix">D&amp;D</span>
+            <span class="formula__op" aria-hidden="true">+</span>
+            <span class="tag tag--mix">Video games</span>
           </div>
-          <figcaption class="reel__bar">
-            <span class="reel__index" data-reel-index aria-live="polite">01 / 05</span>
-            <span class="reel__rule" aria-hidden="true">
-              <span class="reel__rule-fill" data-reel-fill></span>
-            </span>
-            <span class="reel__nav">
-              <button type="button" class="reel__btn" data-reel-prev aria-label="Previous">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19" /></svg>
-              </button>
-              <button type="button" class="reel__btn" data-reel-next aria-label="Next">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19" /></svg>
-              </button>
-            </span>
-          </figcaption>
-        </figure>
-
-        <!-- CURIOSITY -->
-        <p class="chapter-marker" data-reveal>age 15</p>
-
-        <p class="story-beat" data-reveal>At 15, I was introduced to</p>
-        <p class="tag-drop" data-reveal>
-          <span class="tag tag--game tag--hero">League of Legends</span>
-        </p>
-
-        <p class="story-beat" data-reveal>It felt like a combination of:</p>
-
-        <div class="formula" data-reveal>
-          <span class="tag tag--mix">Basketball</span>
-          <span class="formula__op" aria-hidden="true">+</span>
-          <span class="tag tag--mix">Chess</span>
-          <span class="formula__op" aria-hidden="true">+</span>
-          <span class="tag tag--mix">D&amp;D</span>
-          <span class="formula__op" aria-hidden="true">+</span>
-          <span class="tag tag--mix">Video games</span>
         </div>
-
-        <!-- CHALLENGE -->
-        <p class="story-beat" data-reveal>Nothing had ever captivated me this way before.</p>
-
-        <!-- Three short lines rather than a paragraph: the rhythm is the point. -->
-        <div class="cadence" data-reveal>
-          <p class="cadence__line">I wanted to learn.</p>
-          <p class="cadence__line">I wanted to compete.</p>
-          <p class="cadence__line">I was inspired to get better.</p>
+        <div class="path" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 24 120">
+            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
+            <path d="M5.5 96 L12 112 L18.5 96" />
+          </svg>
         </div>
-
-        <!-- The pivot the whole site turns on. Carried by scale and framing
-             rather than colour — the accent is committed to the hinge later. -->
+        <div class="stage" data-reveal>
+          <p class="story-beat story-beat--major">Nothing had ever captivated me this way before.</p>
+          <div class="cadence">
+            <p class="cadence__line">I wanted to learn.</p>
+            <p class="cadence__line">I wanted to compete.</p>
+            <p class="cadence__line">I was inspired to get better.</p>
+          </div>
+        </div>
+        <div class="path" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 24 120">
+            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
+            <path d="M5.5 96 L12 112 L18.5 96" />
+          </svg>
+        </div>
         <div class="pivot" data-reveal>
           <p class="pivot__word">Life</p>
         </div>
-
-        <p class="story-beat" data-reveal>
-          League started teaching me things that extended beyond the game.
-        </p>
-
-        <!-- What the game taught, as three transformations rather than prose. -->
-        <div class="lessons" data-reveal>
-          <div class="lesson">
-            <p class="lesson__from">Failure &amp; grit</p>
-            <svg class="lesson__arrow" viewBox="0 0 20 34" aria-hidden="true">
-              <path d="M10 3 L10 29 M3 22 L10 31 L17 22" />
-            </svg>
-            <p class="lesson__to">Try again.</p>
-          </div>
-          <div class="lesson">
-            <p class="lesson__from">Teamwork &amp; collaboration</p>
-            <svg class="lesson__arrow" viewBox="0 0 20 34" aria-hidden="true">
-              <path d="M10 3 L10 29 M3 22 L10 31 L17 22" />
-            </svg>
-            <p class="lesson__to">People matter.</p>
-          </div>
-          <div class="lesson">
-            <p class="lesson__from">Confidence</p>
-            <svg class="lesson__arrow" viewBox="0 0 20 34" aria-hidden="true">
-              <path d="M10 3 L10 29 M3 22 L10 31 L17 22" />
-            </svg>
-            <p class="lesson__to">I can do what I put my mind to.</p>
+        <div class="stage" data-reveal>
+          <p class="story-beat story-beat--major">
+            League started teaching me things that extended beyond the game.
+          </p>
+          <div class="lessons">
+            <div class="lesson">
+              <p class="lesson__from">Failure &amp; grit</p>
+              <svg class="lesson__arrow" viewBox="0 0 20 34" aria-hidden="true">
+                <path d="M10 3 L10 29 M3 22 L10 31 L17 22" />
+              </svg>
+              <p class="lesson__to">Try again.</p>
+            </div>
+            <div class="lesson">
+              <p class="lesson__from">Teamwork &amp; collaboration</p>
+              <svg class="lesson__arrow" viewBox="0 0 20 34" aria-hidden="true">
+                <path d="M10 3 L10 29 M3 22 L10 31 L17 22" />
+              </svg>
+              <p class="lesson__to">People matter.</p>
+            </div>
+            <div class="lesson">
+              <p class="lesson__from">Confidence</p>
+              <svg class="lesson__arrow" viewBox="0 0 20 34" aria-hidden="true">
+                <path d="M10 3 L10 29 M3 22 L10 31 L17 22" />
+              </svg>
+              <p class="lesson__to">I can do what I put my mind to.</p>
+            </div>
           </div>
         </div>
-
-        </div><!-- /.chronicle -->
       </div>
     </section>
 
@@ -286,19 +299,15 @@
     <section id="college" class="section section--college" data-section="03">
       <div class="section__inner">
         <h2 class="eyebrow" data-reveal>college</h2>
-
-        <div class="chronicle">
-
-        <!-- BELONGING -->
-        <p class="story-beat story-beat--lead" data-reveal>
-          In college, I found a team who loved competing as much as I did.
-        </p>
-
-        <aside class="roster" data-reveal>
-          <span class="roster__label">the team</span>
-          <ul class="roster__names">
-                <li>
-                  <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Willwin">
+        <div class="stage" data-reveal>
+          <p class="story-beat story-beat--major">
+            In college, I found a team who loved competing as much as I did.
+          </p>
+          <aside class="roster">
+            <span class="roster__label">the team</span>
+            <ul class="roster__names">
+            <li>
+              <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Willwin">
                   <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
                            C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
                            C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
@@ -314,10 +323,10 @@
                   <circle class="dood__fill" cx="122" cy="108" r="4.4" />
                   <path class="dood__line" d="M89 138 C94 142, 106 142, 111 138" />
                 </svg>
-                  <span class="roster__name">Willwin</span>
-                </li>
-                <li class="roster__member--me">
-                  <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Faith">
+              <span class="roster__name">Willwin</span>
+            </li>
+            <li class="roster__member--me">
+              <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Faith">
                   <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
                            C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
                            C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
@@ -330,11 +339,11 @@
                   <circle class="dood__fill" cx="120" cy="108" r="5" />
                   <path class="dood__line" d="M86 134 C92 144, 108 144, 114 134" />
                 </svg>
-                  <span class="roster__name">Faith</span>
-                  <span class="roster__me"><svg viewBox="0 0 24 26" aria-hidden="true"><path d="M12 24 L12 7 M6 13 L12 5 L18 13" /></svg>me</span>
-                </li>
-                <li>
-                  <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="xKace">
+              <span class="roster__name">Faith</span>
+              <span class="roster__me"><svg viewBox="0 0 24 26" aria-hidden="true"><path d="M12 24 L12 7 M6 13 L12 5 L18 13" /></svg>me</span>
+            </li>
+            <li>
+              <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="xKace">
                   <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
                            C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
                            C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
@@ -347,10 +356,10 @@
                   <circle class="dood__fill" cx="120" cy="108" r="5" />
                   <path class="dood__line" d="M87 138 L113 138" />
                 </svg>
-                  <span class="roster__name">xKace</span>
-                </li>
-                <li>
-                  <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="TheJons">
+              <span class="roster__name">xKace</span>
+            </li>
+            <li>
+              <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="TheJons">
                   <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
                            C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
                            C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
@@ -366,10 +375,10 @@
                   <!-- big open grin -->
                   <path class="dood__line" d="M80 132 C88 149, 112 149, 120 132" />
                 </svg>
-                  <span class="roster__name">TheJons</span>
-                </li>
-                <li>
-                  <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Keen">
+              <span class="roster__name">TheJons</span>
+            </li>
+            <li>
+              <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Keen">
                   <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
                            C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
                            C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
@@ -388,35 +397,56 @@
                   <!-- mid kiss -->
                   <ellipse class="dood__line" cx="100" cy="139" rx="7.5" ry="6.5" />
                 </svg>
-                  <span class="roster__name">Keen</span>
-                </li>
-          </ul>
-        </aside>
-
-        <dl class="achievements" data-reveal>
-          <div class="achievement">
-            <dt class="achievement__label">Varsity</dt>
-            <dd class="achievement__value">Captain</dd>
-          </div>
-          <div class="achievement">
-            <dt class="achievement__label">Nationally</dt>
-            <dd class="achievement__value">Top 8</dd>
-          </div>
-          <div class="achievement">
-            <dt class="achievement__label">Peak rank in League</dt>
-            <dd class="achievement__value">Challenger</dd>
-          </div>
-        </dl>
-
-        <div class="figure-big" data-reveal>
-          <p class="figure-big__num">~$80,000</p>
-          <p class="figure-big__label">in esports scholarships</p>
+              <span class="roster__name">Keen</span>
+            </li>
+            </ul>
+          </aside>
         </div>
-
-        <figure class="reel" data-reel data-reveal>
-          <div class="reel__viewport" data-reel-viewport tabindex="0"
-               role="group" aria-label="Championships and team, scrollable">
-            <div class="reel__track">
+        <div class="path" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 24 120">
+            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
+            <path d="M5.5 96 L12 112 L18.5 96" />
+          </svg>
+        </div>
+        <div class="stage" data-reveal>
+          <dl class="achievements">
+            <div class="achievement">
+              <dt class="achievement__label">Varsity</dt>
+              <dd class="achievement__value">Captain</dd>
+            </div>
+            <div class="achievement">
+              <dt class="achievement__label">Nationally</dt>
+              <dd class="achievement__value">Top 8</dd>
+            </div>
+            <div class="achievement">
+              <dt class="achievement__label">Peak rank in League</dt>
+              <dd class="achievement__value">Challenger</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="path" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 24 120">
+            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
+            <path d="M5.5 96 L12 112 L18.5 96" />
+          </svg>
+        </div>
+        <div class="stage" data-reveal>
+          <div class="figure-big">
+            <p class="figure-big__num">~$80,000</p>
+            <p class="figure-big__label">in esports scholarships</p>
+          </div>
+        </div>
+        <div class="path" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 24 120">
+            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
+            <path d="M5.5 96 L12 112 L18.5 96" />
+          </svg>
+        </div>
+        <div class="stage stage--media" data-reveal>
+          <figure class="reel" data-reel>
+            <div class="reel__viewport" data-reel-viewport tabindex="0"
+                 role="group" aria-label="Championships and team, scrollable">
+              <div class="reel__track">
               <div class="reel__slide">
                 <div class="media-slot" data-placeholder="college-1"></div>
               </div>
@@ -429,55 +459,75 @@
               <div class="reel__slide">
                 <div class="media-slot" data-placeholder="college-3"></div>
               </div>
+              </div>
             </div>
-          </div>
-          <figcaption class="reel__bar">
-            <span class="reel__index" data-reel-index aria-live="polite">01 / 04</span>
-            <span class="reel__rule" aria-hidden="true">
-              <span class="reel__rule-fill" data-reel-fill></span>
-            </span>
-            <span class="reel__nav">
-              <button type="button" class="reel__btn" data-reel-prev aria-label="Previous">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19" /></svg>
-              </button>
-              <button type="button" class="reel__btn" data-reel-next aria-label="Next">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19" /></svg>
-              </button>
-            </span>
-          </figcaption>
-        </figure>
-
-        <!-- WONDERING -->
-        <p class="story-beat" data-reveal>
-          I was incredibly lucky to find magic with that team.
-        </p>
-
-        <p class="story-beat story-beat--run" data-reveal>
-          That experience changed my life. It made me wonder…
-        </p>
-
+            <figcaption class="reel__bar">
+              <span class="reel__index" data-reel-index aria-live="polite">01 / 04</span>
+              <span class="reel__rule" aria-hidden="true">
+                <span class="reel__rule-fill" data-reel-fill></span>
+              </span>
+              <span class="reel__nav">
+                <button type="button" class="reel__btn" data-reel-prev aria-label="Previous">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19" /></svg>
+                </button>
+                <button type="button" class="reel__btn" data-reel-next aria-label="Next">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19" /></svg>
+                </button>
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="path" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 24 120">
+            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
+            <path d="M5.5 96 L12 112 L18.5 96" />
+          </svg>
+        </div>
+        <div class="stage" data-reveal>
+          <p class="story-beat story-beat--major">
+            I was incredibly lucky to find magic with that team.
+          </p>
+          <p class="story-beat story-beat--aside">
+            That experience changed my life. It made me wonder&hellip;
+          </p>
+        </div>
+        <div class="path" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 24 120">
+            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
+            <path d="M5.5 96 L12 112 L18.5 96" />
+          </svg>
+        </div>
         <div class="pivot pivot--ask" data-reveal>
           <p class="pivot__word pivot__word--ask">&ldquo;What if I never had that?&rdquo;</p>
         </div>
-
-        <p class="story-beat" data-reveal>
-          So I've spent the last six years trying to make that a reality for
-          other kids.
-        </p>
-
-        </div><!-- /.chronicle -->
+        <div class="stage" data-reveal>
+          <p class="story-beat story-beat--major">
+            So I've spent the last six years trying to make that a reality for
+            other kids.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- 04 — THE WORK -->
     <section id="work" class="section section--work" data-section="04">
       <div class="section__inner">
-        <h2 class="question question--lead" data-reveal>
-          What happens when you take a kid's passion for games seriously?
-        </h2>
+        <div class="stage" data-reveal>
+          <h2 class="question question--lead">
+            What happens when you take a kid's passion for games seriously?
+          </h2>
+        </div>
 
-        <!-- Ruled grid, not cards. Stats and modules share one ledger; spans
-             alternate so the proportions read as a spread, not a tile layout. -->
+        <div class="path" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 24 120">
+            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
+            <path d="M5.5 96 L12 112 L18.5 96" />
+          </svg>
+        </div>
+
+        <!-- The one grid the page keeps: four parallel kinds of work genuinely
+             are a table. Everything around it is staged, so it reads as an
+             inset exhibit rather than as the page's default solution. -->
         <div class="modules">
           <article class="mod mod--stat" data-reveal>
             <p class="mod__figure">1,000+</p>
@@ -510,9 +560,14 @@
           </article>
         </div>
 
-        <!-- A different register from the grid: no boxes, oversized ghost
-             numerals, one statement per full-width ruled row. -->
-        <h3 class="block-label block-label--major" data-reveal>What I've come to believe</h3>
+        <div class="path" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 24 120">
+            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
+            <path d="M5.5 96 L12 112 L18.5 96" />
+          </svg>
+        </div>
+
+        <h3 class="block-label" data-reveal>What I've come to believe</h3>
 
         <ol class="beliefs">
           <li class="belief" data-reveal>
@@ -542,11 +597,13 @@
     <!-- 05 — STILL LEARNING -->
     <section id="life" class="section section--life" data-section="05">
       <div class="section__inner">
-        <h2 class="throughline" data-reveal>Still learning.</h2>
-        <p class="story-beat story-beat--run" data-reveal>
-          Turns out I still like picking up things I'm bad at and staying long
-          enough to get good.
-        </p>
+        <div class="stage" data-reveal>
+          <h2 class="throughline">Still learning.</h2>
+          <p class="story-beat story-beat--aside">
+            Turns out I still like picking up things I'm bad at and staying long
+            enough to get good.
+          </p>
+        </div>
 
         <div class="life-grid">
           <div class="life-tile" data-reveal>
@@ -582,8 +639,8 @@
             <p class="coda" data-reveal>I love my mom, too.</p>
 
             <ul class="elsewhere-links" data-reveal>
-              <!-- TODO: real handles — see DIRECTION.md "assets still needed".
-                   The tap-to-copy handler no-ops while the [TODO] guard is present. -->
+              <!-- TODO: real handles. The tap-to-copy handler no-ops while the
+                   [TODO] guard is present. -->
               <li><a href="mailto:[TODO]" data-copy>[TODO email] — tap to copy</a></li>
               <li><a href="[TODO linkedin]" target="_blank" rel="noopener">LinkedIn</a></li>
               <li><a href="[TODO instagram]" target="_blank" rel="noopener">Instagram</a></li>

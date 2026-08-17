@@ -84,11 +84,28 @@ add a sixth face and do not repeat the name anywhere else. Roster order is
 the League role order the team actually played: Willwin (top) through Keen
 (support).
 
-**Pacing is a requirement, not a preference.** Sections size to their
-content — explicitly not min-height: 100vh, which paced an earlier draft at
-one idea per screen. Secondary material goes in a margin column beside the
-narrative (`.spread`) or in the chronicle's single flex gap, never stacked
-with hand-tuned margins.
+**The page is a sequence of editorial chapters, not a stack of blocks.**
+This is the spatial spec, and it supersedes the earlier "keep it compact"
+note — an earlier draft was dense and evenly spaced, and the only moment
+that landed was the LIFE pivot, because it was the only one with room.
+
+- `.stage` gives one idea most of a viewport (min-height 58vh, 46vh on
+  phones), vertically centred so the whitespace sits above and below rather
+  than only underneath.
+- `.path` is the visible thread between stages: a hand-drawn arrow in the
+  doodle line language, left-aligned with the text column so it reads as a
+  route down the page rather than a centred "scroll down" prompt. Some
+  carry a label (`age 15`).
+- Composition is typography-led. Rules and boxes were stripped off the
+  lessons and the achievements — they are facts set as type now, not
+  ledgers.
+- **Do not solve every section with a grid.** The bento in section 04 is
+  the one grid the page keeps, because four parallel kinds of work genuinely
+  are a table; everything around it is staged so it reads as an inset
+  exhibit rather than the page's default answer.
+
+The page is ~16 screens as a result. That is the intended trade: long in
+pixels, fast to read, because each screen carries one idea.
 
 ## Known content/asset details
 

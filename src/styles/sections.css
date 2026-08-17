@@ -281,8 +281,8 @@
   /* Extra above and below the chronicle's own gap — this is a chapter break,
      not another beat. */
   width: 100%;
-  margin: clamp(1.25rem, 3.5vw, 2.5rem) 0;
-  padding: clamp(1.4rem, 4vw, 2.75rem) 0;
+  margin: clamp(1rem, 3vh, 2.5rem) 0;
+  padding: clamp(3rem, 11vh, 7rem) 0;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }
@@ -447,16 +447,6 @@
 }
 
 /* ---- 02 Story ---- */
-
-/* The chronological run. A single gap governs the whole sequence, so beats,
-   tag rows and media blocks stay evenly spaced without per-element margins. */
-.chronicle {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: clamp(1.4rem, 3vw, 2.25rem);
-  margin-bottom: clamp(2rem, 5vw, 3.25rem);
-}
 
 .story-beat {
   font-family: var(--font-display);
@@ -909,7 +899,7 @@
   grid-template-columns: minmax(3rem, 5.5rem) minmax(0, 1fr);
   gap: clamp(1rem, 3vw, 3rem);
   align-items: baseline;
-  padding: clamp(1.4rem, 3.5vw, 2.4rem) 0;
+  padding: clamp(1.9rem, 4.5vh, 3.25rem) 0;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -1085,11 +1075,9 @@
 --------------------------------------------------------------------------- */
 .lessons {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
-  gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: clamp(2rem, 5vw, 4.5rem);
   width: 100%;
-  padding-top: clamp(1.25rem, 3vw, 2rem);
-  border-top: 1px solid var(--color-border);
 }
 
 .lesson {
@@ -1122,11 +1110,11 @@
 .lesson__to {
   font-family: var(--font-display);
   font-variation-settings: var(--fraunces-display);
-  font-size: var(--step-lede);
+  font-size: clamp(1.25rem, 1rem + 1.1vw, 1.95rem);
   font-weight: 450;
-  line-height: 1.25;
+  line-height: 1.18;
   letter-spacing: var(--track-display);
-  max-width: 18ch;
+  max-width: 16ch;
   margin: 0;
 }
 
@@ -1163,13 +1151,11 @@
 --------------------------------------------------------------------------- */
 .achievements {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
-  gap: clamp(1.1rem, 3vw, 2.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: clamp(1.75rem, 4.5vw, 4rem);
   width: 100%;
   margin: 0;
-  padding: clamp(1.15rem, 3vw, 1.6rem) 0;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  padding: 0;
 }
 
 .achievement__label {
@@ -1184,7 +1170,7 @@
 .achievement__value {
   font-family: var(--font-display);
   font-variation-settings: var(--fraunces-display);
-  font-size: clamp(1.35rem, 1.1rem + 1.1vw, 2.1rem);
+  font-size: clamp(1.6rem, 1.2rem + 1.7vw, 2.7rem);
   font-weight: 450;
   line-height: 1.1;
   letter-spacing: var(--track-display);
@@ -1199,12 +1185,12 @@
 .figure-big__num {
   font-family: var(--font-display);
   font-variation-settings: var(--fraunces-display);
-  font-size: clamp(2.6rem, 1.8rem + 4vw, 5.5rem);
+  font-size: clamp(3rem, 2rem + 5.5vw, 7rem);
   font-weight: 500;
   line-height: 1;
   letter-spacing: var(--track-hero);
   font-variant-numeric: tabular-nums;
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.5rem;
 }
 
 .figure-big__label {
@@ -1304,5 +1290,96 @@
   }
   .closing__portrait {
     max-width: 200px;
+  }
+}
+
+/* ---- Stages and the path --------------------------------------------------
+   The page reads as a sequence of editorial chapters rather than a stack of
+   blocks. A stage is one idea given most of a viewport, vertically centred so
+   the whitespace sits above and below it rather than only underneath. The
+   path is the visible thread between stages — a hand-drawn arrow in the same
+   line language as the doodles, left-aligned with the text column so it reads
+   as a route down the page instead of a centred "scroll down" prompt.
+
+   This is the LIFE treatment generalised: the pivot was the only moment with
+   room to breathe, and it was the only moment that landed.
+--------------------------------------------------------------------------- */
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  width: 100%;
+  min-height: min(58vh, 560px);
+}
+
+/* Media already brings its own height; forcing a viewport on top of a reel
+   just adds dead space above and below it. */
+.stage--media {
+  min-height: 0;
+}
+
+.path {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  width: 100%;
+  padding: clamp(1.25rem, 4vh, 3rem) 0;
+  padding-left: clamp(0.25rem, 1.5vw, 1.5rem);
+}
+
+.path__arrow {
+  height: clamp(58px, 9vh, 104px);
+  width: auto;
+  fill: none;
+  stroke: var(--color-ink-muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.45;
+}
+
+.path__label {
+  font-family: var(--font-mono);
+  font-size: var(--step-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--track-eyebrow);
+  color: var(--color-ink-muted);
+}
+
+/* The line a stage is built around. Bigger than a beat in a run, because it
+   is not in a run — it has the screen to itself. */
+.story-beat--major {
+  font-size: clamp(1.9rem, 1.35rem + 2.5vw, 3.5rem);
+  line-height: 1.1;
+  max-width: 19ch;
+}
+
+/* Supporting line under a major statement: quieter, and set at reading size
+   so it never competes with the line it's supporting. */
+.story-beat--aside {
+  font-variation-settings: var(--fraunces-quiet);
+  font-size: var(--step-lede);
+  line-height: 1.4;
+  color: var(--color-ink-muted);
+  max-width: 40ch;
+}
+
+/* The grid section still wants air around it now that everything else is
+   staged — otherwise it reads as the page reverting to type. */
+.modules {
+  margin: clamp(0.5rem, 2vh, 1.5rem) 0;
+}
+
+@media (max-width: 720px) {
+  /* Viewport-height stages on a phone leave big empty bands, since the type
+     is smaller but the viewport is not proportionally shorter. */
+  .stage {
+    min-height: min(46vh, 420px);
+  }
+  .path__arrow {
+    height: clamp(46px, 7vh, 72px);
   }
 }

@@ -76,7 +76,61 @@
               </svg>
               <blockquote class="shout__text">Stop wasting your life playing games!</blockquote>
             </div>
-            <figcaption class="shout__who">— mom &amp; dad, on repeat</figcaption>
+
+            <div class="shout__source">
+              <!-- Drawn from a photo, kept to a doodle rather than a likeness:
+                   the bob, the round wire frames, the pendant. Same wobbly
+                   single-weight line as the bubble it hangs off. -->
+              <svg class="dood mom" viewBox="0 0 200 210" role="img"
+                   aria-label="Line drawing of Karlin's mother">
+                <!-- Excitement lines, the same device as the reference. -->
+                <g class="dood__spark">
+                  <path d="M30 44 L46 58" />
+                  <path d="M100 14 L100 30" />
+                  <path d="M170 44 L154 58" />
+                  <path d="M12 104 L30 104" />
+                  <path d="M188 104 L170 104" />
+                  <path d="M24 160 L40 150" />
+                  <path d="M176 160 L160 150" />
+                </g>
+
+                <!-- No ears: a chin-length bob covers them, and stubs poking
+                     through the hair read as artefacts rather than as ears. -->
+                <g class="dood__line">
+                  <path d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
+                           C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
+                           C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
+                </g>
+
+                <!-- The bob. Sits close to the head rather than haloing it, and
+                     stops above the jaw so the face still carries the drawing.
+                     Blunt ends, not tapered points. -->
+                <path class="dood__fill"
+                      d="M52 116
+                         C44 92, 46 66, 69 53
+                         C85 43, 115 43, 131 53
+                         C154 66, 156 92, 148 116
+                         L141 116
+                         C143 96, 141 82, 136 74
+                         C130 64, 120 60, 111 60
+                         C102 75, 86 82, 70 80
+                         C62 79, 57 88, 56 100
+                         C55 106, 55 111, 57 116 Z" />
+
+                <!-- Round wire frames — the thing that makes it her. -->
+                <g class="dood__line">
+                  <circle cx="78" cy="110" r="19" />
+                  <circle cx="122" cy="110" r="19" />
+                  <path d="M97 108 C99 105.5, 101 105.5, 103 108" />
+                  <path d="M59 106 L50 103" />
+                  <path d="M141 106 L150 103" />
+                  <path d="M84 138 C92 149, 108 149, 116 138" />
+                </g>
+                <circle class="dood__fill" cx="78" cy="110" r="4.6" />
+                <circle class="dood__fill" cx="122" cy="110" r="4.6" />
+              </svg>
+              <figcaption class="shout__who">— mom, on repeat</figcaption>
+            </div>
           </figure>
         </div>
 
@@ -120,12 +174,102 @@
           <!-- The roster sits in the margin as a credit line, not a sentence. -->
           <aside class="roster" data-reveal>
             <span class="roster__label">the team</span>
+            <!-- Same drawing language as mom, one step smaller. Each is drawn
+                 to the two or three features that actually tell them apart —
+                 hair shape, glasses, mouth — not to a likeness. -->
             <ol class="roster__names">
-              <li>Willwin</li>
-              <li>Faith</li>
-              <li>xKace</li>
-              <li>TheJons</li>
-              <li>Keen</li>
+              <li>
+                <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Faith">
+                  <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
+                           C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
+                           C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
+                  <!-- spiked up at the front -->
+                  <path class="dood__fill" d="M52 100 C47 78, 50 58, 64 49 L70 38 L78 48 L86 34 L96 46
+                           L106 33 L114 47 L124 38 L131 50 C147 58, 155 78, 150 100
+                           C148 86, 144 76, 138 70 C130 61, 117 57, 100 57
+                           C83 57, 68 62, 60 73 C55 81, 53 91, 52 100 Z" />
+                  <circle class="dood__fill" cx="80" cy="108" r="5" />
+                  <circle class="dood__fill" cx="120" cy="108" r="5" />
+                  <path class="dood__line" d="M86 134 C92 144, 108 144, 114 134" />
+                </svg>
+                <span class="roster__name">Faith</span>
+              </li>
+              <li>
+                <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Keen">
+                  <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
+                           C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
+                           C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
+                  <!-- short and fair -->
+                  <path class="dood__hair--fair" d="M54 98 C48 76, 54 54, 74 46 C86 41, 114 41, 126 46
+                           C146 54, 152 76, 146 98 C144 86, 141 76, 136 70
+                           C128 60, 115 56, 100 56 C84 56, 70 61, 62 72
+                           C57 80, 55 89, 54 98 Z" />
+                  <rect class="dood__line" x="59" y="96" width="38" height="24" rx="5" />
+                  <rect class="dood__line" x="103" y="96" width="38" height="24" rx="5" />
+                  <path class="dood__line" d="M97 105 L103 105" />
+                  <path class="dood__line" d="M59 101 L50 98" />
+                  <path class="dood__line" d="M141 101 L150 98" />
+                  <circle class="dood__fill" cx="78" cy="108" r="4.6" />
+                  <circle class="dood__fill" cx="122" cy="108" r="4.6" />
+                  <!-- mid kiss -->
+                  <ellipse class="dood__line" cx="100" cy="139" rx="7.5" ry="6.5" />
+                </svg>
+                <span class="roster__name">Keen</span>
+              </li>
+              <li>
+                <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="xKace">
+                  <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
+                           C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
+                           C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
+                  <!-- straight fringe, bowl cut -->
+                  <path class="dood__fill" d="M50 104 C44 78, 51 54, 72 45 C84 40, 116 40, 128 45
+                           C149 54, 156 78, 150 104 C148 90, 146 80, 143 74
+                           C138 65, 129 64, 119 66 C111 68, 89 68, 81 66
+                           C71 64, 62 65, 57 74 C54 80, 52 90, 50 104 Z" />
+                  <circle class="dood__fill" cx="80" cy="108" r="5" />
+                  <circle class="dood__fill" cx="120" cy="108" r="5" />
+                  <path class="dood__line" d="M87 138 L113 138" />
+                </svg>
+                <span class="roster__name">xKace</span>
+              </li>
+              <li>
+                <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="Willwin">
+                  <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
+                           C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
+                           C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
+                  <!-- chin-length bob, centre part -->
+                  <path class="dood__fill" d="M48 138 C40 110, 45 72, 68 54 C84 43, 116 43, 132 54
+                           C155 72, 160 110, 152 138 L142 138
+                           C147 112, 145 88, 139 76 C133 65, 118 60, 100 60
+                           C82 60, 67 65, 61 76 C55 88, 53 112, 58 138 Z" />
+                  <rect class="dood__line dood__line--thin" x="60" y="97" width="37" height="22" rx="3" />
+                  <rect class="dood__line dood__line--thin" x="103" y="97" width="37" height="22" rx="3" />
+                  <path class="dood__line dood__line--thin" d="M97 106 L103 106" />
+                  <circle class="dood__fill" cx="78" cy="108" r="4.4" />
+                  <circle class="dood__fill" cx="122" cy="108" r="4.4" />
+                  <path class="dood__line" d="M89 138 C94 142, 106 142, 111 138" />
+                </svg>
+                <span class="roster__name">Willwin</span>
+              </li>
+              <li>
+                <svg class="dood roster__face" viewBox="0 0 200 210" role="img" aria-label="TheJons">
+                  <path class="dood__line" d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
+                           C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
+                           C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
+                  <!-- fair, and lumpy across the top for curl -->
+                  <path class="dood__hair--fair" d="M53 100 C47 84, 45 66, 56 57
+                           C58 47, 70 43, 79 49 C83 40, 98 38, 105 46
+                           C113 39, 126 43, 130 53 C142 55, 149 64, 147 76
+                           C150 86, 149 92, 147 100 C145 88, 142 78, 137 72
+                           C129 62, 116 58, 100 58 C84 58, 70 63, 62 74
+                           C57 82, 55 91, 53 100 Z" />
+                  <circle class="dood__fill" cx="80" cy="108" r="5" />
+                  <circle class="dood__fill" cx="120" cy="108" r="5" />
+                  <!-- big open grin -->
+                  <path class="dood__line" d="M80 132 C88 149, 112 149, 120 132" />
+                </svg>
+                <span class="roster__name">TheJons</span>
+              </li>
             </ol>
           </aside>
         </div>

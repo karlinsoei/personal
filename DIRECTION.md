@@ -160,12 +160,19 @@ it. When adding content, add it to a margin, not to the scroll.
   above. Nothing has been built. The accent colour was chosen partly on the
   logic that vermilion *is* seal ink, so if the mark never ships, that
   argument goes partly unspent.
-- **The shout bubble is hand-authored SVG, not illustration.** The brief
-  asked for "a doodle of a mom and dad yelling at me". Drawing figures
-  badly would be worse than not drawing them, so what shipped is a wobbly
-  speech bubble carrying the line itself. If real illustration is wanted —
-  figures, more doodles in other margins — that's a commission or the
-  owner's own hand, and the `.spread` margin column is where it goes.
+- **The doodles are hand-authored SVG, and they have a ceiling.** Six of
+  them: mom in section 01, and the five teammates in section 02's roster.
+  All share one drawing language (`.dood*` in sections.css) — heavy
+  round-capped line, one face path and eye placement across the whole set,
+  solid fill for dark hair, a lighter fill for fair hair (which is the only
+  way hair colour reads when everything is drawn in a single ink).
+  Each is drawn to the two or three features that actually tell the person
+  apart — hair shape, glasses, mouth — and **not to a likeness**. Faith's
+  spikes, Keen's rectangular frames and mid-kiss, xKace's bowl cut, Willwin's
+  bob and wire frames, TheJons' curls and grin. At the size they render
+  (~58px) that's enough to identify who's who, which is what they're for.
+  If proper likenesses are wanted, that's an illustrator, not more bezier
+  fiddling. Swapping them is a file drop — the layout doesn't change.
 - **Game titles are set as type, not logos.** The brief floated using the
   League and Call of Duty logos. Those are trademarks belonging to Riot and
   Activision, so they're set as mono chips instead. Using the real marks is

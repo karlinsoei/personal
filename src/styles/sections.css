@@ -171,9 +171,74 @@
   color: var(--color-ink);
 }
 
-/* Indented clear of the bubble's tail, which drops from the lower left. */
+/* Mom sits under the bubble's tail, which drops from the lower left, so the
+   bubble reads as coming out of her. */
+.shout__source {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.9rem;
+  margin-left: 0.4rem;
+}
+
+/* ---- Doodles -------------------------------------------------------------
+   Hand-authored SVG, all in one drawing language: a heavy round-capped line,
+   solid fill for dark hair, outline-only for light hair. That last rule is
+   how hair colour gets encoded at all, since everything is drawn in a single
+   ink — Keen and TheJons read as fair because their hair isn't filled in.
+   All portraits share the same face path and eye placement so they read as
+   one set rather than five unrelated drawings.
+--------------------------------------------------------------------------- */
+.dood {
+  display: block;
+  height: auto;
+  overflow: visible;
+  /* Ink, not accent — the vermilion belongs to the words, not the people. */
+  color: var(--color-ink);
+}
+
+.dood__line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Wire frames rather than heavy plastic ones. */
+.dood__line--thin {
+  stroke-width: 4.2;
+}
+
+.dood__fill {
+  fill: currentColor;
+}
+
+/* Fair hair. Leaving it as an outline was the first attempt and it read as a
+   banded wig — the silhouette has to stay solid like the dark heads, just in
+   a lighter tone, so the whole set matches. */
+.dood__hair--fair {
+  fill: color-mix(in srgb, var(--color-ink) 30%, var(--color-bg));
+  stroke: currentColor;
+  stroke-width: 6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.dood__spark {
+  fill: none;
+  stroke: var(--color-ink-muted);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  opacity: 0.45;
+}
+
+.mom {
+  width: clamp(102px, 10.5vw, 134px);
+  flex: 0 0 auto;
+}
+
 .shout__who {
-  margin: 0.5rem 0 0 2.6rem;
+  margin: 0 0 0.35rem;
   font-family: var(--font-mono);
   font-size: var(--step-caption);
   color: var(--color-ink-muted);
@@ -282,14 +347,25 @@
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 0.9rem;
+  gap: 0.9rem 0.55rem;
   color: var(--color-ink);
-  counter-reset: none;
 }
 
 .roster__names li {
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: 0.15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.roster__face {
+  width: clamp(48px, 4.6vw, 62px);
+}
+
+.roster__name {
+  font-size: 0.66rem;
+  letter-spacing: 0.02em;
+  color: var(--color-ink-muted);
 }
 
 /* The payoff. Carried by scale rather than colour — the accent is already

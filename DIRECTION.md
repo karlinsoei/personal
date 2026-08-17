@@ -84,28 +84,34 @@ add a sixth face and do not repeat the name anywhere else. Roster order is
 the League role order the team actually played: Willwin (top) through Keen
 (support).
 
-**The page is a sequence of editorial chapters, not a stack of blocks.**
-This is the spatial spec, and it supersedes the earlier "keep it compact"
-note — an earlier draft was dense and evenly spaced, and the only moment
-that landed was the LIFE pivot, because it was the only one with room.
+**Chapters group, they don't isolate.** A `.stage` holds a group of related
+beats that reads without scrolling — not one line per screen. An earlier pass
+gave every beat 58vh and produced a page of empty bands; whitespace has to
+serve the grouping, not replace it. The whole opening of section 02 —
+struggle, conditions, Call of Duty, "didn't fit in", and the reel — is one
+screen on a laptop.
 
-- `.stage` gives one idea most of a viewport (min-height 58vh, 46vh on
-  phones), vertically centred so the whitespace sits above and below rather
-  than only underneath.
-- `.path` is the visible thread between stages: a hand-drawn arrow in the
-  doodle line language, left-aligned with the text column so it reads as a
-  route down the page rather than a centred "scroll down" prompt. Some
-  carry a label (`age 15`).
-- Composition is typography-led. Rules and boxes were stripped off the
-  lessons and the achievements — they are facts set as type now, not
-  ledgers.
-- **Do not solve every section with a grid.** The bento in section 04 is
-  the one grid the page keeps, because four parallel kinds of work genuinely
-  are a table; everything around it is staged so it reads as an inset
-  exhibit rather than the page's default answer.
+**Use the centre.** Sections 02 and 03 are centred compositions. The `.path`
+connectors run down the middle of the page, because that is where the spine
+of this story is; left-binding them made the page look like it was avoiding
+its own centre. Paths are short — they mark a step, they don't stand in for
+one. `.path--inline` is the shorter variant used inside a stage.
 
-The page is ~16 screens as a result. That is the intended trade: long in
-pixels, fast to read, because each screen carries one idea.
+**Two diagrams carry the ideas that prose can't.**
+- `.converge` — Basketball, Chess and D&D resolving onto Video games. A row
+  of four tags would have said they were equal ingredients; they aren't.
+  Video games is the layer the other three arrived through, and the lines
+  have to show that.
+- `.equiv` — `LEAGUE ⟷ LIFE`, with the note about seeing life through the
+  game and the game through life. **This is what the chapter is for.** An
+  earlier pass reduced it to the single word LIFE, which lost the whole
+  point: the claim is that the game and life turned out to be the same
+  shape, and the three lessons hang off that. The vermilion sits on the
+  link, not on either word — the relationship is the idea.
+
+**Do not solve every section with a grid.** The bento in section 04 is the
+one grid the page keeps, because four parallel kinds of work genuinely are a
+table.
 
 ## Known content/asset details
 

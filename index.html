@@ -7,13 +7,9 @@
   <meta name="description" content="I'm Karlin — the kid who played too much. Six years spent finding out what happens when you take a kid's passion for games seriously." />
 
   <!-- Set before first paint. The scroll-reveal hidden state is gated behind
-       this class, so if JS never runs the page still renders its content
-       rather than going blank. -->
+       this class, so if JS never runs the page still renders its content. -->
   <script>
     document.documentElement.classList.add("js");
-    // Second failsafe: if the module never boots at all (chunk 404, parse
-    // error), nothing downstream can un-hide anything. Drop the class on a
-    // timer instead. main.ts cancels this the moment it takes over.
     window.__revealFailsafe = setTimeout(function () {
       document.documentElement.classList.remove("js");
     }, 3000);
@@ -22,7 +18,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Karlin Oei" />
   <meta property="og:description" content="I'm Karlin — the kid who played too much. Six years spent finding out what happens when you take a kid's passion for games seriously." />
-  <!-- TODO: og:image — needs a real 1200×630 asset before this gets shared anywhere. -->
+  <!-- TODO: og:image — needs a real 1200×630 asset. -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#F6F4EF" />
 
@@ -64,8 +60,6 @@
                         stroke-linejoin="round" stroke-linecap="round"
                         vector-effect="non-scaling-stroke" />
                 </svg>
-                <!-- Sentence case in the markup, shouted via CSS — screen
-                     readers spell out literal all-caps strings. -->
                 <blockquote class="shout__text">&ldquo;Stop wasting your life playing video games!&rdquo;</blockquote>
               </div>
 
@@ -143,55 +137,41 @@
 
     <!-- 02 — WHERE I CAME FROM -->
     <section id="story" class="section section--story" data-section="02">
-      <div class="section__inner">
-        <h2 class="eyebrow" data-reveal>where I came from</h2>
-        <div class="stage" data-reveal>
+      <div class="section__inner section__inner--center">
+        <h2 class="eyebrow eyebrow--center" data-reveal>where I came from</h2>
+        <div class="stage stage--center" data-reveal>
           <p class="story-beat story-beat--major">I struggled as a teen.</p>
           <div class="conditions">
             <span class="cond">Social anxiety</span>
             <span class="cond">Divorced parents</span>
             <span class="cond">Bad grades</span>
           </div>
-        </div>
-        <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 24 120">
-            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
-            <path d="M5.5 96 L12 112 L18.5 96" />
-          </svg>
-        </div>
-        <div class="stage" data-reveal>
-          <span class="tag tag--game">Call of Duty</span>
-          <p class="story-beat story-beat--major">became my refuge.</p>
+          <p class="tag-line">
+            <span class="tag tag--game">Call of Duty</span>
+            <span class="tag-line__text">became my refuge.</span>
+          </p>
           <p class="story-beat story-beat--aside">
             I didn't like or fit in with the &ldquo;normal&rdquo; kid stuff.
           </p>
-        </div>
-        <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 24 120">
-            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
-            <path d="M5.5 96 L12 112 L18.5 96" />
-          </svg>
-        </div>
-        <div class="stage stage--media" data-reveal>
-          <figure class="reel" data-reel>
+          <figure class="reel reel--compact" data-reel>
             <div class="reel__viewport" data-reel-viewport tabindex="0"
                  role="group" aria-label="Childhood and teenage years, scrollable">
               <div class="reel__track">
-              <div class="reel__slide">
-                <div class="media-slot" data-placeholder="early-gaming-1"></div>
-              </div>
-              <div class="reel__slide">
-                <div class="media-slot" data-placeholder="early-gaming-2"></div>
-              </div>
-              <div class="reel__slide">
-                <div class="media-slot media-slot--clip" data-placeholder="early-gaming-clip"></div>
-              </div>
-              <div class="reel__slide">
-                <div class="media-slot" data-placeholder="early-gaming-3"></div>
-              </div>
-              <div class="reel__slide">
-                <div class="media-slot" data-placeholder="early-gaming-4"></div>
-              </div>
+                <div class="reel__slide">
+                  <div class="media-slot" data-placeholder="early-gaming-1"></div>
+                </div>
+                <div class="reel__slide">
+                  <div class="media-slot" data-placeholder="early-gaming-2"></div>
+                </div>
+                <div class="reel__slide">
+                  <div class="media-slot media-slot--clip" data-placeholder="early-gaming-clip"></div>
+                </div>
+                <div class="reel__slide">
+                  <div class="media-slot" data-placeholder="early-gaming-3"></div>
+                </div>
+                <div class="reel__slide">
+                  <div class="media-slot" data-placeholder="early-gaming-4"></div>
+                </div>
               </div>
             </div>
             <figcaption class="reel__bar">
@@ -211,43 +191,48 @@
           </figure>
         </div>
         <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 24 120">
-            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
-            <path d="M5.5 96 L12 112 L18.5 96" />
+          <svg class="path__arrow" viewBox="0 0 20 60">
+            <path d="M10 3 C 8.5 16, 11.5 30, 10 46" />
+            <path d="M5 38 L10 52 L15 38" />
           </svg>
-          <span class="path__label">age 15</span>
+            <span class="path__label">age 15</span>
         </div>
-        <div class="stage" data-reveal>
+        <div class="stage stage--center" data-reveal>
           <p class="story-beat">At 15, I was introduced to</p>
           <p class="tag-drop">
             <span class="tag tag--game tag--hero">League of Legends</span>
           </p>
-        </div>
-        <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 24 120">
-            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
-            <path d="M5.5 96 L12 112 L18.5 96" />
+        <div class="path path--inline" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 20 60">
+            <path d="M10 3 C 8.5 16, 11.5 30, 10 46" />
+            <path d="M5 38 L10 52 L15 38" />
           </svg>
         </div>
-        <div class="stage" data-reveal>
           <p class="story-beat">It felt like a combination of:</p>
-          <div class="formula">
-            <span class="tag tag--mix">Basketball</span>
-            <span class="formula__op" aria-hidden="true">+</span>
-            <span class="tag tag--mix">Chess</span>
-            <span class="formula__op" aria-hidden="true">+</span>
-            <span class="tag tag--mix">D&amp;D</span>
-            <span class="formula__op" aria-hidden="true">+</span>
-            <span class="tag tag--mix">Video games</span>
+
+          <!-- Three things converging onto one, not four items in a row —
+               video games is the layer the other three were combined with. -->
+          <div class="converge">
+            <div class="converge__row">
+              <span class="tag tag--mix">Basketball</span>
+              <span class="tag tag--mix">Chess</span>
+              <span class="tag tag--mix">D&amp;D</span>
+            </div>
+            <svg class="converge__lines" viewBox="0 0 300 54" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M50 2 L150 52" vector-effect="non-scaling-stroke" />
+              <path d="M150 2 L150 52" vector-effect="non-scaling-stroke" />
+              <path d="M250 2 L150 52" vector-effect="non-scaling-stroke" />
+            </svg>
+            <span class="tag tag--mix tag--base">Video games</span>
           </div>
         </div>
         <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 24 120">
-            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
-            <path d="M5.5 96 L12 112 L18.5 96" />
+          <svg class="path__arrow" viewBox="0 0 20 60">
+            <path d="M10 3 C 8.5 16, 11.5 30, 10 46" />
+            <path d="M5 38 L10 52 L15 38" />
           </svg>
         </div>
-        <div class="stage" data-reveal>
+        <div class="stage stage--center" data-reveal>
           <p class="story-beat story-beat--major">Nothing had ever captivated me this way before.</p>
           <div class="cadence">
             <p class="cadence__line">I wanted to learn.</p>
@@ -256,18 +241,30 @@
           </div>
         </div>
         <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 24 120">
-            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
-            <path d="M5.5 96 L12 112 L18.5 96" />
+          <svg class="path__arrow" viewBox="0 0 20 60">
+            <path d="M10 3 C 8.5 16, 11.5 30, 10 46" />
+            <path d="M5 38 L10 52 L15 38" />
           </svg>
         </div>
-        <div class="pivot" data-reveal>
-          <p class="pivot__word">Life</p>
-        </div>
-        <div class="stage" data-reveal>
-          <p class="story-beat story-beat--major">
-            League started teaching me things that extended beyond the game.
+        <div class="stage stage--center stage--pivot" data-reveal>
+          <div class="equiv">
+            <span class="equiv__word">League</span>
+            <svg class="equiv__link" viewBox="0 0 90 24" aria-hidden="true">
+              <path d="M8 12 L82 12" />
+              <path d="M17 4 L7 12 L17 20" />
+              <path d="M73 4 L83 12 L73 20" />
+            </svg>
+            <span class="equiv__word">Life</span>
+          </div>
+          <p class="equiv__note">
+            I started seeing life through the game, and the game through life.
           </p>
+        <div class="path path--inline" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 20 60">
+            <path d="M10 3 C 8.5 16, 11.5 30, 10 46" />
+            <path d="M5 38 L10 52 L15 38" />
+          </svg>
+        </div>
           <div class="lessons">
             <div class="lesson">
               <p class="lesson__from">Failure &amp; grit</p>
@@ -288,7 +285,7 @@
               <svg class="lesson__arrow" viewBox="0 0 20 34" aria-hidden="true">
                 <path d="M10 3 L10 29 M3 22 L10 31 L17 22" />
               </svg>
-              <p class="lesson__to">I can do what I put my mind to.</p>
+              <p class="lesson__to">I can do this.</p>
             </div>
           </div>
         </div>
@@ -297,9 +294,9 @@
 
     <!-- 03 — COLLEGE -->
     <section id="college" class="section section--college" data-section="03">
-      <div class="section__inner">
-        <h2 class="eyebrow" data-reveal>college</h2>
-        <div class="stage" data-reveal>
+      <div class="section__inner section__inner--center">
+        <h2 class="eyebrow eyebrow--center" data-reveal>college</h2>
+        <div class="stage stage--center" data-reveal>
           <p class="story-beat story-beat--major">
             In college, I found a team who loved competing as much as I did.
           </p>
@@ -403,12 +400,12 @@
           </aside>
         </div>
         <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 24 120">
-            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
-            <path d="M5.5 96 L12 112 L18.5 96" />
+          <svg class="path__arrow" viewBox="0 0 20 60">
+            <path d="M10 3 C 8.5 16, 11.5 30, 10 46" />
+            <path d="M5 38 L10 52 L15 38" />
           </svg>
         </div>
-        <div class="stage" data-reveal>
+        <div class="stage stage--center" data-reveal>
           <dl class="achievements">
             <div class="achievement">
               <dt class="achievement__label">Varsity</dt>
@@ -423,42 +420,34 @@
               <dd class="achievement__value">Challenger</dd>
             </div>
           </dl>
-        </div>
-        <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 24 120">
-            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
-            <path d="M5.5 96 L12 112 L18.5 96" />
-          </svg>
-        </div>
-        <div class="stage" data-reveal>
           <div class="figure-big">
             <p class="figure-big__num">~$80,000</p>
             <p class="figure-big__label">in esports scholarships</p>
           </div>
         </div>
         <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 24 120">
-            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
-            <path d="M5.5 96 L12 112 L18.5 96" />
+          <svg class="path__arrow" viewBox="0 0 20 60">
+            <path d="M10 3 C 8.5 16, 11.5 30, 10 46" />
+            <path d="M5 38 L10 52 L15 38" />
           </svg>
         </div>
-        <div class="stage stage--media" data-reveal>
+        <div class="stage stage--center stage--media" data-reveal>
           <figure class="reel" data-reel>
             <div class="reel__viewport" data-reel-viewport tabindex="0"
                  role="group" aria-label="Championships and team, scrollable">
               <div class="reel__track">
-              <div class="reel__slide">
-                <div class="media-slot" data-placeholder="college-1"></div>
-              </div>
-              <div class="reel__slide">
-                <div class="media-slot" data-placeholder="college-2"></div>
-              </div>
-              <div class="reel__slide">
-                <div class="media-slot media-slot--clip" data-placeholder="college-clip"></div>
-              </div>
-              <div class="reel__slide">
-                <div class="media-slot" data-placeholder="college-3"></div>
-              </div>
+                <div class="reel__slide">
+                  <div class="media-slot" data-placeholder="college-1"></div>
+                </div>
+                <div class="reel__slide">
+                  <div class="media-slot" data-placeholder="college-2"></div>
+                </div>
+                <div class="reel__slide">
+                  <div class="media-slot media-slot--clip" data-placeholder="college-clip"></div>
+                </div>
+                <div class="reel__slide">
+                  <div class="media-slot" data-placeholder="college-3"></div>
+                </div>
               </div>
             </div>
             <figcaption class="reel__bar">
@@ -478,29 +467,33 @@
           </figure>
         </div>
         <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 24 120">
-            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
-            <path d="M5.5 96 L12 112 L18.5 96" />
+          <svg class="path__arrow" viewBox="0 0 20 60">
+            <path d="M10 3 C 8.5 16, 11.5 30, 10 46" />
+            <path d="M5 38 L10 52 L15 38" />
           </svg>
         </div>
-        <div class="stage" data-reveal>
+        <div class="stage stage--center" data-reveal>
           <p class="story-beat story-beat--major">
             I was incredibly lucky to find magic with that team.
           </p>
           <p class="story-beat story-beat--aside">
             That experience changed my life. It made me wonder&hellip;
           </p>
-        </div>
-        <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 24 120">
-            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
-            <path d="M5.5 96 L12 112 L18.5 96" />
+        <div class="path path--inline" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 20 60">
+            <path d="M10 3 C 8.5 16, 11.5 30, 10 46" />
+            <path d="M5 38 L10 52 L15 38" />
           </svg>
         </div>
-        <div class="pivot pivot--ask" data-reveal>
-          <p class="pivot__word pivot__word--ask">&ldquo;What if I never had that?&rdquo;</p>
+          <p class="ask">&ldquo;What if I never had that?&rdquo;</p>
         </div>
-        <div class="stage" data-reveal>
+        <div class="path" aria-hidden="true">
+          <svg class="path__arrow" viewBox="0 0 20 60">
+            <path d="M10 3 C 8.5 16, 11.5 30, 10 46" />
+            <path d="M5 38 L10 52 L15 38" />
+          </svg>
+        </div>
+        <div class="stage stage--center" data-reveal>
           <p class="story-beat story-beat--major">
             So I've spent the last six years trying to make that a reality for
             other kids.
@@ -512,22 +505,21 @@
     <!-- 04 — THE WORK -->
     <section id="work" class="section section--work" data-section="04">
       <div class="section__inner">
-        <div class="stage" data-reveal>
+        <div class="stage stage--center" data-reveal>
           <h2 class="question question--lead">
             What happens when you take a kid's passion for games seriously?
           </h2>
         </div>
 
         <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 24 120">
-            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
-            <path d="M5.5 96 L12 112 L18.5 96" />
+          <svg class="path__arrow" viewBox="0 0 20 60">
+            <path d="M10 3 C 8.5 16, 11.5 30, 10 46" />
+            <path d="M5 38 L10 52 L15 38" />
           </svg>
         </div>
 
         <!-- The one grid the page keeps: four parallel kinds of work genuinely
-             are a table. Everything around it is staged, so it reads as an
-             inset exhibit rather than as the page's default solution. -->
+             are a table. Everything around it is staged. -->
         <div class="modules">
           <article class="mod mod--stat" data-reveal>
             <p class="mod__figure">1,000+</p>
@@ -537,7 +529,6 @@
             <p class="mod__figure">6 years</p>
             <p class="mod__desc">Working on the same question</p>
           </article>
-
           <article class="mod" data-reveal>
             <div class="media-slot mod__media" data-placeholder="programs-photo"></div>
             <h3 class="mod__label">Programs</h3>
@@ -561,9 +552,9 @@
         </div>
 
         <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 24 120">
-            <path d="M12 4 C 9 28, 15 52, 12 76 C 10 92, 13 100, 12 106" />
-            <path d="M5.5 96 L12 112 L18.5 96" />
+          <svg class="path__arrow" viewBox="0 0 20 60">
+            <path d="M10 3 C 8.5 16, 11.5 30, 10 46" />
+            <path d="M5 38 L10 52 L15 38" />
           </svg>
         </div>
 
@@ -597,7 +588,7 @@
     <!-- 05 — STILL LEARNING -->
     <section id="life" class="section section--life" data-section="05">
       <div class="section__inner">
-        <div class="stage" data-reveal>
+        <div class="stage stage--center" data-reveal>
           <h2 class="throughline">Still learning.</h2>
           <p class="story-beat story-beat--aside">
             Turns out I still like picking up things I'm bad at and staying long
@@ -633,14 +624,10 @@
           <figure class="closing__portrait" data-reveal>
             <div class="media-slot media-slot--portrait" data-placeholder="closing-portrait"></div>
           </figure>
-
           <div class="closing__text">
             <h2 class="closing-line" data-reveal>And I still play games.</h2>
             <p class="coda" data-reveal>I love my mom, too.</p>
-
             <ul class="elsewhere-links" data-reveal>
-              <!-- TODO: real handles. The tap-to-copy handler no-ops while the
-                   [TODO] guard is present. -->
               <li><a href="mailto:[TODO]" data-copy>[TODO email] — tap to copy</a></li>
               <li><a href="[TODO linkedin]" target="_blank" rel="noopener">LinkedIn</a></li>
               <li><a href="[TODO instagram]" target="_blank" rel="noopener">Instagram</a></li>

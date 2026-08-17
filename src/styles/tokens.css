@@ -84,7 +84,7 @@
   /* ---- Layout ---- */
   --gutter: clamp(1.25rem, 4vw, 4rem);
   /* Chapters, not blocks — each section gets real air around it. */
-  --section-pad-y: clamp(5rem, 13vh, 10rem);
+  --section-pad-y: clamp(3.5rem, 8vh, 6.5rem);
   --content-max: 1200px;
 
   /* ---- Motion — restrained by design; respected via prefers-reduced-motion in base.css ---- */

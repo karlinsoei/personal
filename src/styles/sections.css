@@ -47,8 +47,10 @@
   padding: var(--section-pad-y) var(--gutter);
 }
 
+/* Still a commanding opening, but no longer sized to hold a hero photo it
+   doesn't have. The headline and the shout carry this screen on their own. */
 .section--intro {
-  min-height: min(88vh, 780px);
+  min-height: min(74vh, 660px);
   display: flex;
   align-items: center;
 }
@@ -262,11 +264,6 @@
   }
 }
 
-.media-slot--intro {
-  margin-top: clamp(2rem, 5vw, 3rem);
-  max-width: 520px;
-}
-
 /* ---- Shared: a media slot with its annotation ---- */
 .media-figure {
   margin: 0 0 clamp(2rem, 5vw, 3.25rem);
@@ -434,6 +431,20 @@
   padding-left: 1.1rem;
   border-left: 2px solid var(--color-accent);
   margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+/* Opens the section now rather than supporting a heading above it, so it
+   takes the weight the heading used to carry. */
+.question--lead {
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-display);
+  font-size: var(--step-h2);
+  font-weight: 450;
+  line-height: 1.15;
+  letter-spacing: var(--track-display);
+  color: var(--color-ink);
+  max-width: 24ch;
+  text-wrap: balance;
 }
 
 /* Authority, stated as numbers rather than claimed in prose. */

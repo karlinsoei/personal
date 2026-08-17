@@ -108,6 +108,12 @@ Fixed chapter nav (01→05) tracks scroll position — already implemented.
   1.75rem beat get genuinely different cuts instead of one set of shapes
   scaled, which is the rhythm argument done by the typeface rather than by
   hand. Cost: 151 KB total on first load, 0 third-party requests.
+  **Re-checked against arjun-r.com and kept.** Matching the reference site's
+  own typeface was raised and dropped: the site was unreachable from the
+  build environment, so the face was never identified. The owner compared
+  the specimen against arjun-r.com himself and judged this pairing close
+  enough. Recorded as his call on a visual comparison — not a verified
+  match, since no one on the build side ever saw the reference type.
 
 - **Copy: drafted, needs your pass.** Every `[TODO]` in index.html is now
   written except the section 05 handles (see below). Voice is first-person,

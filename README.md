@@ -49,6 +49,30 @@ which carries the reasoning for each. Copy is written throughout. Still open:
   invents no dates, teams, or placements, but the incidental details are
   guesses and want a pass from the owner.
 
+## Adding photos
+
+Camera originals are 10–20 MB each. None of that belongs in the browser or in
+git history, so originals stay out of the repo:
+
+1. Put full-resolution files in `source-images/` (gitignored).
+2. `npm run images`
+
+For each source that produces, in `public/assets/images/`:
+
+```
+<name>.jpg        1000px, mozjpeg q82 — the fallback
+<name>.webp       1000px, q80        — what most browsers take
+<name>@2x.webp    2000px, q72        — high-density screens
+```
+
+The filename becomes the asset name, lowercased and hyphenated, so
+`0141.jpg` → rename it to `karlin-hero.jpg` first. Re-running only rebuilds
+sources newer than their outputs; `npm run images -- --force` rebuilds all.
+
+Markup uses `<picture>` with a WebP `source` and a JPEG `img` fallback. The
+hatched `.media-slot` sits behind each image, so the layout still reads while
+a file is missing.
+
 ## Running it
 
 ```

@@ -140,11 +140,17 @@
                width/height are the source pixels and reserve the space, so
                nothing shifts when it decodes. -->
           <figure class="hero-portrait" data-reveal>
-            <div class="media-slot media-slot--portrait" data-placeholder="karlin-hero.jpg">
-              <img class="hero-portrait__img"
-                   src="/assets/images/karlin-hero.jpg"
-                   alt="Karlin sitting on a bench outdoors, an autumn maple behind him"
-                   width="1333" height="2000" decoding="async" />
+            <div class="media-slot media-slot--portrait" data-placeholder="karlin-hero">
+              <picture>
+                <source type="image/webp"
+                        srcset="/assets/images/karlin-hero.webp 1000w,
+                                /assets/images/karlin-hero@2x.webp 2000w"
+                        sizes="(max-width: 860px) 260px, 340px" />
+                <img class="hero-portrait__img"
+                     src="/assets/images/karlin-hero.jpg"
+                     alt="Karlin sitting on a bench outdoors, an autumn maple behind him"
+                     width="1000" height="1500" decoding="async" />
+              </picture>
             </div>
           </figure>
         </div>

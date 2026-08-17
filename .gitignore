@@ -1,3 +1,7 @@
 node_modules
 dist
 .DS_Store
+
+# Full-resolution photo originals — optimised into public/assets/images via `npm run images`.
+# Keeping camera files (10-20MB each) out of git history.
+source-images/

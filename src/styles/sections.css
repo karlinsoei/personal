@@ -227,11 +227,44 @@
   transform: rotate(-1.2deg);
 }
 
-/* League gets the largest tag on the page — it's the turn in the story. */
+/* League gets the largest tag on the page, its own colour, and a little
+   Hextech-gem flourish — it's the turn in the story, so it should look like
+   one rather than sitting in the same ink-on-paper register as every other
+   chip. */
 .tag--hero {
-  font-size: clamp(1rem, 0.82rem + 0.85vw, 1.65rem);
-  padding: 0.5em 0.9em;
+  --tag: var(--color-league);
+  position: relative;
+  font-size: clamp(1.35rem, 0.95rem + 1.7vw, 2.4rem);
+  padding: 0.62em 1.35em;
+  border-width: 2px;
   transform: rotate(-2deg);
+  background: color-mix(in srgb, var(--tag) 11%, var(--color-bg));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--tag) 13%, transparent);
+}
+
+.tag--hero::before,
+.tag--hero::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 0.55em;
+  height: 0.55em;
+  background: var(--tag);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.tag--hero::before { left: -0.78em; }
+.tag--hero::after { right: -0.78em; }
+
+@media (max-width: 720px) {
+  /* The flanking gems crowd a narrow line — quieter there than lost. */
+  .tag--hero::before,
+  .tag--hero::after {
+    width: 0.4em;
+    height: 0.4em;
+  }
+  .tag--hero::before { left: -0.55em; }
+  .tag--hero::after { right: -0.55em; }
 }
 
 .tag--mix {
@@ -1467,13 +1500,32 @@
   max-width: 470px;
 }
 
-.converge__row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+/* Three equal-width columns, not three independently-placed items — that's
+   what makes the icon/label/connector share one true vertical axis per
+   pillar instead of just sitting near each other. Bottom-aligned so the
+   three labels land on one baseline regardless of icon height. */
+.converge__pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: end;
   width: 100%;
-  gap: 0.5rem;
 }
+
+.converge__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.converge__glyph {
+  width: clamp(50px, 8.5vw, 76px);
+  height: clamp(50px, 8.5vw, 76px);
+}
+
+.tag--basketball { --tag: var(--color-mix-basketball); }
+.tag--chess { --tag: var(--color-mix-chess); }
+.tag--dnd { --tag: var(--color-mix-dnd); }
 
 .converge__lines {
   width: 100%;

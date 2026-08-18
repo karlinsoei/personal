@@ -51,6 +51,14 @@
   --color-cond-2: #6B3A5E;   /* plum   — divorced parents    7.99:1 */
   --color-cond-3: #7A5030;   /* umber  — bad grades          6.33:1 */
 
+  /* League of Legends, and the three things it converged from. Deliberately
+     a second, separate trio from the conditions above — the two shouldn't
+     visually rhyme, since they aren't the same kind of thing. */
+  --color-league: #6E4F10;         /* Hextech gold, darkened for contrast  6.85:1 */
+  --color-mix-basketball: #9E430D; /* vivid burnt orange — warm, energetic 5.36:1 on its own tag tint */
+  --color-mix-chess: #1A3455;      /* deep navy — cool, intellectual      11.47:1 */
+  --color-mix-dnd: #5E2690;        /* rich violet — fantastical            8.86:1 */
+
   /* ---- Type ---- */
   --font-display: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;

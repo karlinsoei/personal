@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Karlin Oei</title>
-  <meta name="description" content="I'm Karlin — the kid who didn't listen. Six years spent finding out what happens when you take a kid's passion for games seriously." />
+  <meta name="description" content="I'm Karlin, the kid who didn't listen. I never thought games were the problem — turns out, they changed my life." />
 
   <!-- Set before first paint. The scroll-reveal hidden state is gated behind
        this class, so if JS never runs the page still renders its content. -->
@@ -17,7 +17,7 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Karlin Oei" />
-  <meta property="og:description" content="I'm Karlin — the kid who didn't listen. Six years spent finding out what happens when you take a kid's passion for games seriously." />
+  <meta property="og:description" content="I'm Karlin, the kid who didn't listen. I never thought games were the problem — turns out, they changed my life." />
   <!-- TODO: og:image — needs a real 1200×630 asset. -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#F6F4EF" />
@@ -121,25 +121,59 @@
               </div>
             </figure>
 
+            <!-- The greeting is fixed; only the statement under it swaps with
+                 the portrait, so the hero reads as one person changing their
+                 mind rather than as two different heroes. -->
             <h1 class="hero-line">
-              Hi, I'm Karlin, the kid who didn't listen.
+              <span class="hero-line__fixed">Hi, I'm Karlin, the kid who didn't listen.</span>
+              <span class="hero-line__swap">
+                <span class="hero-line__state is-on" data-hero-state="default">I never thought<br />games were<br />the problem.</span>
+                <span class="hero-line__state" data-hero-state="revealed">Turns out,<br />they changed<br />my life.</span>
+              </span>
             </h1>
 
           </div>
 
           <figure class="hero-portrait" data-reveal>
-            <div class="media-slot media-slot--portrait" data-placeholder="karlin-hero">
-              <picture>
-                <source type="image/webp"
-                        srcset="/assets/images/karlin-hero.webp 1000w,
-                                /assets/images/karlin-hero@2x.webp 2000w"
-                        sizes="(max-width: 860px) 260px, 340px" />
-                <img class="hero-portrait__img"
-                     src="/assets/images/karlin-hero.jpg"
-                     alt="Karlin sitting on a bench outdoors, an autumn maple behind him"
-                     width="1000" height="1500" decoding="async" />
-              </picture>
-            </div>
+            <button type="button" class="hero-swap" data-hero-swap aria-pressed="false"
+                    aria-label="Reveal the photo underneath: Karlin competing onstage">
+              <span class="media-slot media-slot--portrait hero-swap__frame" data-hero-frame>
+                <picture>
+                  <source type="image/webp"
+                          srcset="/assets/images/karlin-hero.webp 1000w,
+                                  /assets/images/karlin-hero@2x.webp 2000w"
+                          sizes="(max-width: 860px) 260px, 340px" />
+                  <img class="hero-swap__img"
+                       src="/assets/images/karlin-hero.jpg"
+                       alt="Karlin sitting on a bench outdoors, an autumn maple behind him"
+                       width="1000" height="1500" decoding="async" />
+                </picture>
+                <!-- The layer being uncovered. It sits on top and is masked down
+                     to the blob, which is the only way to "reveal what's under"
+                     without ever cross-fading the two photographs. -->
+                <span class="hero-swap__under" data-hero-under>
+                  <picture>
+                    <source type="image/webp"
+                            srcset="/assets/images/riot-serious.webp 1000w,
+                                    /assets/images/riot-serious@2x.webp 2000w"
+                            sizes="(max-width: 860px) 575px, 750px" />
+                    <img class="hero-swap__img hero-swap__img--under"
+                         src="/assets/images/riot-serious.jpg"
+                         alt="Karlin onstage mid-match at the 2018 College Championship"
+                         width="1000" height="679" decoding="async" />
+                  </picture>
+                </span>
+              </span>
+              <span class="hero-swap__hint" aria-hidden="true">
+                <svg class="hero-swap__hint-arrow" viewBox="0 0 24 30">
+                  <path d="M12 27 C 10 18, 14 10, 12 3" />
+                  <path d="M6 9 L12 2 L18 9" />
+                </svg>
+                <span class="hero-swap__hint-text">
+                  <span class="hero-swap__hint-hover">hover</span><span class="hero-swap__hint-tap">tap</span> to see who I was
+                </span>
+              </span>
+            </button>
           </figure>
         </div>
       </div>

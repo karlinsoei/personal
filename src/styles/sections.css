@@ -155,11 +155,145 @@
   aspect-ratio: 2 / 3;
 }
 
-.hero-portrait__img {
+/* ---- The hero swap --------------------------------------------------------
+   Two photographs in one frame: today's portrait, and the same person onstage
+   underneath it. Moving the pointer opens a soft blob through the top layer,
+   so the visitor is literally uncovering the gamer under the person they see
+   now — never a cross-fade, which would read as "here are two pictures"
+   rather than "here is what was under that one".
+
+   Both layers are absolutely positioned in the same box, so the frame's size
+   is fixed by the aspect-ratio and nothing on the page can shift while the
+   interaction runs.
+
+   The whole thing is gated on `.js`: with no JavaScript the mask never applies
+   and the visitor simply gets the portrait, which is the honest fallback.
+--------------------------------------------------------------------------- */
+.hero-swap {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.js .hero-swap {
+  cursor: pointer;
+}
+
+.hero-swap__frame {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+/* display:contents so each <img> positions against the frame itself rather
+   than against a <picture> box that would need its own positioning. */
+.hero-swap__frame picture {
+  display: contents;
+}
+
+.hero-swap__img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 2px;
+}
+
+/* Framed so he sits where the portrait's face sits — the swap lands on the
+   same spot rather than sliding the subject sideways. */
+.hero-swap__img--under {
+  object-position: 42% 50%;
+}
+
+/* Hidden by default and shown only once `.js` confirms something can mask it.
+   Without that gate a no-JS visitor gets the unmasked esports photo sitting
+   on top of the portrait — the wrong picture, under a headline that hasn't
+   swapped to match it. */
+.hero-swap__under {
+  position: absolute;
+  inset: 0;
+  display: none;
+}
+
+.js .hero-swap__under {
+  display: block;
+}
+
+/* Three overlapping circles, unioned by the default `add` compositing, give an
+   edge that wanders instead of reading as a perfect lens. The soft stops do
+   the rest: the boundary dissolves rather than cutting. */
+.js .hero-swap__under {
+  --mx: 50%;
+  --my: 42%;
+  --r: 0px;
+  -webkit-mask-image:
+    radial-gradient(circle var(--r) at var(--mx) var(--my), #000 52%, rgba(0, 0, 0, 0.6) 72%, transparent 90%),
+    radial-gradient(circle calc(var(--r) * 0.74) at calc(var(--mx) + var(--r) * 0.3) calc(var(--my) - var(--r) * 0.28), #000 46%, transparent 88%),
+    radial-gradient(circle calc(var(--r) * 0.66) at calc(var(--mx) - var(--r) * 0.29) calc(var(--my) + var(--r) * 0.31), #000 46%, transparent 88%);
+  mask-image:
+    radial-gradient(circle var(--r) at var(--mx) var(--my), #000 52%, rgba(0, 0, 0, 0.6) 72%, transparent 90%),
+    radial-gradient(circle calc(var(--r) * 0.74) at calc(var(--mx) + var(--r) * 0.3) calc(var(--my) - var(--r) * 0.28), #000 46%, transparent 88%),
+    radial-gradient(circle calc(var(--r) * 0.66) at calc(var(--mx) - var(--r) * 0.29) calc(var(--my) + var(--r) * 0.31), #000 46%, transparent 88%);
+}
+
+/* ---- The affordance -------------------------------------------------------
+   A mono annotation and a hand-drawn arrow — the same language the page uses
+   for "— mom, on repeat" and "age 15" — rather than a button pinned to a
+   photograph.
+--------------------------------------------------------------------------- */
+.hero-swap__hint {
+  display: none;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: var(--step-caption);
+  color: var(--color-ink-muted);
+  transition: opacity 0.4s var(--ease-out);
+}
+
+.js .hero-swap__hint {
+  display: flex;
+}
+
+/* Once they have opened it, the instruction has done its job. */
+.js .hero-swap.has-interacted .hero-swap__hint {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-swap__hint-arrow {
+  flex: 0 0 auto;
+  width: 13px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform: rotate(-14deg);
+}
+
+.hero-swap__hint-tap {
+  display: none;
+}
+
+/* Touch devices get the verb that actually applies to them. */
+@media (hover: none) {
+  .hero-swap__hint-hover {
+    display: none;
+  }
+  .hero-swap__hint-tap {
+    display: inline;
+  }
 }
 
 @media (max-width: 860px) {
@@ -348,8 +482,47 @@
   font-weight: 500;
   line-height: 1.03;
   letter-spacing: var(--track-hero);
-  text-wrap: balance;
-  max-width: 15ch;
+  margin: 0;
+}
+
+/* The greeting never moves. Holding it still is what makes the line under it
+   read as the same person revising the claim, rather than the hero being
+   replaced wholesale. */
+.hero-line__fixed {
+  display: block;
+  font-size: 0.47em;
+  line-height: 1.12;
+  max-width: 17ch;
+  margin-bottom: 0.4em;
+}
+
+/* Both statements occupy one grid cell, so the taller one sets the height once
+   and nothing reflows when they trade places. */
+.hero-line__swap {
+  display: grid;
+}
+
+.hero-line__state {
+  grid-area: 1 / 1;
+  opacity: 0;
+  /* visibility, not just opacity — it also takes the inactive line out of the
+     accessibility tree, so a screen reader reads one headline, not both. */
+  visibility: hidden;
+  transform: translateY(0.14em);
+  transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out),
+              visibility 0.45s;
+}
+
+.hero-line__state.is-on {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-line__state {
+    transition: none;
+  }
 }
 
 /* The parents' line, as a hand-drawn shout in the margin. The bubble is the

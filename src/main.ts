@@ -103,6 +103,182 @@ function initOverture() {
 }
 
 /**
+ * The hero swap — uncovering the gamer under the portrait.
+ *
+ * The mask itself is CSS; this only feeds it three numbers (centre x, centre y,
+ * radius) as custom properties. Position and radius are eased here in a single
+ * rAF loop rather than by CSS transitions, because the pointer target moves
+ * continuously — a transition would restart on every mousemove and stutter.
+ *
+ * The loop runs only while something is actually moving and stops once it
+ * settles, so an idle hero costs nothing.
+ */
+function initHeroSwap() {
+  const root = document.querySelector<HTMLButtonElement>("[data-hero-swap]");
+  const under = document.querySelector<HTMLElement>("[data-hero-under]");
+  const frame = document.querySelector<HTMLElement>("[data-hero-frame]");
+  if (!root || !under || !frame) return;
+
+  const states = document.querySelectorAll<HTMLElement>("[data-hero-state]");
+
+  // Fractions of the frame, resolved against its live size on each read so a
+  // resize or an orientation change can't leave the blob mis-scaled.
+  // Deliberately small: a wide opening just interleaves two unrelated
+  // compositions, where a tight one reads as a window cut into the portrait.
+  const REST = 0.3;
+  const EASE_POS = 0.2;
+  const EASE_RADIUS = 0.14;
+
+  let revealed = false;
+  let hovering = false;
+  let raf = 0;
+
+  const size = () => {
+    const r = frame.getBoundingClientRect();
+    return { w: r.width, h: r.height };
+  };
+
+  const restRadius = () => Math.min(size().w, size().h) * REST;
+  // Generous enough that the blob's soft outer stop still clears the far
+  // corner once it has re-centred, so a full reveal has no faded edge.
+  const fullRadius = () => Math.hypot(size().w, size().h) * 1.1;
+
+  const { w: w0, h: h0 } = size();
+  let curX = w0 / 2;
+  let curY = h0 * 0.42;
+  let curR = 0;
+  let tgtX = curX;
+  let tgtY = curY;
+  let tgtR = 0;
+
+  const paint = () => {
+    under.style.setProperty("--mx", `${curX}px`);
+    under.style.setProperty("--my", `${curY}px`);
+    under.style.setProperty("--r", `${curR}px`);
+  };
+
+  const settle = () => {
+    curX = tgtX;
+    curY = tgtY;
+    curR = tgtR;
+    paint();
+  };
+
+  const tick = () => {
+    curX += (tgtX - curX) * EASE_POS;
+    curY += (tgtY - curY) * EASE_POS;
+    curR += (tgtR - curR) * EASE_RADIUS;
+    paint();
+
+    const done =
+      Math.abs(tgtX - curX) < 0.4 &&
+      Math.abs(tgtY - curY) < 0.4 &&
+      Math.abs(tgtR - curR) < 0.4;
+
+    raf = done ? 0 : requestAnimationFrame(tick);
+    if (done) settle();
+  };
+
+  const run = () => {
+    if (prefersReducedMotion) {
+      settle();
+      return;
+    }
+    if (!raf) raf = requestAnimationFrame(tick);
+  };
+
+  const setState = (next: boolean) => {
+    revealed = next;
+    root.setAttribute("aria-pressed", String(next));
+    states.forEach((el) => {
+      el.classList.toggle(
+        "is-on",
+        (el.dataset.heroState === "revealed") === next
+      );
+    });
+  };
+
+  const aim = (e: PointerEvent | MouseEvent) => {
+    const box = frame.getBoundingClientRect();
+    tgtX = e.clientX - box.left;
+    tgtY = e.clientY - box.top;
+  };
+
+  root.addEventListener("pointerenter", (e) => {
+    if (e.pointerType === "touch") return;
+    hovering = true;
+    root.classList.add("has-interacted");
+    aim(e);
+    // Open at the pointer rather than easing in from wherever it last sat.
+    if (!revealed && curR === 0) {
+      curX = tgtX;
+      curY = tgtY;
+    }
+    if (!revealed) tgtR = restRadius();
+    run();
+  });
+
+  root.addEventListener("pointermove", (e) => {
+    if (e.pointerType === "touch" || revealed) return;
+    aim(e);
+    run();
+  });
+
+  root.addEventListener("pointerleave", (e) => {
+    if (e.pointerType === "touch") return;
+    hovering = false;
+    if (!revealed) tgtR = 0;
+    run();
+  });
+
+  // Records where a tap landed so the reveal grows out of the finger rather
+  // than out of the middle of the frame.
+  root.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "touch") return;
+    aim(e);
+    curX = tgtX;
+    curY = tgtY;
+  });
+
+  // Fires for mouse, touch and keyboard alike, so this is the only toggle.
+  root.addEventListener("click", () => {
+    root.classList.add("has-interacted");
+    const { w, h } = size();
+
+    if (!revealed) {
+      setState(true);
+      // Re-centre as it grows: it bounds how large the blob has to get to
+      // cover the frame, and reads as the photograph settling into place.
+      tgtX = w / 2;
+      tgtY = h / 2;
+      tgtR = fullRadius();
+    } else {
+      setState(false);
+      tgtX = hovering ? tgtX : w / 2;
+      tgtY = hovering ? tgtY : h * 0.42;
+      tgtR = hovering ? restRadius() : 0;
+    }
+    run();
+  });
+
+  addEventListener(
+    "resize",
+    () => {
+      if (revealed) {
+        const { w, h } = size();
+        tgtX = w / 2;
+        tgtY = h / 2;
+        tgtR = fullRadius();
+        settle();
+      }
+    },
+    { passive: true }
+  );
+
+  paint();
+}
+
+/**
  * Reel — the early-gaming strip.
  *
  * The scrolling is CSS (scroll-snap on an overflow container), so the thing
@@ -230,6 +406,14 @@ try {
   // Without this the headline stays hidden until the <head> failsafe fires.
   console.error("Overture failed to initialise; showing the headline.", err);
   document.querySelector("[data-overture]")?.classList.add("is-shouting", "is-answered");
+}
+
+try {
+  initHeroSwap();
+} catch (err) {
+  // The portrait stays put and the default headline stands; only the reveal
+  // is lost, which is the enhancement rather than the content.
+  console.error("Hero swap failed to initialise.", err);
 }
 
 try {

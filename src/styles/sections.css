@@ -82,18 +82,6 @@
   width: 100%;
 }
 
-/* An <h2> for document structure, but sized and weighted as a quiet label —
-   so the outline is real without the visual becoming a heading. */
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: var(--step-eyebrow);
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: var(--track-eyebrow);
-  color: var(--color-ink-muted);
-  margin-bottom: clamp(1.25rem, 3vw, 2rem);
-}
-
 /* ---- The spread ------------------------------------------------------------
    The page's core layout move: a main column with a margin column beside it
    for asides, rosters and doodles. Secondary material sits *next to* the
@@ -776,22 +764,6 @@
   margin: 0;
 }
 
-/* Section label — an exhibition caption, not a heading. */
-.block-label {
-  font-family: var(--font-mono);
-  font-size: var(--step-eyebrow);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: var(--track-eyebrow);
-  color: var(--color-ink-muted);
-  margin: 0 0 clamp(1rem, 2.5vw, 1.5rem);
-}
-
-/* The beliefs are a separate moment, so their label gets real air above it. */
-.block-label--major {
-  margin-top: clamp(3.5rem, 9vw, 7rem);
-}
-
 /* ---- Work modules --------------------------------------------------------
    A ruled grid rather than a set of cards: square corners, hairline rules
    shared between cells, no fills, no shadows, no icons. The spans alternate
@@ -1386,10 +1358,6 @@
   text-transform: uppercase;
   letter-spacing: var(--track-eyebrow);
   color: var(--color-ink-muted);
-}
-
-.eyebrow--center {
-  text-align: center;
 }
 
 .story-beat--major {

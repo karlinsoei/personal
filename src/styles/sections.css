@@ -408,6 +408,18 @@
   .tag--hero::after { right: -0.55em; }
 }
 
+/* The tag never wraps, so on the narrowest phones its own floor was wider than
+   the column — 321px of unbreakable chip inside 280px of content, plus the
+   gems hanging off each end. That scrolled the whole page sideways. Dropping
+   the floor here is what keeps the page from scrolling horizontally at 320px. */
+@media (max-width: 380px) {
+  .tag--hero {
+    font-size: 1.02rem;
+    padding: 0.55em 1em;
+    letter-spacing: 0.07em;
+  }
+}
+
 .tag--mix {
   font-size: clamp(0.85rem, 0.76rem + 0.4vw, 1.08rem);
 }
@@ -483,23 +495,23 @@
   line-height: 1.03;
   letter-spacing: var(--track-hero);
   margin: 0;
+  max-width: 18ch;
 }
 
-/* The greeting never moves. Holding it still is what makes the line under it
-   read as the same person revising the claim, rather than the hero being
-   replaced wholesale. */
+/* Same size as the ending it hands off to — the two halves are one sentence,
+   so any difference in scale would break it into a label plus a headline. It
+   also stays inline: as a block it forced a line break after "who", stranding
+   that word on a line of its own. */
 .hero-line__fixed {
-  display: block;
-  font-size: 0.47em;
-  line-height: 1.12;
-  max-width: 17ch;
-  margin-bottom: 0.4em;
+  display: inline;
 }
 
-/* Both statements occupy one grid cell, so the taller one sets the height once
-   and nothing reflows when they trade places. */
+/* inline-grid, so the two endings stack in one cell that flows inside the
+   sentence rather than starting a new line. Because the cell is as wide as the
+   longer ending, the sentence wraps at the same point in both states — swapping
+   can't reflow the words above it. */
 .hero-line__swap {
-  display: grid;
+  display: inline-grid;
 }
 
 .hero-line__state {

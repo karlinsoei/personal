@@ -15,7 +15,7 @@
  * cheap. Pass --force to rebuild everything.
  */
 import sharp from "sharp";
-import { readdir, mkdir, stat } from "node:fs/promises";
+import { readdir, mkdir, stat, rm } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 
@@ -68,9 +68,18 @@ for (const file of files) {
   }
 
   const meta = await sharp(src).metadata();
+  const long = Math.max(meta.width || 0, meta.height || 0);
   console.log(`\n${file}  ${meta.width}x${meta.height}  ${(srcStat.size / 1e6).toFixed(1)} MB`);
 
   for (const t of targets) {
+    // Never emit a 2x the source can't actually fill. withoutEnlargement would
+    // hand back the same pixels at a lower quality, and srcset would then
+    // prefer that file on retina — a strictly worse image at a bigger claim.
+    if (t.width > LONG_EDGE_1X && long <= LONG_EDGE_1X) {
+      if (existsSync(t.out)) await rm(t.out);
+      console.log(`   -- ${path.basename(t.out).padEnd(28)} skipped, source is only ${long}px`);
+      continue;
+    }
     // withoutEnlargement: never upscale a source that's already small.
     const buf = await sharp(src)
       .rotate() // honour EXIF orientation before resizing

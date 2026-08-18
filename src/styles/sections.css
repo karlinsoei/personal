@@ -533,6 +533,48 @@
   aspect-ratio: 3 / 2;
 }
 
+/* Once a real photo or video lands, it fills the frame without cropping —
+   `contain`, not `cover`, since the three assets here are a landscape group
+   shot, a portrait, and a video, and none of them should lose their edges
+   to a fixed 3:2 box. The tint fills whatever letterboxing that leaves. */
+.reel__slide .media-slot:has(img),
+.reel__slide .media-slot:has(video) {
+  background: color-mix(in srgb, var(--color-ink) 5%, var(--color-bg));
+}
+
+/* Absolutely positioned rather than a plain 100%/100%: an <img> that carries
+   its own width/height attributes has an intrinsic ratio, and a plain
+   height:100% against a parent sized by aspect-ratio doesn't reliably
+   resolve against it — the element falls back to its own ratio instead and
+   blows out the box. Taking it out of flow sizes it against the slot's
+   actual used height, unambiguously. */
+.reel__slide .media-slot img,
+.reel__slide .media-slot video {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* A slide is media plus an optional line underneath — the note never sits
+   on top of the photo, since it's the part you're free to skip. */
+.reel__slide {
+  display: flex;
+  flex-direction: column;
+}
+
+.reel__note {
+  margin: 0;
+  padding: 0.7rem 0.15rem 0;
+  font-family: var(--font-mono);
+  font-size: var(--step-caption);
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+  font-style: italic;
+}
+
 /* Marks a slot as holding a clip rather than a still. */
 .media-slot--clip::after {
   content: "";

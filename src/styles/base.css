@@ -66,12 +66,14 @@ button:focus-visible {
 /* Once a real image lands in the slot, the placeholder chrome gets out of the
    way. Without this the label is a block in normal flow, so it pushes the
    photo down and the hatched border shows around it. */
-.media-slot:has(img) {
+.media-slot:has(img),
+.media-slot:has(video) {
   background: none;
   border: 0;
 }
 
-.media-slot:has(img)::before {
+.media-slot:has(img)::before,
+.media-slot:has(video)::before {
   content: none;
 }
 

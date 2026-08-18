@@ -119,12 +119,19 @@ one. `.path--inline` is the shorter variant used inside a stage.
   of four tags would have said they were equal ingredients; they aren't.
   Video games is the layer the other three arrived through, and the lines
   have to show that.
-- `.equiv` — `LEAGUE ⟷ LIFE`, with the note about seeing life through the
-  game and the game through life. **This is what the chapter is for.** An
-  earlier pass reduced it to the single word LIFE, which lost the whole
-  point: the claim is that the game and life turned out to be the same
-  shape, and the three lessons hang off that. The vermilion sits on the
-  link, not on either word — the relationship is the idea.
+- `.equiv` — `LEAGUE = LIFE`. **This is what the chapter is for.** An early
+  pass reduced it to the single word LIFE, which lost the point entirely;
+  a later one used an arrow, which reads as "leads to" or "relates to" —
+  a different claim. The claim is *sameness*, so it is an equals sign. The
+  vermilion sits on the link, not on either word: the relationship is the
+  idea.
+- `.chiasmus` — "life through the game, the game through life" is a mirrored
+  sentence, so it is set as a mirrored diagram rather than left to wrap:
+  three columns, two rows, the terms swapping sides across a fixed centre.
+  "through" holds the middle column and never moves, because it is the axis
+  both readings turn on. The left column is right-aligned and the right
+  column left-aligned — that is what pulls the swapped terms into vertical
+  register. Without it the mirror is in the words but invisible on the page.
 
 **Do not solve every section with a grid.** The bento in section 04 is the
 one grid the page keeps, because four parallel kinds of work genuinely are a

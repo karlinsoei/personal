@@ -254,15 +254,27 @@
         <div class="stage stage--center stage--pivot" data-reveal>
           <div class="equiv">
             <span class="equiv__word">League</span>
-            <svg class="equiv__link" viewBox="0 0 90 24" aria-hidden="true">
-              <path d="M8 12 L82 12" />
-              <path d="M17 4 L7 12 L17 20" />
-              <path d="M73 4 L83 12 L73 20" />
+            <!-- An equals, not an arrow. The claim is sameness; an arrow reads
+                 as "leads to" or "relates to", which is a different claim. -->
+            <svg class="equiv__link" viewBox="0 0 64 30" aria-hidden="true">
+              <path d="M7 11 C 21 10, 43 12, 57 11" />
+              <path d="M7 21 C 21 20, 43 22, 57 21" />
             </svg>
             <span class="equiv__word">Life</span>
           </div>
-          <p class="equiv__note">
-            I started seeing life through the game, and the game through life.
+
+          <p class="equiv__lead">I started seeing</p>
+
+          <!-- The sentence is a chiasmus, so it is set as one: the two terms
+               swap sides across a fixed pivot, and the mirror is visible in
+               the alignment rather than left to a line break. -->
+          <p class="chiasmus">
+            <span class="chiasmus__l">life</span>
+            <span class="chiasmus__pivot">through</span>
+            <span class="chiasmus__r">the game,</span>
+            <span class="chiasmus__l">the game</span>
+            <span class="chiasmus__pivot">through</span>
+            <span class="chiasmus__r">life.</span>
           </p>
         <div class="path path--inline" aria-hidden="true">
           <svg class="path__arrow" viewBox="0 0 20 60">

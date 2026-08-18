@@ -249,6 +249,9 @@
    for "— mom, on repeat" and "age 15" — rather than a button pinned to a
    photograph.
 --------------------------------------------------------------------------- */
+/* Vermilion rather than muted ink: the accent is already the page's "this one
+   is live" signal (chapter nav, reel progress, the roster marker), so it does
+   the priming here too without inventing a new device. */
 .hero-swap__hint {
   display: none;
   align-items: flex-start;
@@ -256,7 +259,7 @@
   margin-top: 0.7rem;
   font-family: var(--font-mono);
   font-size: var(--step-caption);
-  color: var(--color-ink-muted);
+  color: var(--color-accent);
   transition: opacity 0.4s var(--ease-out);
 }
 
@@ -264,10 +267,29 @@
   display: flex;
 }
 
-/* Once they have opened it, the instruction has done its job. */
+/* A slow breath, not a blink — enough movement to be caught in peripheral
+   vision while the eye is on the headline, quiet enough to ignore. */
+@keyframes hero-hint-breathe {
+  0%, 100% { opacity: 0.5; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
+}
+
+.js .hero-swap__hint {
+  animation: hero-hint-breathe 2.6s var(--ease-out) infinite;
+}
+
+/* Once they have opened it, the instruction has done its job. Dropping the
+   animation first lets the opacity transition above run the fade out. */
 .js .hero-swap.has-interacted .hero-swap__hint {
+  animation: none;
   opacity: 0;
   pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .hero-swap__hint {
+    animation: none;
+  }
 }
 
 .hero-swap__hint-arrow {

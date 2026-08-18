@@ -1244,38 +1244,6 @@
   stroke-linejoin: round;
 }
 
-/* ---- Achievements ---------------------------------------------------------
-   Ruled top and bottom, the same ledger device as the stat row — facts, set
-   as facts.
---------------------------------------------------------------------------- */
-.achievements {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: clamp(1.75rem, 4.5vw, 4rem);
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.achievement__label {
-  font-family: var(--font-mono);
-  font-size: var(--step-eyebrow);
-  text-transform: uppercase;
-  letter-spacing: var(--track-eyebrow);
-  color: var(--color-ink-muted);
-  margin-bottom: 0.3rem;
-}
-
-.achievement__value {
-  font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
-  font-size: clamp(1.6rem, 1.2rem + 1.7vw, 2.7rem);
-  font-weight: 450;
-  line-height: 1.1;
-  letter-spacing: var(--track-display);
-  margin: 0;
-}
-
 /* The scholarship figure, given the room a headline gets. */
 .figure-big {
   width: 100%;
@@ -1438,8 +1406,7 @@
 
 .stage--center .cadence { text-align: center; }
 .stage--center .tag-drop { margin: 0; }
-.stage--center .lesson,
-.stage--center .achievement { align-items: center; }
+.stage--center .lesson { align-items: center; }
 .stage--center .roster { text-align: center; }
 
 /* The LIFE chapter, framed top and bottom — the one place the page rules a

@@ -61,20 +61,12 @@ explicitly.
 01 Introduction — the hook, the portrait, and the parents' line as a
    hand-drawn shout in the margin
 02 Where I Came From — the teenage years in chronological order: struggle,
-   conditions, the early-gaming reel, League at 15, what it felt like a
-   combination of, and the LIFE pivot with what the game taught
+   conditions, the early-gaming reel, League at 15, what it
+   felt like a combination of, and the LIFE pivot with what the game taught
 03 College — the team, the achievements ledger, the scholarship figure, the
    championships reel, and the question that turned into the work
 04 The Work — the question, a ruled bento of stats and programmes, then the
    beliefs as their own numbered moment. No company named.
-
-**No section eyebrows.** The small mono uppercase labels that titled sections
-("where i came from", "college", "what i've come to believe") are gone —
-the opening statement of each section is its heading now, and carries the
-`<h2>`. Keep the labels that are *paired with a value* rather than titling a
-block: "the team" over the roster, "varsity / captain", "failure & grit",
-the module names, "in esports scholarships". Those aren't titles, they're one
-half of a pair.
 05 Still Learning — playful, photo-driven, annotation-style captions
 06 Elsewhere — the portrait returns, the closing lines, contact links
 

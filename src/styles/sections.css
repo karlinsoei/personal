@@ -729,7 +729,9 @@
 
 .roster__names {
   list-style: none;
-  margin: 0;
+  /* Clears the floating "me" callout above Faith, which would otherwise
+     collide with the label. */
+  margin: 2rem 0 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -1203,17 +1205,33 @@
    Vermilion because it's the same signal the chapter nav carries: you are
    here. Faith is the tag Karlin played under, so the row is five people, not
    five plus him.
---------------------------------------------------------------------------- */
+
+   Absolutely positioned rather than stacked in flow: an in-flow marker made
+   Faith's list item taller than the other four, and the row's centred
+   cross-axis alignment then read that extra height as "push the shorter
+   ones down" — Faith's face ended up sitting visibly higher than the rest.
+   Taking the marker out of flow keeps every item the same natural height,
+   so the row aligns itself; the callout floats above, a little off-centre,
+   like a hand-drawn annotation rather than a caption. */
+.roster__member--me {
+  position: relative;
+}
+
 .roster__me {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-68%) rotate(-7deg);
+  margin-bottom: 0.3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.1rem;
-  margin-top: 0.15rem;
   font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--color-accent);
+  white-space: nowrap;
 }
 
 .roster__me svg {

@@ -1093,11 +1093,12 @@
 
 .lesson__from {
   font-family: var(--font-mono);
-  font-size: var(--step-eyebrow);
+  font-size: clamp(1.15rem, 0.9rem + 1.15vw, 1.9rem);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: var(--track-eyebrow);
-  color: var(--color-ink-muted);
+  /* Eyebrow tracking is too loose once the label is this big. */
+  letter-spacing: 0.06em;
+  color: var(--color-ink);
   margin: 0;
 }
 
@@ -1113,12 +1114,13 @@
 
 .lesson__to {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
-  font-size: clamp(1.25rem, 1rem + 1.1vw, 1.95rem);
+  font-variation-settings: var(--fraunces-quiet);
+  font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.3rem);
   font-weight: 450;
-  line-height: 1.18;
+  line-height: 1.3;
   letter-spacing: var(--track-display);
-  max-width: 16ch;
+  color: var(--color-ink-muted);
+  max-width: 18ch;
   margin: 0;
 }
 

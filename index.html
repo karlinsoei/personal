@@ -45,12 +45,12 @@
     <section id="intro" class="section section--intro" data-section="01">
       <div class="section__inner">
         <div class="intro-grid">
-          <div class="intro-grid__text">
-            <h1 class="hero-line" data-reveal>
+          <div class="intro-grid__text" data-overture>
+            <h1 class="hero-line">
               Hi, I'm Karlin, the kid who played too much.
             </h1>
 
-            <figure class="shout" data-reveal>
+            <figure class="shout">
               <div class="shout__bubble-wrap">
                 <svg class="shout__bubble" viewBox="0 0 320 150" preserveAspectRatio="none" aria-hidden="true">
                   <path d="M14 30 C 12 15, 24 8, 40 7 L 279 5 C 297 4, 307 13, 306 30
@@ -65,52 +65,61 @@
 
               <div class="shout__source">
                 <svg class="dood mom" viewBox="0 0 200 210" role="img"
-                   aria-label="Line drawing of Karlin's mother">
-                <!-- Excitement lines, the same device as the reference. -->
+                   aria-label="Line drawing of Karlin's mother, mid-shout">
+                <!-- Sharper and more numerous than before: she is not amused. -->
                 <g class="dood__spark">
-                  <path d="M30 44 L46 58" />
-                  <path d="M100 14 L100 30" />
-                  <path d="M170 44 L154 58" />
-                  <path d="M12 104 L30 104" />
-                  <path d="M188 104 L170 104" />
-                  <path d="M24 160 L40 150" />
-                  <path d="M176 160 L160 150" />
+                  <path d="M28 40 L46 56" />
+                  <path d="M64 18 L72 36" />
+                  <path d="M100 10 L100 30" />
+                  <path d="M136 18 L128 36" />
+                  <path d="M172 40 L154 56" />
+                  <path d="M10 100 L30 102" />
+                  <path d="M190 100 L170 102" />
+                  <path d="M20 158 L40 148" />
+                  <path d="M180 158 L160 148" />
                 </g>
 
-                <!-- No ears: a chin-length bob covers them, and stubs poking
-                     through the hair read as artefacts rather than as ears. -->
                 <g class="dood__line">
                   <path d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
                            C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
                            C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
                 </g>
 
-                <!-- The bob. Sits close to the head rather than haloing it, and
-                     stops above the jaw so the face still carries the drawing.
-                     Blunt ends, not tapered points. -->
+                <!-- The bob: fuller than the last version and clearly side-parted,
+                     sweeping right-to-left across the forehead the way it does in
+                     the photograph. Sits high enough to leave the brows visible —
+                     without them there is no anger to read. -->
                 <path class="dood__fill"
-                      d="M52 116
-                         C44 92, 46 66, 69 53
-                         C85 43, 115 43, 131 53
-                         C154 66, 156 92, 148 116
-                         L141 116
-                         C143 96, 141 82, 136 74
-                         C130 64, 120 60, 111 60
-                         C102 75, 86 82, 70 80
-                         C62 79, 57 88, 56 100
-                         C55 106, 55 111, 57 116 Z" />
+                      d="M52 118
+                         C45 94, 47 64, 69 51
+                         C85 41, 115 41, 131 51
+                         C153 64, 155 94, 148 118
+                         L140 118
+                         C144 98, 142 78, 136 68
+                         C130 58, 120 54, 110 54
+                         C100 66, 84 71, 68 68
+                         C61 67, 57 78, 56 93
+                         C55 103, 55 111, 58 118 Z" />
+
+                <!-- Angry brows: inner ends dropped toward the nose. -->
+                <g class="dood__line">
+                  <path d="M61 78 L87 88" />
+                  <path d="M139 78 L113 88" />
+                </g>
 
                 <!-- Round wire frames — the thing that makes it her. -->
                 <g class="dood__line">
-                  <circle cx="78" cy="110" r="19" />
-                  <circle cx="122" cy="110" r="19" />
-                  <path d="M97 108 C99 105.5, 101 105.5, 103 108" />
-                  <path d="M59 106 L50 103" />
-                  <path d="M141 106 L150 103" />
-                  <path d="M84 138 C92 149, 108 149, 116 138" />
+                  <circle cx="78" cy="114" r="17" />
+                  <circle cx="122" cy="114" r="17" />
+                  <path d="M97 112 C99 109.5, 101 109.5, 103 112" />
+                  <path d="M61 110 L52 107" />
+                  <path d="M139 110 L148 107" />
                 </g>
-                <circle class="dood__fill" cx="78" cy="110" r="4.6" />
-                <circle class="dood__fill" cx="122" cy="110" r="4.6" />
+                <circle class="dood__fill" cx="78" cy="114" r="4.4" />
+                <circle class="dood__fill" cx="122" cy="114" r="4.4" />
+
+                <!-- Open, mid-shout, rather than the smile she had before. -->
+                <ellipse class="dood__fill" cx="100" cy="143" rx="12.5" ry="10" />
               </svg>
                 <figcaption class="shout__who">— mom, on repeat</figcaption>
               </div>
@@ -138,9 +147,8 @@
     <!-- 02 — WHERE I CAME FROM -->
     <section id="story" class="section section--story" data-section="02">
       <div class="section__inner section__inner--center">
-        <h2 class="eyebrow eyebrow--center" data-reveal>where I came from</h2>
         <div class="stage stage--center" data-reveal>
-          <p class="story-beat story-beat--major">I struggled as a teen.</p>
+          <h2 class="story-beat story-beat--major">I struggled as a teen.</h2>
           <div class="conditions">
             <span class="cond">Social anxiety</span>
             <span class="cond">Divorced parents</span>

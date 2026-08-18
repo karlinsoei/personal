@@ -1506,3 +1506,51 @@
   .path__arrow { height: clamp(28px, 4vh, 40px); }
   .equiv { gap: 0.5rem; }
 }
+
+/* ---- The overture ---------------------------------------------------------
+   The page opens on the accusation and answers it a beat later: mom's line
+   lands first, then "Hi, I'm Karlin" arrives as the reply. Reversing the
+   order is the whole joke, so the headline is held back rather than the
+   bubble being delayed.
+
+   Gated on `.js`, so with no JavaScript both are simply visible from the
+   start — and the 3s failsafe in <head> that strips `.js` covers the case
+   where the module never boots. Any scroll, tap or keypress answers early;
+   nobody is made to wait for a punchline they didn't ask for.
+--------------------------------------------------------------------------- */
+.js [data-overture] .hero-line {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.js [data-overture] .shout {
+  opacity: 0;
+  transform: rotate(-2.2deg) scale(0.94);
+}
+
+.js [data-overture].is-shouting .shout {
+  opacity: 1;
+  transform: rotate(-2.2deg) scale(1);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+
+.js [data-overture].is-answered .hero-line {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-overture] .hero-line,
+  .js [data-overture].is-answered .hero-line {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .js [data-overture] .shout,
+  .js [data-overture].is-shouting .shout {
+    opacity: 1;
+    transform: rotate(-2.2deg);
+    transition: none;
+  }
+}

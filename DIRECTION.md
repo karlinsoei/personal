@@ -60,7 +60,8 @@ explicitly.
 
 01 Introduction — the hook, the portrait, and the parents' line as a
    hand-drawn shout in the margin
-02 Where I Came From — the teenage years in chronological order: struggle,
+02 Where I Came From (no eyebrow label; "I struggled as a teen" is the
+   heading) — the teenage years in chronological order: struggle,
    conditions, the early-gaming reel, League at 15, what it
    felt like a combination of, and the LIFE pivot with what the game taught
 03 College — the team, the achievements ledger, the scholarship figure, the
@@ -77,6 +78,19 @@ chapter rather than being buried at the end of the childhood section.
 refuge → curiosity → challenge → confidence → belonging → wondering →
 building. Layout decisions serve that order. When something needs to move,
 move it to where it belongs in that progression rather than where it fits.
+
+**The intro is an overture, not a headline.** The page opens on mom's line
+alone and answers it ~2.2s later with "Hi, I'm Karlin, the kid who played
+too much." Reversing the order is the joke, so the *headline* is what gets
+held back, never the bubble. Any scroll, tap or keypress answers early. The
+hidden state lives in CSS behind `.js`, so with no JavaScript — or under
+prefers-reduced-motion — both are visible immediately and nothing about the
+opening depends on the script.
+
+**Mom is mid-shout, not smiling.** Angry brows dropped toward the nose, an
+open mouth, and more spark lines than the rest of the doodles get. Her brows
+have to clear the top of the glasses — when they touch the frames the whole
+face turns to mush, which is what the first attempt did.
 
 **Faith is Karlin.** It's the tag he played under, so the roster is five
 people, not five plus him — a small vermilion arrow marks which one. Do not

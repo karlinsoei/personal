@@ -68,6 +68,41 @@ function initChapterNav() {
 }
 
 /**
+ * The overture.
+ *
+ * The page opens on mom's line and answers it a beat later — the reversal is
+ * the point, so the headline is what gets held back, not the bubble.
+ *
+ * The hidden state lives in CSS behind `.js`, so with no JavaScript both are
+ * visible immediately and nothing here is load-bearing. The reply also lands
+ * the instant the reader does anything at all: waiting is the joke, but only
+ * for people who choose to wait.
+ */
+function initOverture() {
+  const root = document.querySelector<HTMLElement>("[data-overture]");
+  if (!root) return;
+
+  const answer = () => root.classList.add("is-answered");
+
+  if (prefersReducedMotion) {
+    root.classList.add("is-shouting");
+    answer();
+    return;
+  }
+
+  requestAnimationFrame(() => root.classList.add("is-shouting"));
+
+  const timer = window.setTimeout(answer, 2200);
+  const early = () => {
+    window.clearTimeout(timer);
+    answer();
+  };
+  addEventListener("scroll", early, { once: true, passive: true });
+  addEventListener("pointerdown", early, { once: true });
+  addEventListener("keydown", early, { once: true });
+}
+
+/**
  * Reel — the early-gaming strip.
  *
  * The scrolling is CSS (scroll-snap on an overflow container), so the thing
@@ -187,6 +222,14 @@ try {
   initChapterNav();
 } catch (err) {
   console.error("Chapter nav failed to initialise.", err);
+}
+
+try {
+  initOverture();
+} catch (err) {
+  // Without this the headline stays hidden until the <head> failsafe fires.
+  console.error("Overture failed to initialise; showing the headline.", err);
+  document.querySelector("[data-overture]")?.classList.add("is-shouting", "is-answered");
 }
 
 try {

@@ -1650,10 +1650,11 @@
 
 /* The LIFE chapter, framed top and bottom — the one place the page rules a
    band across itself. */
+/* Rules removed: with no arrows either side, a boxed-in block read as a
+   detour from the chapter rather than a step in it. The padding stays as the
+   breathing room the rules used to imply. */
 .stage--pivot {
   padding: clamp(1.5rem, 4.5vh, 3.25rem) 0;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
 }
 
 .path {

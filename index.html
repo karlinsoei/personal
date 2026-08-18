@@ -254,7 +254,7 @@
             <span class="path__label">age 15</span>
         </div>
         <div class="stage stage--center" data-reveal>
-          <p class="story-beat">At 15, I was introduced to a video game called</p>
+          <p class="story-beat">At 15, I fell in love with a video game called</p>
           <p class="tag-drop">
             <span class="tag tag--game tag--hero">League of Legends</span>
           </p>
@@ -266,14 +266,10 @@
         </div>
           <p class="story-beat">which is basically</p>
 
-          <!-- The three set as the triangle they form, rather than as three
-               ingredients pouring into a fourth box. It points down because
-               the three are what resolve into one thing, and the tags sit on
-               the vertices with the glyphs pushed outside the shape so the
-               edges stay clean. Column centres are 1/6, 1/2 and 5/6 of the
-               width, which is exactly where the SVG puts the corners. -->
+          <!-- Three side by side. No connector: they are three things the
+               game felt like, not a system with a flow through it. -->
           <div class="tri">
-            <div class="tri__item tri__item--a">
+            <div class="tri__item">
               <svg class="tri__glyph" viewBox="0 0 64 64" aria-hidden="true">
                   <circle cx="32" cy="32" r="24" fill="var(--color-mix-basketball)" stroke="#3A1A08" stroke-width="1.4" />
                   <path d="M32 8 C 24 20, 24 44, 32 56" fill="none" stroke="var(--color-bg)" stroke-width="2.4" />
@@ -283,7 +279,7 @@
                 </svg>
               <span class="tag tag--mix tag--basketball">Basketball</span>
             </div>
-            <div class="tri__item tri__item--b">
+            <div class="tri__item">
               <svg class="tri__glyph" viewBox="0 0 64 64" aria-hidden="true">
                   <path d="M14 58 L14 52 C 15 48, 18 46, 20 44 C 17 40, 16 35, 18 30 C 16 28, 15 24, 17 20 C 19 24, 22 25, 24 22 C 22 19, 22 15, 25 12 C 26 15, 28 16, 28 13 C 29 9, 32 6, 31 12 C 34 12, 36 15, 38 19 C 43 20, 49 23, 53 28 L 50 34 C 47 33, 44 33, 41 31 C 39 34, 36 36, 33 37 L 35 45 C 39 46, 42 49, 43 53 L 43 58 Z"
                         fill="var(--color-mix-chess)" stroke="#0C1A2B" stroke-width="1" stroke-linejoin="round" />
@@ -291,10 +287,7 @@
                 </svg>
               <span class="tag tag--mix tag--chess">Chess</span>
             </div>
-            <svg class="tri__lines" viewBox="0 0 300 90" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M50 4 L250 4 L150 86 Z" vector-effect="non-scaling-stroke" />
-            </svg>
-            <div class="tri__item tri__item--c">
+            <div class="tri__item">
               <svg class="tri__glyph" viewBox="0 0 64 64" aria-hidden="true">
                   <path d="M8 48 C 5 38, 8 26, 16 20 C 17 13, 22 7, 28 7 C 29 3, 33 0, 33 6 C 35 6, 35 9, 33 11 C 36 11, 40 13, 43 16 C 48 18, 53 20, 56 24 L 50 26 C 49 28, 47 29, 44 28 L 41 31 C 45 33, 51 33, 55 30 C 49 35, 43 35, 39 32 C 35 34, 29 36, 24 40 C 20 44, 14 46, 8 48 Z"
                         fill="var(--color-mix-dnd)" stroke="#2E1148" stroke-width="1" stroke-linejoin="round" />
@@ -307,7 +300,6 @@
               <span class="tag tag--mix tag--dnd">D&amp;D</span>
             </div>
           </div>
-        </div>
         </div>
         <div class="path" aria-hidden="true">
           <svg class="path__arrow" viewBox="0 0 20 60">
@@ -325,12 +317,6 @@
             <p class="climb__step">I started to compete.</p>
             <p class="climb__peak">For the first time,<br />I cared about getting good.</p>
           </div>
-        </div>
-        <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 20 60">
-            <path d="M10 3 C 8.5 16, 11.5 30, 10 46" />
-            <path d="M5 38 L10 52 L15 38" />
-          </svg>
         </div>
         <div class="stage stage--center stage--pivot" data-reveal>
           <p class="story-beat">
@@ -367,12 +353,6 @@
               <p class="lesson__to">I can do it.</p>
             </div>
           </div>
-        </div>
-        <div class="path" aria-hidden="true">
-          <svg class="path__arrow" viewBox="0 0 20 60">
-            <path d="M10 3 C 8.5 16, 11.5 30, 10 46" />
-            <path d="M5 38 L10 52 L15 38" />
-          </svg>
         </div>
         <!-- The chapter's conclusion, and the largest thing in it. -->
         <div class="stage stage--center" data-reveal>

@@ -76,6 +76,13 @@
   align-items: center;
 }
 
+/* College ends on "What if I never had that?" with no arrow after it. The extra
+   room below is the held beat — long enough that the question is left hanging
+   rather than immediately answered by the next chapter scrolling into view. */
+.section--college {
+  padding-bottom: clamp(6rem, 16vh, 11rem);
+}
+
 .section__inner {
   max-width: var(--content-max);
   margin: 0 auto;
@@ -598,14 +605,34 @@
   flex-direction: column;
 }
 
+/* Every slide stretches to the tallest one, so a long note on a single slide
+   would leave the short ones trailing dead space and the progress bar shifting
+   as you page through. Reserving the tallest note's height up front keeps the
+   bar fixed and makes the whitespace read as deliberate.
+   The reserve is the longest note's wrapped height, which steps up as the
+   column narrows — measured at 2 lines from 560px up, 3 lines below that, and
+   4 lines on the narrowest phones. 1.6em is one line. */
 .reel__note {
   margin: 0;
   padding: 0.7rem 0.15rem 0;
+  min-height: calc(3.2em + 0.7rem);
   font-family: var(--font-mono);
   font-size: var(--step-caption);
   line-height: 1.6;
   color: var(--color-ink-muted);
   font-style: italic;
+}
+
+@media (max-width: 559px) {
+  .reel__note {
+    min-height: calc(4.8em + 0.7rem);
+  }
+}
+
+@media (max-width: 380px) {
+  .reel__note {
+    min-height: calc(6.4em + 0.7rem);
+  }
 }
 
 /* Marks a slot as holding a clip rather than a still. */
@@ -1249,10 +1276,14 @@
   width: 100%;
 }
 
+/* Sized for "We won $80K" holding one line, not for a bare numeral — the words
+   carry three more characters than the old "~$80,000" did, so the ceiling comes
+   down to keep it from breaking on narrow screens. */
 .figure-big__num {
   font-family: var(--font-display);
   font-variation-settings: var(--fraunces-display);
-  font-size: clamp(3rem, 2rem + 5.5vw, 7rem);
+  font-size: clamp(2.2rem, 1.4rem + 4vw, 5rem);
+  white-space: nowrap;
   font-weight: 500;
   line-height: 1;
   letter-spacing: var(--track-hero);

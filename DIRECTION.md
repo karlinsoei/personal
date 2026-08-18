@@ -79,8 +79,11 @@ refuge → curiosity → challenge → confidence → belonging → wondering �
 building. Layout decisions serve that order. When something needs to move,
 move it to where it belongs in that progression rather than where it fits.
 
-**The intro is an overture, not a headline.** The page opens on mom's line
-alone and answers it ~2.2s later with "Hi, I'm Karlin, the kid who played
+**The intro is an overture, not a headline.** Mom's line sits *above* the
+headline and is set large — it is the thing the page opens on, so it can't
+be a small aside underneath an empty space. The headline is deliberately a
+step below `--step-hero`, because it is the reply. The page opens on the
+shout alone and answers it ~2.2s later with "Hi, I'm Karlin, the kid who played
 too much." Reversing the order is the joke, so the *headline* is what gets
 held back, never the bubble. Any scroll, tap or keypress answers early. The
 hidden state lives in CSS behind `.js`, so with no JavaScript — or under

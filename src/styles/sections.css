@@ -302,7 +302,9 @@
 .hero-line {
   font-family: var(--font-display);
   font-variation-settings: var(--fraunces-display);
-  font-size: var(--step-hero);
+  /* Below --step-hero on purpose: this is the reply, and the shout above it
+     is what the page opens on. */
+  font-size: clamp(2rem, 1.5rem + 3.2vw, 4.4rem);
   font-weight: 500;
   line-height: 1.03;
   letter-spacing: var(--track-hero);
@@ -315,7 +317,7 @@
    accent is spent separately on the hinge in section 02. */
 .shout {
   margin: 0;
-  max-width: 350px;
+  max-width: min(620px, 100%);
   color: var(--color-accent);
   transform: rotate(-2.2deg);
 }
@@ -324,7 +326,8 @@
    it rather than crowding the tail. Bottom padding leaves room for the tail. */
 .shout__bubble-wrap {
   position: relative;
-  padding: 1.7rem 1.9rem 2.4rem;
+  padding: clamp(1.5rem, 3vw, 2.4rem) clamp(1.6rem, 3.2vw, 2.6rem)
+           clamp(2.2rem, 4.5vw, 3.2rem);
 }
 
 .shout__bubble {
@@ -340,8 +343,9 @@
   margin: 0;
   font-family: var(--font-display);
   font-variation-settings: var(--fraunces-display);
-  /* Caps run wider, so this steps down from the sentence-case size it had. */
-  font-size: clamp(0.95rem, 0.82rem + 0.5vw, 1.25rem);
+  /* It opens the page, so it is sized to be read across a room — roughly
+     two and a half times the aside it used to be. */
+  font-size: clamp(1.5rem, 1.1rem + 2.4vw, 3rem);
   font-weight: 600;
   line-height: 1.18;
   text-transform: uppercase;
@@ -411,7 +415,7 @@
 }
 
 .mom {
-  width: clamp(102px, 10.5vw, 134px);
+  width: clamp(112px, 11.5vw, 150px);
   flex: 0 0 auto;
 }
 

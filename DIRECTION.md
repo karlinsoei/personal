@@ -38,7 +38,7 @@ Nothing ornamental "for the sake of it."
 ## The narrative arc (the spine of the whole site, not just section 02)
 
 Kid who played too much → told to stop → social anxiety and divorced parents,
-with League and Call of Duty as refuge → found five guys in college who cared
+with games as refuge → found five guys in college who cared
 about it too → competed → $80,000 in scholarships, for gaming → the thing he'd
 been told to stop doing was finally treated as worth being good at → six years
 spent working out why that mattered.
@@ -61,7 +61,7 @@ explicitly.
 01 Introduction — the hook, the portrait, and the parents' line as a
    hand-drawn shout in the margin
 02 Where I Came From — the teenage years in chronological order: struggle,
-   conditions, Call of Duty, the early-gaming reel, League at 15, what it
+   conditions, the early-gaming reel, League at 15, what it
    felt like a combination of, and the LIFE pivot with what the game taught
 03 College — the team, the achievements ledger, the scholarship figure, the
    championships reel, and the question that turned into the work
@@ -88,7 +88,7 @@ the League role order the team actually played: Willwin (top) through Keen
 beats that reads without scrolling — not one line per screen. An earlier pass
 gave every beat 58vh and produced a page of empty bands; whitespace has to
 serve the grouping, not replace it. The whole opening of section 02 —
-struggle, conditions, Call of Duty, "didn't fit in", and the reel — is one
+struggle, conditions, "didn't fit in", and the reel — is one
 screen on a laptop.
 
 **Use the centre.** Sections 02 and 03 are centred compositions. The `.path`
@@ -210,9 +210,9 @@ table.
   If proper likenesses are wanted, that's an illustrator, not more bezier
   fiddling. Swapping them is a file drop — the layout doesn't change.
 - **Game titles are set as type, not logos.** The brief floated using the
-  League and Call of Duty logos. Those are trademarks belonging to Riot and
-  Activision, so they're set as mono chips instead. Using the real marks is
-  a permissions question, not a design one.
+  League of Legends logo. That's a trademark belonging to Riot, so it's set
+  as a mono chip instead. Using the real mark is a permissions question, not
+  a design one.
 
 ## Assets still needed from the user
 

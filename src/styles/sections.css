@@ -1406,24 +1406,6 @@
   max-width: 40ch;
 }
 
-/* A tag and the clause that follows it, on one line. */
-.tag-line {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin: 0;
-}
-
-.tag-line__text {
-  font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
-  font-size: var(--step-beat);
-  font-weight: 450;
-  letter-spacing: var(--track-display);
-}
-
 /* ---- Converge -------------------------------------------------------------
    Three things resolving onto a fourth. A row of four tags would have said
    they were equal ingredients; they aren't — video games is the layer the

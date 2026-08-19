@@ -1793,9 +1793,8 @@
 .tag--dnd { --tag: var(--color-mix-dnd); }
 
 /* ---- The climb ------------------------------------------------------------
-   Three beats that escalate, then what they added up to. The escalation is
-   drawn rather than asserted: each beat is a step larger than the last and its
-   rule runs a step further, so the build is visible before it is read.
+   Three beats that escalate, then what they added up to. Each beat is a step
+   larger than the last, so the build is carried by the type alone.
 --------------------------------------------------------------------------- */
 .climb {
   display: flex;
@@ -1810,35 +1809,16 @@
 }
 
 .climb__step {
-  position: relative;
   margin: 0;
-  padding-bottom: 0.7em;
   font-family: var(--font-display);
   font-variation-settings: var(--fraunces-quiet);
   line-height: 1.2;
   color: var(--color-ink);
 }
 
-/* The rule is the measure of the build — it lengthens and gains colour with
-   each step, which is the whole diagram. */
-.climb__step::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--color-accent);
-  transform: translateX(-50%);
-}
-
 .climb__step:nth-child(1) { font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.4rem); }
 .climb__step:nth-child(2) { font-size: clamp(1.2rem, 1rem + 0.85vw, 1.75rem); }
 .climb__step:nth-child(3) { font-size: clamp(1.35rem, 1.05rem + 1.25vw, 2.15rem); }
-
-.climb__step:nth-child(1)::after { width: 24%; opacity: 0.4; }
-.climb__step:nth-child(2)::after { width: 52%; opacity: 0.68; }
-.climb__step:nth-child(3)::after { width: 82%; opacity: 1; }
 
 .climb__peak {
   margin: 0.2em 0 0;

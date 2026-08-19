@@ -204,8 +204,59 @@ function initHeroSwap() {
     tgtY = e.clientY - box.top;
   };
 
+  /**
+   * The one-time peek.
+   *
+   * The label says the photograph is interactive; this shows it, which primes
+   * far better than any wording. It opens the blob at the centre, holds, and
+   * closes — once, and only for someone who hasn't already found it.
+   *
+   * It waits for the overture to land first. Two things animating in the same
+   * screen at the same moment read as noise rather than as an invitation.
+   */
+  let peekTimers: number[] = [];
+  const cancelPeek = () => {
+    peekTimers.forEach(clearTimeout);
+    peekTimers = [];
+  };
+
+  const peek = () => {
+    if (revealed || hovering) return;
+    const { w, h } = size();
+    // Snap the centre before opening: at radius 0 there is nothing on screen
+    // to see move, so this costs nothing and avoids a drift-in from wherever
+    // the blob last sat.
+    tgtX = w / 2;
+    tgtY = h * 0.42;
+    curX = tgtX;
+    curY = tgtY;
+    tgtR = restRadius() * 0.92;
+    run();
+
+    peekTimers.push(
+      window.setTimeout(() => {
+        if (revealed || hovering) return;
+        tgtR = 0;
+        run();
+      }, 1150)
+    );
+  };
+
+  if (!prefersReducedMotion) {
+    peekTimers.push(
+      window.setTimeout(() => {
+        // Nothing to prime if they have already scrolled into the story, and
+        // nothing to teach if they already worked it out themselves.
+        if (root.classList.contains("has-interacted")) return;
+        const box = frame.getBoundingClientRect();
+        if (box.bottom > 0 && box.top < innerHeight) peek();
+      }, 3200)
+    );
+  }
+
   root.addEventListener("pointerenter", (e) => {
     if (e.pointerType === "touch") return;
+    cancelPeek();
     hovering = true;
     root.classList.add("has-interacted");
     aim(e);
@@ -235,6 +286,7 @@ function initHeroSwap() {
   // than out of the middle of the frame.
   root.addEventListener("pointerdown", (e) => {
     if (e.pointerType !== "touch") return;
+    cancelPeek();
     aim(e);
     curX = tgtX;
     curY = tgtY;
@@ -242,6 +294,7 @@ function initHeroSwap() {
 
   // Fires for mouse, touch and keyboard alike, so this is the only toggle.
   root.addEventListener("click", () => {
+    cancelPeek();
     root.classList.add("has-interacted");
     const { w, h } = size();
 

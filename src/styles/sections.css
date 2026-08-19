@@ -1401,8 +1401,11 @@
   grid-auto-flow: column;
   justify-items: center;
   align-items: start;
-  gap: 0.7rem clamp(1.5rem, 4vw, 4rem);
+  /* Roomier than it was: the cause, the arrow and the result were stacked
+     tight enough to read as one block of text rather than three steps. */
+  gap: 1.15rem clamp(1.5rem, 4vw, 4rem);
   width: 100%;
+  margin: clamp(1rem, 3vw, 2.25rem) 0;
 }
 
 .lesson {
@@ -1674,9 +1677,11 @@
    band across itself. */
 /* Rules removed: with no arrows either side, a boxed-in block read as a
    detour from the chapter rather than a step in it. The padding stays as the
-   breathing room the rules used to imply. */
+   breathing room the rules used to imply — widened, since with the rules gone
+   there is nothing else holding this block apart from its neighbours. */
 .stage--pivot {
-  padding: clamp(1.5rem, 4.5vh, 3.25rem) 0;
+  padding: clamp(2.75rem, 7vh, 5.5rem) 0;
+  gap: clamp(1.5rem, 3.5vw, 2.5rem);
 }
 
 .path {
@@ -1792,42 +1797,36 @@
 .tag--chess { --tag: var(--color-mix-chess); }
 .tag--dnd { --tag: var(--color-mix-dnd); }
 
-/* ---- The climb ------------------------------------------------------------
-   Three beats that escalate, then what they added up to. Each beat is a step
-   larger than the last, so the build is carried by the type alone.
---------------------------------------------------------------------------- */
-.climb {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(1rem, 2.4vw, 1.6rem);
-  width: 100%;
-  /* rem, not ch: `ch` here would resolve against this container's inherited
-     mono font rather than the much larger display type inside it, which
-     squeezed the measure to about half what the text needs. */
-  max-width: 34rem;
-}
-
-.climb__step {
-  margin: 0;
-  font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-quiet);
-  line-height: 1.2;
-  color: var(--color-ink);
-}
-
-.climb__step:nth-child(1) { font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.4rem); }
-.climb__step:nth-child(2) { font-size: clamp(1.2rem, 1rem + 0.85vw, 1.75rem); }
-.climb__step:nth-child(3) { font-size: clamp(1.35rem, 1.05rem + 1.25vw, 2.15rem); }
-
+/* The turn the chapter has been building to, standing on its own. */
 .climb__peak {
-  margin: 0.2em 0 0;
+  margin: 0;
   font-family: var(--font-display);
   font-variation-settings: var(--fraunces-display);
   font-size: clamp(1.6rem, 1.2rem + 1.7vw, 2.7rem);
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: var(--track-display);
+}
+
+/* The one phrase the sentence turns on, in the accent the page reserves for
+   its live signals. Large text, so the 4.65:1 it carries clears the 3:1 bar
+   comfortably. */
+.mark {
+  font-style: inherit;
+  color: var(--color-accent);
+}
+
+/* League as its own chip inside a sentence — the same gold badge it gets when
+   the game is first named, scaled to sit in running text. The flanking gems
+   are left off here: at this size they collide with the words either side. */
+.tag--league {
+  --tag: var(--color-league);
+  font-size: 0.58em;
+  padding: 0.34em 0.6em;
+  border-width: 2px;
+  background: color-mix(in srgb, var(--tag) 11%, var(--color-bg));
+  vertical-align: 0.14em;
+  transform: rotate(-1.4deg);
 }
 
 /* ---- The equivalence ------------------------------------------------------

@@ -190,58 +190,43 @@
             <span class="cond">Divorced parents</span>
             <span class="cond">Bad grades</span>
           </div>
-          <figure class="reel reel--compact" data-reel>
-            <div class="reel__viewport" data-reel-viewport tabindex="0"
-                 role="group" aria-label="Photos and a video from the teenage years, scrollable">
-              <div class="reel__track">
-                <div class="reel__slide">
-                  <div class="media-slot" data-placeholder="banquet">
-                    <picture>
-                      <source type="image/webp" srcset="/assets/images/banquet.webp" />
-                      <img src="/assets/images/banquet.jpg"
-                           alt="Karlin, circled with a hand-drawn arrow labelled &ldquo;me, lol,&rdquo; sitting apart from the rest of a group photo at a school banquet"
-                           width="960" height="717" loading="lazy" decoding="async" />
-                    </picture>
-                  </div>
-                  <p class="reel__note">The kid who bolted from the camera.<br />Me, 15, at a school banquet with my crush.</p>
-                </div>
-                <div class="reel__slide">
-                  <div class="media-slot" data-placeholder="tennis">
-                    <picture>
-                      <source type="image/webp" srcset="/assets/images/tennis.webp" />
-                      <img src="/assets/images/tennis.jpg"
-                           alt="Karlin lying face-down and exhausted on a tennis court, racket resting on his back"
-                           width="480" height="640" loading="lazy" decoding="async" />
-                    </picture>
-                  </div>
-                  <p class="reel__note">I was on the swim team, tennis team, and I did karate.<br />This is how I felt about them.</p>
-                </div>
-                <div class="reel__slide">
-                  <div class="media-slot" data-placeholder="cello-age-13">
-                    <video controls preload="metadata" playsinline
-                           aria-label="Video: Karlin playing cello, age 13">
-                      <source src="/assets/video/cello-age-13.mp4" type="video/mp4" />
-                    </video>
-                  </div>
-                  <p class="reel__note">Beaaaast modeee &mdash; I actually did enjoy Cello/Piano and<br />Orchestra, but wasn't motivated to practice. Age 13.</p>
-                </div>
+          <!-- Three at once rather than a carousel: the whole of it is the
+               point, and paging hid two thirds of it. Square boxes because the
+               three run landscape, square then portrait — the middle fills the
+               box exactly and the outer two leave room on opposite axes. -->
+          <div class="trio">
+            <figure class="trio__item">
+              <div class="media-slot" data-placeholder="banquet">
+                <picture>
+                  <source type="image/webp" srcset="/assets/images/banquet.webp" />
+                  <img src="/assets/images/banquet.jpg"
+                       alt="Karlin, circled with a hand-drawn arrow labelled &ldquo;me, lol,&rdquo; sitting apart from the rest of a group photo at a school banquet"
+                       width="960" height="717" loading="lazy" decoding="async" />
+                </picture>
               </div>
-            </div>
-            <figcaption class="reel__bar">
-              <span class="reel__index" data-reel-index aria-live="polite">01 / 03</span>
-              <span class="reel__rule" aria-hidden="true">
-                <span class="reel__rule-fill" data-reel-fill></span>
-              </span>
-              <span class="reel__nav">
-                <button type="button" class="reel__btn" data-reel-prev aria-label="Previous">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19" /></svg>
-                </button>
-                <button type="button" class="reel__btn" data-reel-next aria-label="Next">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19" /></svg>
-                </button>
-              </span>
-            </figcaption>
-          </figure>
+              <figcaption class="trio__note">The kid who bolted from the camera. Me, 15, at a school banquet with my crush.</figcaption>
+            </figure>
+            <figure class="trio__item">
+              <div class="media-slot" data-placeholder="cello-age-13">
+                <video controls preload="metadata" playsinline
+                       aria-label="Video: Karlin playing cello, age 13">
+                  <source src="/assets/video/cello-age-13.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <figcaption class="trio__note">Beaaaast modeee &mdash; I actually did enjoy Cello/Piano and Orchestra, but wasn't motivated to practice. Age 13.</figcaption>
+            </figure>
+            <figure class="trio__item">
+              <div class="media-slot" data-placeholder="tennis">
+                <picture>
+                  <source type="image/webp" srcset="/assets/images/tennis.webp" />
+                  <img src="/assets/images/tennis.jpg"
+                       alt="Karlin lying face-down and exhausted on a tennis court, racket resting on his back"
+                       width="480" height="640" loading="lazy" decoding="async" />
+                </picture>
+              </div>
+              <figcaption class="trio__note">I was on the swim team, tennis team, and I did karate. This is how I felt about them.</figcaption>
+            </figure>
+          </div>
         </div>
         <div class="path" aria-hidden="true">
           <svg class="path__arrow" viewBox="0 0 20 60">

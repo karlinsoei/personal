@@ -734,6 +734,75 @@
   max-width: 44ch;
 }
 
+/* ---- The trio -------------------------------------------------------------
+   Three pieces of media shown together rather than paged through. The boxes
+   are square on purpose: the three assets run 1.34, 1.00 and 0.75, so a square
+   is the middle of that range — the video fills it exactly and the photographs
+   leave room on opposite axes, which reads as deliberate rather than ragged.
+
+   `contain`, never `cover`: the banquet photo's whole joke is the hand-drawn
+   circle and "me, lol" out at the right edge, and any crop tight enough to
+   fill a square would cut it off.
+--------------------------------------------------------------------------- */
+.trio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.9rem, 2.2vw, 1.6rem);
+  width: 100%;
+  max-width: 880px;
+}
+
+.trio__item {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.trio__item .media-slot {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--color-ink) 5%, var(--color-bg));
+}
+
+/* Absolutely positioned rather than width/height:100% — an <img> carrying its
+   own width/height attributes does not reliably resolve a percentage height
+   against an aspect-ratio box, and falls back to its own ratio instead. */
+.trio__item img,
+.trio__item video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* No forced breaks here: the column is narrow enough that hand-placed ones
+   stranded single words. `pretty` lets the browser avoid the orphans instead. */
+.trio__note {
+  margin: 0;
+  text-wrap: pretty;
+  font-family: var(--font-mono);
+  font-size: var(--step-caption);
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+  font-style: italic;
+}
+
+/* Three across stops being readable well before phone width — at 390px each
+   box would be about 110px, too small to make out a face. */
+@media (max-width: 760px) {
+  .trio {
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1.5rem, 5vw, 2.25rem);
+    max-width: 420px;
+  }
+}
+
 /* ---- Reel -----------------------------------------------------------------
    A scroll-snap strip, not a JS slider. The viewport scrolls natively, so it
    works with no JS, with touch, with a trackpad and with arrow keys once

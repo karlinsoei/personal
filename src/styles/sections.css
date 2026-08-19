@@ -1397,7 +1397,7 @@
 .lessons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto auto auto;
   grid-auto-flow: column;
   justify-items: center;
   align-items: start;
@@ -1427,6 +1427,20 @@
     align-items: center;
     gap: 0.7rem;
   }
+}
+
+/* Numbered so the three read as an ordered account of what the game taught,
+   rather than three loose facts sitting side by side. Mono numerals in the
+   accent, the same numbering language the chapter nav already uses; 4.65:1
+   clears the 4.5 small-text bar. */
+.lesson__n {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--step-eyebrow);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
 }
 
 .lesson__from {

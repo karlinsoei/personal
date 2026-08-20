@@ -378,17 +378,34 @@ function initReels() {
     prev?.addEventListener("click", () => go(current - 1));
     next?.addEventListener("click", () => go(current + 1));
 
-    // Swiping and trackpad scrolling bypass the buttons entirely, so the
-    // readout has to follow the scroll position rather than our own counter.
+    // Swiping and trackpad scrolling move the strip directly, so the readout
+    // follows the scroll position rather than our own counter.
+    //
+    // Slides are narrower than the viewport now (the next one peeks in at the
+    // edge), so scrollLeft / clientWidth no longer names the slide — measuring
+    // against each slide's real offset does.
+    const nearest = () => {
+      const x = viewport.scrollLeft;
+      let best = 0;
+      let bestGap = Infinity;
+      slides.forEach((slide, i) => {
+        const gap = Math.abs(slide.offsetLeft - slides[0].offsetLeft - x);
+        if (gap < bestGap) {
+          bestGap = gap;
+          best = i;
+        }
+      });
+      return best;
+    };
+
     let frame = 0;
     viewport.addEventListener(
       "scroll",
       () => {
         cancelAnimationFrame(frame);
         frame = requestAnimationFrame(() => {
-          const step = viewport.clientWidth || 1;
-          const i = Math.round(viewport.scrollLeft / step);
-          if (i !== current && i >= 0 && i < slides.length) {
+          const i = nearest();
+          if (i !== current) {
             current = i;
             render();
           }
@@ -396,6 +413,46 @@ function initReels() {
       },
       { passive: true }
     );
+
+    // Drag to swipe, for mouse only. Touch already scrolls natively with
+    // momentum, and hijacking it here would replace that with something worse.
+    let dragging = false;
+    let startX = 0;
+    let startLeft = 0;
+
+    viewport.addEventListener("pointerdown", (e) => {
+      if (e.pointerType !== "mouse" || e.button !== 0) return;
+      dragging = true;
+      startX = e.clientX;
+      startLeft = viewport.scrollLeft;
+      viewport.setPointerCapture(e.pointerId);
+      // Snap fights a drag in progress; it goes back on release so the strip
+      // still settles onto a slide.
+      viewport.classList.add("is-dragging");
+    });
+
+    viewport.addEventListener("pointermove", (e) => {
+      if (!dragging) return;
+      viewport.scrollLeft = startLeft - (e.clientX - startX);
+    });
+
+    const endDrag = (e: PointerEvent) => {
+      if (!dragging) return;
+      dragging = false;
+      viewport.classList.remove("is-dragging");
+      if (viewport.hasPointerCapture(e.pointerId)) {
+        viewport.releasePointerCapture(e.pointerId);
+      }
+      // Nudge the scroller so snapping re-engages and settles on a slide.
+      viewport.scrollTo({
+        left: slides[nearest()].offsetLeft - slides[0].offsetLeft,
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+      });
+    };
+
+    viewport.addEventListener("pointerup", endDrag);
+    viewport.addEventListener("pointercancel", endDrag);
+    viewport.addEventListener("dragstart", (e) => e.preventDefault());
 
     render();
   });

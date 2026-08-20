@@ -253,78 +253,88 @@
     radial-gradient(circle calc(var(--r) * 0.66) at calc(var(--mx) - var(--r) * 0.29) calc(var(--my) + var(--r) * 0.31), #000 46%, transparent 88%);
 }
 
-/* ---- The affordance -------------------------------------------------------
-   A mono annotation and a hand-drawn arrow — the same language the page uses
-   for "— mom, on repeat" and "age 15" — rather than a button pinned to a
-   photograph.
+/* ---- The then/now switch --------------------------------------------------
+   Both options are on screen and labelled, so the hero announces that it has
+   two states instead of hiding one behind a gesture. Identical on desktop and
+   touch, keyboard-operable, and it never changes on its own — the reveal is
+   the payoff, so the visitor has to be the one who triggers it.
 --------------------------------------------------------------------------- */
-/* Vermilion rather than muted ink: the accent is already the page's "this one
-   is live" signal (chapter nav, reel progress, the roster marker), so it does
-   the priming here too without inventing a new device. */
-.hero-swap__hint {
+.swap-toggle {
   display: none;
-  align-items: flex-start;
-  gap: 0.4rem;
-  margin-top: 0.7rem;
+  align-items: center;
+  gap: 2px;
+  margin-top: 0.85rem;
+  padding: 3px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
+}
+
+/* Gated on `.js`: without it nothing can switch, so a switch would be a lie. */
+.js .swap-toggle {
+  display: inline-flex;
+}
+
+.swap-toggle__opt {
+  appearance: none;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  min-height: 40px;
+  padding: 0 1.15em;
+  border-radius: 999px;
   font-family: var(--font-mono);
   font-size: var(--step-caption);
-  color: var(--color-accent);
-  transition: opacity 0.4s var(--ease-out);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-ink-muted);
+  transition: background 0.28s var(--ease-out), color 0.28s var(--ease-out);
 }
 
-.js .hero-swap__hint {
-  display: flex;
+.swap-toggle__opt:hover {
+  color: var(--color-ink);
 }
 
-/* A slow breath, not a blink — enough movement to be caught in peripheral
-   vision while the eye is on the headline, quiet enough to ignore. */
-@keyframes hero-hint-breathe {
-  0%, 100% { opacity: 0.5; transform: translateY(0); }
-  50% { opacity: 1; transform: translateY(-2px); }
-}
-
-.js .hero-swap__hint {
-  animation: hero-hint-breathe 2.6s var(--ease-out) infinite;
-}
-
-/* Once they have opened it, the instruction has done its job. Dropping the
-   animation first lets the opacity transition above run the fade out. */
-.js .hero-swap.has-interacted .hero-swap__hint {
-  animation: none;
-  opacity: 0;
-  pointer-events: none;
+/* Vermilion on off-white is 4.65:1 — clear of the 4.5 small-text bar with the
+   label reversed out of it. */
+.swap-toggle__opt.is-on {
+  background: var(--color-accent);
+  color: var(--color-bg);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .js .hero-swap__hint {
-    animation: none;
-  }
+  .swap-toggle__opt { transition: none; }
 }
 
-.hero-swap__hint-arrow {
+/* ---- Stacked states -------------------------------------------------------
+   Two versions of the same thing in one grid cell, so the taller sets the box
+   once and switching cannot move anything around it. visibility, not opacity
+   alone, so the inactive one leaves the accessibility tree too.
+--------------------------------------------------------------------------- */
+.swap {
+  display: grid;
+}
+
+.swap__state {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.45s var(--ease-out), visibility 0.45s;
+}
+
+.swap__state.is-on {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swap__state { transition: none; }
+}
+
+/* Both faces share one cell, so the head does not jump between states. */
+.shout__faces {
   flex: 0 0 auto;
-  width: 13px;
-  height: 17px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transform: rotate(-14deg);
-}
-
-.hero-swap__hint-tap {
-  display: none;
-}
-
-/* Touch devices get the verb that actually applies to them. */
-@media (hover: none) {
-  .hero-swap__hint-hover {
-    display: none;
-  }
-  .hero-swap__hint-tap {
-    display: inline;
-  }
+  justify-items: start;
 }
 
 @media (max-width: 860px) {
@@ -528,7 +538,10 @@
   line-height: 1.03;
   letter-spacing: var(--track-hero);
   margin: 0;
-  max-width: 18ch;
+  /* ch resolves against Fraunces here, since this rule sets the family itself.
+     Loosened from 18ch: at the tablet widths where this cap actually binds, the
+     tighter measure broke the sentence one word earlier than it needed to. */
+  max-width: 23ch;
 }
 
 /* Same size as the ending it hands off to — the two halves are one sentence,

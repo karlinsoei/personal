@@ -120,6 +120,8 @@ function initHeroSwap() {
   if (!root || !under || !frame) return;
 
   const states = document.querySelectorAll<HTMLElement>("[data-hero-state]");
+  const toggles =
+    document.querySelectorAll<HTMLButtonElement>("[data-hero-toggle]");
 
   // Fractions of the frame, resolved against its live size on each read so a
   // resize or an orientation change can't leave the blob mis-scaled.
@@ -187,6 +189,8 @@ function initHeroSwap() {
     if (!raf) raf = requestAnimationFrame(tick);
   };
 
+  // Everything carrying data-hero-state flips together: the two headline
+  // endings, both of mom's faces, and both of her lines.
   const setState = (next: boolean) => {
     revealed = next;
     root.setAttribute("aria-pressed", String(next));
@@ -195,6 +199,11 @@ function initHeroSwap() {
         "is-on",
         (el.dataset.heroState === "revealed") === next
       );
+    });
+    toggles.forEach((btn) => {
+      const on = (btn.dataset.heroToggle === "revealed") === next;
+      btn.classList.toggle("is-on", on);
+      btn.setAttribute("aria-pressed", String(on));
     });
   };
 
@@ -312,6 +321,27 @@ function initHeroSwap() {
       tgtR = hovering ? restRadius() : 0;
     }
     run();
+  });
+
+  toggles.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      cancelPeek();
+      root.classList.add("has-interacted");
+      const next = btn.dataset.heroToggle === "revealed";
+      if (next === revealed) return;
+      setState(next);
+      const { w, h } = size();
+      if (next) {
+        tgtX = w / 2;
+        tgtY = h / 2;
+        tgtR = fullRadius();
+      } else {
+        tgtX = w / 2;
+        tgtY = h * 0.42;
+        tgtR = hovering ? restRadius() : 0;
+      }
+      run();
+    });
   });
 
   addEventListener(

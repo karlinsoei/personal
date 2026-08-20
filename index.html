@@ -56,14 +56,75 @@
                         stroke-linejoin="round" stroke-linecap="round"
                         vector-effect="non-scaling-stroke" />
                 </svg>
-                <blockquote class="shout__text">&ldquo;Stop wasting your life playing video games!&rdquo;</blockquote>
+                <span class="swap">
+                  <blockquote class="shout__text swap__state is-on" data-hero-state="default">&ldquo;Stop wasting your life playing video games!&rdquo;</blockquote>
+                  <blockquote class="shout__text swap__state" data-hero-state="revealed">&ldquo;Keep on practicing! When is the next tournament?&rdquo;</blockquote>
+                </span>
               </div>
 
               <div class="shout__source">
-                <svg class="dood mom" viewBox="0 0 200 210" role="img"
-                   aria-label="Line drawing of Karlin's mother, mid-shout">
-                <!-- Sharper and more numerous than before: she is not amused. -->
-                <g class="dood__spark">
+                <span class="swap shout__faces">
+                  <svg class="dood mom swap__state is-on" viewBox="0 0 200 210" role="img" data-hero-state="default"
+                     aria-label="Line drawing of Karlin's mother, mid-shout">
+                  <!-- Sharper and more numerous than before: she is not amused. -->
+                  <g class="dood__spark">
+                    <path d="M28 40 L46 56" />
+                    <path d="M64 18 L72 36" />
+                    <path d="M100 10 L100 30" />
+                    <path d="M136 18 L128 36" />
+                    <path d="M172 40 L154 56" />
+                    <path d="M10 100 L30 102" />
+                    <path d="M190 100 L170 102" />
+                    <path d="M20 158 L40 148" />
+                    <path d="M180 158 L160 148" />
+                  </g>
+
+                  <g class="dood__line">
+                    <path d="M56 96 C56 64, 76 50, 100 50 C124 50, 144 64, 144 96
+                             C144 122, 140 142, 128 154 C120 162, 110 166, 100 166
+                             C90 166, 80 162, 72 154 C60 142, 56 122, 56 96 Z" />
+                  </g>
+
+                  <!-- The bob: fuller than the last version and clearly side-parted,
+                       sweeping right-to-left across the forehead the way it does in
+                       the photograph. Sits high enough to leave the brows visible —
+                       without them there is no anger to read. -->
+                  <path class="dood__fill"
+                        d="M52 118
+                           C45 94, 47 64, 69 51
+                           C85 41, 115 41, 131 51
+                           C153 64, 155 94, 148 118
+                           L140 118
+                           C144 98, 142 78, 136 68
+                           C130 58, 120 54, 110 54
+                           C100 66, 84 71, 68 68
+                           C61 67, 57 78, 56 93
+                           C55 103, 55 111, 58 118 Z" />
+
+                  <!-- Angry brows: inner ends dropped toward the nose. -->
+                  <g class="dood__line">
+                    <path d="M61 78 L87 88" />
+                    <path d="M139 78 L113 88" />
+                  </g>
+
+                  <!-- Round wire frames — the thing that makes it her. -->
+                  <g class="dood__line">
+                    <circle cx="78" cy="114" r="17" />
+                    <circle cx="122" cy="114" r="17" />
+                    <path d="M97 112 C99 109.5, 101 109.5, 103 112" />
+                    <path d="M61 110 L52 107" />
+                    <path d="M139 110 L148 107" />
+                  </g>
+                  <circle class="dood__fill" cx="78" cy="114" r="4.4" />
+                  <circle class="dood__fill" cx="122" cy="114" r="4.4" />
+
+                  <!-- Open, mid-shout, rather than the smile she had before. -->
+                  <ellipse class="dood__fill" cx="100" cy="143" rx="12.5" ry="10" />
+              </svg>
+                  <svg class="dood mom swap__state" viewBox="0 0 200 210" role="img"
+                     aria-label="Line drawing of Karlin's mother, delighted"
+                     data-hero-state="revealed">
+                  <g class="dood__spark">
                   <path d="M28 40 L46 56" />
                   <path d="M64 18 L72 36" />
                   <path d="M100 10 L100 30" />
@@ -96,27 +157,27 @@
                          C100 66, 84 71, 68 68
                          C61 67, 57 78, 56 93
                          C55 103, 55 111, 58 118 Z" />
+                  <!-- Brows arched up rather than driven down at the nose. -->
+                  <g class="dood__line">
+                    <path d="M61 86 C68 76, 80 75, 88 83" />
+                    <path d="M139 86 C132 76, 120 75, 112 83" />
+                  </g>
 
-                <!-- Angry brows: inner ends dropped toward the nose. -->
-                <g class="dood__line">
-                  <path d="M61 78 L87 88" />
-                  <path d="M139 78 L113 88" />
-                </g>
+                  <!-- Same round wire frames — the thing that makes it her. -->
+                  <g class="dood__line">
+                    <circle cx="78" cy="114" r="17" />
+                    <circle cx="122" cy="114" r="17" />
+                    <path d="M97 112 C99 109.5, 101 109.5, 103 112" />
+                    <path d="M61 110 L52 107" />
+                    <path d="M139 110 L148 107" />
+                  </g>
+                  <circle class="dood__fill" cx="78" cy="114" r="4.4" />
+                  <circle class="dood__fill" cx="122" cy="114" r="4.4" />
 
-                <!-- Round wire frames — the thing that makes it her. -->
-                <g class="dood__line">
-                  <circle cx="78" cy="114" r="17" />
-                  <circle cx="122" cy="114" r="17" />
-                  <path d="M97 112 C99 109.5, 101 109.5, 103 112" />
-                  <path d="M61 110 L52 107" />
-                  <path d="M139 110 L148 107" />
-                </g>
-                <circle class="dood__fill" cx="78" cy="114" r="4.4" />
-                <circle class="dood__fill" cx="122" cy="114" r="4.4" />
-
-                <!-- Open, mid-shout, rather than the smile she had before. -->
-                <ellipse class="dood__fill" cx="100" cy="143" rx="12.5" ry="10" />
-              </svg>
+                  <!-- Wide open grin: she is mid-encouragement, not mid-shout. -->
+                  <path class="dood__line" d="M80 133 C90 152, 110 152, 120 133" />
+                </svg>
+                </span>
                 <figcaption class="shout__who">— mom, on repeat</figcaption>
               </div>
             </figure>
@@ -126,10 +187,13 @@
                  the photograph finishes the sentence a different way rather
                  than replacing the headline. -->
             <h1 class="hero-line">
-              <span class="hero-line__fixed">Hi, I'm Karlin, the kid who</span>
+              <!-- Non-breaking space: without it the line breaks after "kid" and
+                   strands "who" alone, which reads as a mistake rather than a
+                   line break. Glued, the break falls after "the" instead. -->
+              <span class="hero-line__fixed">Hi, I'm Karlin, the kid&nbsp;who</span>
               <span class="hero-line__swap">
-                <span class="hero-line__state is-on" data-hero-state="default">played too much.</span>
-                <span class="hero-line__state" data-hero-state="revealed">took play seriously.</span>
+                <span class="hero-line__state is-on" data-hero-state="default">just wanted to game.</span>
+                <span class="hero-line__state" data-hero-state="revealed">made gaming mean something.</span>
               </span>
             </h1>
 
@@ -137,17 +201,14 @@
 
           <figure class="hero-portrait" data-reveal>
             <button type="button" class="hero-swap" data-hero-swap aria-pressed="false"
-                    aria-label="Reveal the photo underneath: Karlin competing onstage">
+                    aria-label="Switch between Karlin then and now">
               <span class="media-slot media-slot--portrait hero-swap__frame" data-hero-frame>
                 <picture>
-                  <source type="image/webp"
-                          srcset="/assets/images/karlin-hero.webp 1000w,
-                                  /assets/images/karlin-hero@2x.webp 2000w"
-                          sizes="(max-width: 860px) 260px, 340px" />
+                  <source type="image/webp" srcset="/assets/images/karlin-shy.webp" />
                   <img class="hero-swap__img"
-                       src="/assets/images/karlin-hero.jpg"
-                       alt="Karlin sitting on a bench outdoors, an autumn maple behind him"
-                       width="1000" height="1500" decoding="async" />
+                       src="/assets/images/karlin-shy.jpg"
+                       alt="Karlin as a teenager in a mall, in an untucked dress shirt, holding a bag and looking warily at the camera"
+                       width="640" height="960" decoding="async" />
                 </picture>
                 <!-- The layer being uncovered. It sits on top and is masked down
                      to the blob, which is the only way to "reveal what's under"
@@ -165,16 +226,17 @@
                   </picture>
                 </span>
               </span>
-              <span class="hero-swap__hint" aria-hidden="true">
-                <svg class="hero-swap__hint-arrow" viewBox="0 0 24 30">
-                  <path d="M12 27 C 10 18, 14 10, 12 3" />
-                  <path d="M6 9 L12 2 L18 9" />
-                </svg>
-                <span class="hero-swap__hint-text">(<span
-                  class="hero-swap__hint-hover">hover</span><span
-                  class="hero-swap__hint-tap">tap</span> me)</span>
-              </span>
             </button>
+
+            <!-- The explicit control. Two labelled options rather than one
+                 button, so both states are visible before anything is pressed
+                 and the hero reads as a switch rather than a surprise. -->
+            <div class="swap-toggle" role="group" aria-label="Karlin, then and now">
+              <button type="button" class="swap-toggle__opt is-on"
+                      data-hero-toggle="default" aria-pressed="true">then</button>
+              <button type="button" class="swap-toggle__opt"
+                      data-hero-toggle="revealed" aria-pressed="false">now</button>
+            </div>
           </figure>
         </div>
       </div>

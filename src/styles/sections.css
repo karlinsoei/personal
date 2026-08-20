@@ -76,10 +76,19 @@
   align-items: center;
 }
 
+/* An arrow now carries Game = Life across this break into what it led to, so
+   the two section paddings either side of it are pulled right in. At full
+   width they stacked to ~200px and left the arrow pointing into a void
+   instead of at the sentence it hands off to. */
+.section--story {
+  padding-bottom: clamp(0.75rem, 1.5vh, 1.5rem);
+}
+
 /* College ends on "What if I never had that?" with no arrow after it. The extra
    room below is the held beat — long enough that the question is left hanging
    rather than immediately answered by the next chapter scrolling into view. */
 .section--college {
+  padding-top: clamp(0.75rem, 1.5vh, 1.5rem);
   padding-bottom: clamp(6rem, 16vh, 11rem);
 }
 

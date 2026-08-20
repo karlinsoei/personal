@@ -346,44 +346,9 @@ function initReels() {
     const slides = Array.from(reel.querySelectorAll<HTMLElement>(".reel__slide"));
     if (!viewport || slides.length === 0) return;
 
-    const indexEl = reel.querySelector<HTMLElement>("[data-reel-index]");
-    const fill = reel.querySelector<HTMLElement>("[data-reel-fill]");
-    const prev = reel.querySelector<HTMLButtonElement>("[data-reel-prev]");
-    const next = reel.querySelector<HTMLButtonElement>("[data-reel-next]");
-
-    const pad = (n: number) => String(n).padStart(2, "0");
-    let current = 0;
-
-    const render = () => {
-      if (indexEl) {
-        indexEl.textContent = `${pad(current + 1)} / ${pad(slides.length)}`;
-      }
-      if (fill) {
-        fill.style.width = `${100 / slides.length}%`;
-        fill.style.transform = `translateX(${current * 100}%)`;
-      }
-      if (prev) prev.disabled = current === 0;
-      if (next) next.disabled = current === slides.length - 1;
-    };
-
-    const go = (i: number) => {
-      current = Math.max(0, Math.min(slides.length - 1, i));
-      viewport.scrollTo({
-        left: slides[current].offsetLeft - slides[0].offsetLeft,
-        behavior: prefersReducedMotion ? "auto" : "smooth",
-      });
-      render();
-    };
-
-    prev?.addEventListener("click", () => go(current - 1));
-    next?.addEventListener("click", () => go(current + 1));
-
-    // Swiping and trackpad scrolling move the strip directly, so the readout
-    // follows the scroll position rather than our own counter.
-    //
-    // Slides are narrower than the viewport now (the next one peeks in at the
-    // edge), so scrollLeft / clientWidth no longer names the slide — measuring
-    // against each slide's real offset does.
+    // Which slide the strip is currently nearest. Slides are narrower than the
+    // viewport (the next one peeks in at the edge), so scrollLeft / clientWidth
+    // would not name the slide — this measures against their real offsets.
     const nearest = () => {
       const x = viewport.scrollLeft;
       let best = 0;
@@ -397,22 +362,6 @@ function initReels() {
       });
       return best;
     };
-
-    let frame = 0;
-    viewport.addEventListener(
-      "scroll",
-      () => {
-        cancelAnimationFrame(frame);
-        frame = requestAnimationFrame(() => {
-          const i = nearest();
-          if (i !== current) {
-            current = i;
-            render();
-          }
-        });
-      },
-      { passive: true }
-    );
 
     // Drag to swipe, for mouse only. Touch already scrolls natively with
     // momentum, and hijacking it here would replace that with something worse.
@@ -439,13 +388,19 @@ function initReels() {
     const endDrag = (e: PointerEvent) => {
       if (!dragging) return;
       dragging = false;
+
+      // Read the target while snapping is still off. Re-enabling mandatory
+      // snap can reposition the scroller immediately — often back to the slide
+      // it started on — so measuring after would settle on where the drag
+      // began rather than where it ended.
+      const target = slides[nearest()].offsetLeft - slides[0].offsetLeft;
+
       viewport.classList.remove("is-dragging");
       if (viewport.hasPointerCapture(e.pointerId)) {
         viewport.releasePointerCapture(e.pointerId);
       }
-      // Nudge the scroller so snapping re-engages and settles on a slide.
       viewport.scrollTo({
-        left: slides[nearest()].offsetLeft - slides[0].offsetLeft,
+        left: target,
         behavior: prefersReducedMotion ? "auto" : "smooth",
       });
     };
@@ -453,8 +408,6 @@ function initReels() {
     viewport.addEventListener("pointerup", endDrag);
     viewport.addEventListener("pointercancel", endDrag);
     viewport.addEventListener("dragstart", (e) => e.preventDefault());
-
-    render();
   });
 }
 

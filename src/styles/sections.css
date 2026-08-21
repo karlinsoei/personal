@@ -95,12 +95,17 @@
 
 /* Vermilion is the page's "you are here" signal everywhere else, so it does
    the job here too rather than inventing a second one. */
+/* The one place the page lets itself glow. A live element on a dark ground
+   getting a faint halo is the visual grammar of a game HUD, and spending it
+   only on "you are here" and on the switch keeps it a hint rather than a
+   theme. Kept low enough that it reads as luminance, not as a blur. */
 .menu__link.is-current {
-  color: var(--color-accent);
+  color: var(--color-live);
+  text-shadow: 0 0 16px color-mix(in srgb, var(--color-live) 40%, transparent);
 }
 
 .menu__link.is-current .menu__n {
-  color: var(--color-accent);
+  color: var(--color-live);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -366,11 +371,12 @@
   color: var(--color-ink);
 }
 
-/* Vermilion on off-white is 4.65:1 — clear of the 4.5 small-text bar with the
-   label reversed out of it. */
+/* Acid on off-black is 9.85:1, and the off-black label reversed out of it is
+   the same 9.85:1 — so the switch reads either way round. */
 .swap-toggle__opt.is-on {
-  background: var(--color-accent);
+  background: var(--color-live);
   color: var(--color-bg);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--color-live) 32%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -539,9 +545,8 @@
 
 .pivot__word {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: clamp(3.25rem, 2.2rem + 6vw, 8rem);
-  font-weight: 500;
+  font-weight: 800;
   line-height: 0.92;
   letter-spacing: -0.035em;
   text-transform: uppercase;
@@ -551,17 +556,20 @@
 /* ---- 01 Intro ---- */
 .hero-line {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   /* Below --step-hero on purpose: this is the reply, and the shout above it
      is what the page opens on. */
-  font-size: clamp(2rem, 1.5rem + 3.2vw, 4.4rem);
-  font-weight: 500;
+  /* Capped at 4.1rem, not 4.4: the text column is 744px at its widest, and
+     above ~4.1rem "Hi, I'm Karlin, the kid who" no longer fits inside it,
+     which pushed the sentence to three lines with "kid who" stranded in the
+     middle. The weight below is doing the work the extra size was. */
+  font-size: clamp(2rem, 1.5rem + 3.2vw, 4.1rem);
+  font-weight: 800;
   line-height: 1.03;
   letter-spacing: var(--track-hero);
   margin: 0;
-  /* ch resolves against Fraunces here, since this rule sets the family itself.
-     Loosened from 18ch: at the tablet widths where this cap actually binds, the
-     tighter measure broke the sentence one word earlier than it needed to. */
+  /* Belt-and-braces only: measured at every breakpoint the hero's own column
+     is narrower than this, so the column sets the measure and this never
+     binds. Kept as a guard for very wide viewports. */
   max-width: 23ch;
 }
 
@@ -634,11 +642,10 @@
   position: relative;
   margin: 0;
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   /* It opens the page, so it is sized to be read across a room — roughly
      two and a half times the aside it used to be. */
   font-size: clamp(1.5rem, 1.1rem + 2.4vw, 3rem);
-  font-weight: 600;
+  font-weight: 800;
   line-height: 1.18;
   text-transform: uppercase;
   letter-spacing: 0.015em;
@@ -746,9 +753,8 @@
 
 .story-beat {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: var(--step-beat);
-  font-weight: 450;
+  font-weight: 500;
   line-height: 1.18;
   letter-spacing: var(--track-display);
   text-wrap: balance;
@@ -771,7 +777,6 @@
 /* The one long paragraph in the section. Stepped down from beat size so it
    doesn't run to six lines and stall the chronology. */
 .story-beat--run {
-  font-variation-settings: var(--fraunces-quiet);
   font-size: var(--step-lede);
   line-height: 1.4;
   max-width: 44ch;
@@ -890,7 +895,7 @@
 }
 
 .reel__viewport:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-live);
   outline-offset: 3px;
 }
 
@@ -1085,9 +1090,8 @@
 
 .punch__line {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: var(--step-beat);
-  font-weight: 450;
+  font-weight: 700;
   line-height: 1.18;
   letter-spacing: var(--track-display);
   max-width: 26ch;
@@ -1096,9 +1100,8 @@
 
 .punch__kicker {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: var(--step-hero);
-  font-weight: 500;
+  font-weight: 800;
   line-height: 1;
   letter-spacing: var(--track-hero);
   margin: 0;
@@ -1111,9 +1114,8 @@
 /* ---- 03 The work ---- */
 .section--work h2 {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: var(--step-h2);
-  font-weight: 450;
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: var(--track-display);
   text-wrap: balance;
@@ -1123,7 +1125,6 @@
 
 .question {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-quiet);
   font-size: var(--step-lede);
   line-height: 1.45;
   color: var(--color-ink-muted);
@@ -1137,9 +1138,8 @@
    takes the weight the heading used to carry. */
 .question--lead {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: var(--step-h2);
-  font-weight: 450;
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: var(--track-display);
   color: var(--color-ink);
@@ -1168,9 +1168,8 @@
 
 .stat__value {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: clamp(2.1rem, 1.6rem + 2.2vw, 3.4rem);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: var(--track-hero);
   font-variant-numeric: tabular-nums;
@@ -1245,7 +1244,6 @@
 /* Pushed to the foot of the box — the gap above it is the point. */
 .mod__desc {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-quiet);
   font-size: var(--step-lede);
   line-height: 1.3;
   letter-spacing: var(--track-display);
@@ -1306,9 +1304,8 @@
 
 .belief__num {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: clamp(1.9rem, 1.4rem + 2.2vw, 3.4rem);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 0.9;
   letter-spacing: var(--track-hero);
   font-variant-numeric: tabular-nums;
@@ -1320,9 +1317,8 @@
 
 .belief__text {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: clamp(1.35rem, 1.05rem + 1.5vw, 2.35rem);
-  font-weight: 450;
+  font-weight: 700;
   line-height: 1.2;
   letter-spacing: var(--track-display);
   text-wrap: balance;
@@ -1333,9 +1329,8 @@
 /* ---- 04 Outside the game ---- */
 .throughline {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: var(--step-h2);
-  font-weight: 450;
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: var(--track-display);
   text-wrap: balance;
@@ -1363,7 +1358,6 @@
    than the line above it — it's an aside, not the closing statement. */
 .coda {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-quiet);
   font-size: var(--step-lede);
   line-height: 1.35;
   color: var(--color-ink-muted);
@@ -1374,9 +1368,8 @@
 /* ---- 05 Elsewhere ---- */
 .closing-line {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: var(--step-h2);
-  font-weight: 450;
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: var(--track-display);
   text-wrap: balance;
@@ -1415,8 +1408,8 @@
 }
 
 .elsewhere-links a:hover {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
+  color: var(--color-live);
+  border-bottom-color: var(--color-live);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1455,9 +1448,8 @@
 
 .cadence__line {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: clamp(1.2rem, 1rem + 1vw, 1.85rem);
-  font-weight: 450;
+  font-weight: 500;
   line-height: 1.2;
   letter-spacing: var(--track-display);
   margin: 0;
@@ -1549,9 +1541,8 @@
 
 .lesson__to {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-quiet);
   font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.3rem);
-  font-weight: 450;
+  font-weight: 500;
   line-height: 1.3;
   letter-spacing: var(--track-display);
   color: var(--color-ink-muted);
@@ -1613,10 +1604,9 @@
    down to keep it from breaking on narrow screens. */
 .figure-big__num {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: clamp(2.2rem, 1.4rem + 4vw, 5rem);
   white-space: nowrap;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: var(--track-hero);
   font-variant-numeric: tabular-nums;
@@ -1645,9 +1635,8 @@
 /* ---- Module variants ------------------------------------------------------ */
 .mod__figure {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: clamp(2.1rem, 1.6rem + 2.2vw, 3.4rem);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: var(--track-hero);
   font-variant-numeric: tabular-nums;
@@ -1681,7 +1670,6 @@
 
 .belief__sub {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-quiet);
   font-size: var(--step-lede);
   line-height: 1.35;
   color: var(--color-ink-muted);
@@ -1837,7 +1825,6 @@
 }
 
 .story-beat--aside {
-  font-variation-settings: var(--fraunces-quiet);
   font-size: var(--step-lede);
   line-height: 1.4;
   color: var(--color-ink-muted);
@@ -1898,7 +1885,6 @@
 .mix__op {
   grid-row: 2;
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-quiet);
   font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.75rem);
   line-height: 1;
   color: var(--color-ink-muted);
@@ -1945,9 +1931,8 @@
 .climb__peak {
   margin: 0;
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: clamp(1.6rem, 1.2rem + 1.7vw, 2.7rem);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.1;
   letter-spacing: var(--track-display);
 }
@@ -1988,9 +1973,8 @@
 
 .equiv__word {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: clamp(2.55rem, 1.6rem + 4.6vw, 6.2rem);
-  font-weight: 500;
+  font-weight: 800;
   line-height: 1;
   letter-spacing: var(--track-hero);
   text-transform: uppercase;
@@ -2009,7 +1993,6 @@
 
 .equiv__lead {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-quiet);
   font-size: var(--step-lede);
   line-height: 1.35;
   color: var(--color-ink-muted);
@@ -2035,7 +2018,6 @@
   max-width: 30rem;
   margin: 0 auto;
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-quiet);
   font-size: clamp(1.1rem, 0.9rem + 0.95vw, 1.75rem);
   line-height: 1.3;
 }
@@ -2057,9 +2039,8 @@
 /* The question the work grew out of. */
 .ask {
   font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-display);
   font-size: clamp(1.75rem, 1.15rem + 2.7vw, 3.5rem);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.06;
   letter-spacing: var(--track-hero);
   max-width: 17ch;

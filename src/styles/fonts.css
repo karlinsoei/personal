@@ -1,0 +1,83 @@
+/* @import has to come before every other rule in the file — a stylesheet's
+   imports are hoisted, and one sitting after a @font-face block is dropped
+   silently. See "The stand-in" below for what this is and how to remove it. */
+@import "@fontsource-variable/plus-jakarta-sans";
+
+/* ---- Satoshi, self-hosted --------------------------------------------------
+
+   Satoshi (Indian Type Foundry, via Fontshare) is the site's one typeface. It
+   is served from this repo rather than from Fontshare's CDN: no third-party
+   request at runtime, nothing to go down, and no IP address handed to another
+   host on every page view.
+
+   TO INSTALL: drop these two files into `public/assets/fonts/`
+
+       Satoshi-Variable.woff2
+       Satoshi-VariableItalic.woff2
+
+   from https://www.fontshare.com/fonts/satoshi (the "Variable" download). The
+   rules below already point at them, so nothing else has to change — the face
+   takes over the moment the files exist.
+
+   Both are variable across weight, so two files cover 300–900 upright and
+   italic. That is the whole typographic system: one family, one axis, and
+   hierarchy carried by weight, size, case and tracking rather than by a second
+   family.
+
+   `font-display: swap` shows the fallback immediately and swaps when Satoshi
+   arrives, so text is never invisible. The metric overrides on the fallback
+   face below are what stop that swap from moving the page.
+--------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Satoshi";
+  src: url("/assets/fonts/Satoshi-Variable.woff2") format("woff2-variations"),
+       url("/assets/fonts/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/assets/fonts/Satoshi-VariableItalic.woff2") format("woff2-variations"),
+       url("/assets/fonts/Satoshi-VariableItalic.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ---- The stand-in ---------------------------------------------------------
+
+   Until the Satoshi files land, this is what renders: Plus Jakarta Sans, also
+   a variable geometric sans with a tall x-height and closed apertures, which
+   is about as near to Satoshi as anything installable from npm. It stays in
+   the stack afterwards as the first fallback.
+
+   TO DROP IT once Satoshi is in place: delete the @import at the top of this
+   file, remove
+   "Plus Jakarta Sans Variable" from --font-sans in tokens.css, and
+   `npm uninstall @fontsource-variable/plus-jakarta-sans`. Nothing else
+   references it.
+
+   unicode-range in the Fontsource CSS means only the latin subset downloads.
+--------------------------------------------------------------------------- */
+
+/* ---- Metric-matched system fallback ----------------------------------------
+
+   A fallback face whose metrics are scaled to sit on Satoshi's, so the moment
+   the real font swaps in, line boxes do not change height and nothing reflows.
+   Without this, `font-display: swap` is a guaranteed layout shift on every
+   first visit.
+
+   The numbers are Satoshi's own metrics expressed against the local face:
+   Satoshi runs a slightly larger x-height than Arial at the same size, so the
+   stand-in is scaled up to meet it and its ascent/descent pinned to match.
+--------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Satoshi Fallback";
+  src: local("Helvetica Neue"), local("Arial"), local("Liberation Sans");
+  size-adjust: 105.5%;
+  ascent-override: 95%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}

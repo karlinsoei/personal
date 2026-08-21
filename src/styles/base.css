@@ -34,11 +34,23 @@ img, video {
 /* Visible keyboard focus everywhere — non-negotiable quality floor */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-live);
   outline-offset: 3px;
 }
 
 /* Media placeholder used until real assets are dropped in */
+/* A slot that actually holds something is a well, not a placeholder: the
+   diagonal hatch and dashed edge below are the "nothing here yet" state, and
+   they were showing through as light-grey letterboxing behind every photo that
+   didn't fill its box. :has() keeps this automatic — nothing has to remember to
+   add a class when an image lands. */
+.media-slot:has(img),
+.media-slot:has(video),
+.media-slot:has(picture) {
+  background: var(--color-sunken);
+  border-color: transparent;
+}
+
 .media-slot {
   background: repeating-linear-gradient(
     45deg,

@@ -1,94 +1,94 @@
-/* Self-hosted through npm — no CDN link, no third-party request at runtime.
-   `full` carries all four Fraunces axes (opsz, wght, SOFT, WONK); unicode-range
-   in the Fontsource CSS means only the latin subset actually downloads. */
-@import "@fontsource-variable/fraunces/full.css";
-@import "@fontsource/ibm-plex-mono/400.css";
-@import "@fontsource/ibm-plex-mono/600.css";
+@import "./fonts.css";
 
-/* ---- Faces — two of them, with strictly separate jobs --------------------
+/* ---- One typeface ---------------------------------------------------------
 
-   FRAUNCES carries the voice: hero line, story beats, section headings, the
-   closing line. Old-style serif, warm, and genuinely odd in the right places.
-   Two of its axes do real work here:
+   The site used to run two: Fraunces for the voice and IBM Plex Mono for the
+   apparatus. That split is gone. A serif-plus-mono pairing on an off-white
+   page is the house style of every generated portfolio on the internet, and it
+   was making a personal story read like a template.
 
-     opsz  — the hero at ~5.5rem and a story beat at 1.75rem get different
-             letter contrast automatically, instead of one set of shapes
-             scaled up and down. This is the "precise typographic rhythm"
-             in the brief, handled by the typeface rather than by hand-tuning
-             each size.
-     WONK  — swaps in the angled, slightly-off alternates. This is the
-             "slightly weird" the tone asks for. It's on for display type,
-             where it reads as character, and off below that, where it would
-             just read as noise.
+   Satoshi carries everything now. Hierarchy comes from weight, size, case and
+   tracking instead of from a second family — which is a harder discipline and
+   a much quieter result. The variable axis runs 300–900, so:
 
-   IBM PLEX MONO carries the apparatus: chapter numerals, eyebrows, captions,
-   links. Structural text only, never narrative. Fixed-width is the honest
-   choice for a real 01–05 sequence, and mono reads as annotation in section
-   04's captions rather than as body copy competing with the beats.
+     900  the hero line and section openers — set tight, it does the shouting
+     700  sub-heads, chips, the menu
+     500  running narrative
+     400  asides and captions
 
-   The split is the point: nothing on this site is set in a neutral sans, so
-   every piece of text is either the voice or the apparatus, never in between.
+   `--font-sans` is the only stack. `--font-display` and `--font-mono` still
+   exist because ~50 rules name them, but they now resolve to the same family;
+   the difference between "voice" and "apparatus" is carried by the weight and
+   tracking those rules already set.
 --------------------------------------------------------------------------- */
-
 :root {
-  /* ---- Color — neutrals locked by the brief ---- */
-  --color-bg: #F6F4EF;         /* off-white — provisional exact value */
-  --color-ink: #16150F;        /* near-black — provisional exact value */
+  --font-sans: "Satoshi", "Plus Jakarta Sans Variable", "Satoshi Fallback",
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial,
+    sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: var(--font-sans);
+  --font-body: var(--font-sans);
 
-  /* Seal vermilion — LOCKED. Picked on separation from the ink (3.58:1), not on
-     background contrast (4.65:1, which every candidate cleared). The accent only
-     ever appears small — 0.7rem chapter numerals, 1px underlines, the seal mark —
-     so distance from the ink beside it is what keeps it reading as colour. */
-  --color-accent: #C1432E;
+  /* ---- Colour — inverted ---------------------------------------------------
 
-  --color-ink-muted: color-mix(in srgb, var(--color-ink) 60%, var(--color-bg));
-  --color-border: color-mix(in srgb, var(--color-ink) 12%, var(--color-bg));
+     Off-black, not black. #343231 is warm and slightly desaturated, so the
+     page reads like unlit paper rather than a terminal, and photographs sit on
+     it without the hard edge a true black gives them.
 
-  /* League of Legends, and the three things it converged from. Picked away
-     from the vermilion so they read as index tabs rather than as more accent —
-     no reds. All clear 5.3:1 or better on the off-white. */
-  --color-league: #6E4F10;         /* Hextech gold, darkened for contrast  6.85:1 */
-  --color-mix-basketball: #9E430D; /* vivid burnt orange — warm, energetic 5.36:1 on its own tag tint */
-  --color-mix-chess: #1A3455;      /* deep navy — cool, intellectual      11.47:1 */
-  --color-mix-dnd: #5E2690;        /* rich violet — fantastical            8.86:1 */
+     Everything below is measured against that background rather than picked by
+     eye. The numbers in the comments are real contrast ratios.
+  ------------------------------------------------------------------------- */
+  --color-bg: #343231;         /* the page                                    */
+  --color-surface: #3D3B39;    /* raised panels, media wells                  */
+  --color-sunken: #2B2928;     /* insets, the frame behind photographs        */
 
-  /* ---- Type ---- */
-  --font-display: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-body: var(--font-mono);
+  --color-ink: #F4F1EC;        /* body and headlines            11.32:1       */
+  --color-ink-muted: #A9A39A;  /* captions, secondary            5.10:1       */
+  --color-border: color-mix(in srgb, var(--color-ink) 18%, var(--color-bg));
 
-  /* Fraunces axis presets. SOFT rounds the terminals a little (warmth without
-     mush); WONK is the character switch described above. */
-  --fraunces-display: "SOFT" 28, "WONK" 1;
-  --fraunces-quiet: "SOFT" 14, "WONK" 0;
+  /* Two accents with strictly separate jobs, which is what keeps them from
+     fighting:
 
-  /* Mono runs optically larger than a sans at the same px, so the apparatus
-     sizes below sit deliberately lower than they would for a sans. */
-  --step-body: clamp(0.9rem, 0.86rem + 0.18vw, 1rem);
-  --step-eyebrow: clamp(0.68rem, 0.66rem + 0.1vw, 0.75rem);
-  --step-caption: clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);
-  /* Supporting narrative — Fraunces, but below display size, so WONK comes off. */
+     ACCENT is narrative. The shout bubble, the hinge, the one phrase a
+     sentence turns on. Warm, and a direct descendant of the vermilion the
+     light version used — lifted until it clears AA on the dark ground.
+     4.53:1 both ways, so a dark label reversed out of it also passes.
+
+     LIVE is interactive. Current menu item, focus rings, the then/now switch,
+     hover. Acid green is the one unmistakably game-native colour on the page,
+     and putting it only on things that respond to you is what keeps the hint
+     subtle: it never decorates, it only ever means "this is live". */
+  --color-accent: #FF6B4A;     /* narrative accent               4.53:1       */
+  --color-live: #C6F24E;       /* interactive / current          9.85:1       */
+
+  /* Struck through the same lift: each is the light-mode hue rotated up in
+     value until it clears AA text on off-black. */
+  --color-league: #E8C46A;         /* hextech gold              7.61:1        */
+  --color-mix-basketball: #FFA060; /* warm orange               6.35:1        */
+  --color-mix-chess: #8FB4E0;      /* cool blue                 5.94:1        */
+  --color-mix-dnd: #C79BF5;        /* violet                    5.73:1        */
+
+  /* ---- Type scale ---- */
+  --step-body: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
+  --step-eyebrow: clamp(0.7rem, 0.68rem + 0.1vw, 0.78rem);
+  --step-caption: clamp(0.76rem, 0.74rem + 0.1vw, 0.84rem);
   --step-lede: clamp(1.05rem, 0.95rem + 0.5vw, 1.4rem);
-  /* Story beats sit below h2 now. The rewrite carries far more content and the
-     brief is "readable in under a minute", so beats trade size for pace. */
   --step-beat: clamp(1.4rem, 1.15rem + 1.4vw, 2.35rem);
   --step-h2: clamp(1.75rem, 1.4rem + 2vw, 3rem);
   --step-hero: clamp(2.4rem, 1.75rem + 4.1vw, 5.5rem);
 
-  /* Tracking — display serif wants negative, uppercase mono wants positive.
-     Mono is already wide, so the uppercase tracking is gentler than the
-     0.12em a sans eyebrow would take. */
-  --track-hero: -0.025em;
-  --track-display: -0.015em;
-  --track-eyebrow: 0.1em;
+  /* A geometric sans at display size needs to be pulled much tighter than a
+     serif did — the old -0.025em left the hero looking loose and generic. */
+  --track-hero: -0.04em;
+  --track-display: -0.025em;
+  --track-eyebrow: 0.14em;
 
   /* ---- Layout ---- */
   --gutter: clamp(1.25rem, 4vw, 4rem);
-  /* Chapters, not blocks — each section gets real air around it. */
   --section-pad-y: clamp(3.5rem, 8vh, 6.5rem);
   --content-max: 1200px;
 
-  /* ---- Motion — restrained by design; respected via prefers-reduced-motion in base.css ---- */
+  /* ---- Motion ---- */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-reveal: 0.7s;
 }

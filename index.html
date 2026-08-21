@@ -20,9 +20,15 @@
   <meta property="og:description" content="I'm Karlin, the kid who played too much — and then took play seriously. Six years building programs, teams and coaching for young people in games." />
   <!-- TODO: og:image — needs a real 1200×630 asset. -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#F6F4EF" />
+  <meta name="theme-color" content="#343231" />
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23C1432E'/><text x='16' y='24' font-family='Georgia,serif' font-size='21' font-weight='600' fill='%23F6F4EF' text-anchor='middle'>K</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23343231'/><text x='16' y='24' font-family='system-ui,sans-serif' font-size='20' font-weight='800' fill='%23C6F24E' text-anchor='middle'>K</text></svg>" />
+
+  <!-- Requested alongside the CSS rather than after it, so the face is already
+       in flight while the stylesheet parses. Harmless while the file is absent:
+       a preload that 404s costs one failed request and no rendering delay. -->
+  <link rel="preload" href="/assets/fonts/Satoshi-Variable.woff2" as="font"
+        type="font/woff2" crossorigin />
 
   <link rel="stylesheet" href="/src/styles/tokens.css" />
   <link rel="stylesheet" href="/src/styles/base.css" />

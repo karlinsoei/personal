@@ -355,40 +355,10 @@
   }
 }
 
-/* Condition tags, colour-coded and sitting directly under the statement so
-   the chronology reads straight down the page. */
-.conditions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-/* Carried more weight than a caption: these three are the reason the chapter
-   exists, so they are sized to be read rather than skimmed past. */
-.cond {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: clamp(0.82rem, 0.72rem + 0.45vw, 1.05rem);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  white-space: nowrap;
-  padding: 0.5em 0.85em;
-  border: 2px solid var(--cond);
-  border-radius: 3px;
-  color: var(--cond);
-  background: color-mix(in srgb, var(--cond) 9%, var(--color-bg));
-}
-
-.cond:nth-child(1) { --cond: var(--color-cond-1); transform: rotate(-1.3deg); }
-.cond:nth-child(2) { --cond: var(--color-cond-2); transform: rotate(0.9deg); }
-.cond:nth-child(3) { --cond: var(--color-cond-3); transform: rotate(-0.6deg); }
-
 /* ---- Tags -----------------------------------------------------------------
-   The block-level relative of .cond: same chip language, but standing on its
-   own line rather than tagging a statement. Used for the game titles and for
-   the three things League felt like a combination of.
+   Chip language: a bordered, tinted mono label standing on its own line. Used
+   for the game titles and for the three things League felt like a combination
+   of.
 --------------------------------------------------------------------------- */
 .tag {
   --tag: var(--color-ink);
@@ -1401,7 +1371,6 @@
 @media (prefers-reduced-motion: reduce) {
   .elsewhere-links a { transition: none; }
   /* The tilts are decorative; straighten them when motion is unwelcome. */
-  .cond,
   .tag,
   .roster,
   .shout {
@@ -1739,7 +1708,6 @@
   margin-right: auto;
 }
 
-.stage--center .conditions,
 .stage--center .cadence,
 .stage--center .roster__names,
 .stage--center .formula {

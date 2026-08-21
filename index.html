@@ -22,7 +22,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#343231" />
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23343231'/><text x='16' y='24' font-family='system-ui,sans-serif' font-size='20' font-weight='800' fill='%23C6F24E' text-anchor='middle'>K</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23343231'/><text x='16' y='24' font-family='system-ui,sans-serif' font-size='20' font-weight='800' fill='%232CB494' text-anchor='middle'>K</text></svg>" />
 
   <!-- Requested alongside the CSS rather than after it, so the face is already
        in flight while the stylesheet parses. Harmless while the file is absent:
@@ -59,6 +59,27 @@
       <div class="section__inner">
         <div class="intro-grid">
           <div class="intro-grid__text" data-overture>
+            <!-- Headline first: it is the h1, and mom underneath makes the page
+                 read as the claim and then the evidence for it. The overture
+                 still lands her line first in time — it animates opacity and
+                 transform only, so both boxes hold their space and nothing on
+                 screen moves.
+
+                 One sentence with two endings. The opening clause is fixed and
+                 only its last few words swap with the portrait, so revealing the
+                 photograph finishes the sentence a different way rather than
+                 replacing the headline. -->
+            <h1 class="hero-line">
+              <!-- Non-breaking space: without it the line breaks after "kid" and
+                   strands "who" alone, which reads as a mistake rather than a
+                   line break. Glued, the break falls after "the" instead. -->
+              <span class="hero-line__fixed">Hi, I'm Karlin, the kid&nbsp;who</span>
+              <span class="hero-line__swap">
+                <span class="hero-line__state is-on" data-hero-state="default">just wanted to game.</span>
+                <span class="hero-line__state" data-hero-state="revealed">made gaming mean something.</span>
+              </span>
+            </h1>
+
             <figure class="shout">
               <div class="shout__bubble-wrap">
                 <svg class="shout__bubble" viewBox="0 0 320 150" preserveAspectRatio="none" aria-hidden="true">
@@ -194,21 +215,6 @@
                 <figcaption class="shout__who">— mom, on repeat</figcaption>
               </div>
             </figure>
-
-            <!-- One sentence with two endings. The opening clause is fixed and
-                 only its last few words swap with the portrait, so revealing
-                 the photograph finishes the sentence a different way rather
-                 than replacing the headline. -->
-            <h1 class="hero-line">
-              <!-- Non-breaking space: without it the line breaks after "kid" and
-                   strands "who" alone, which reads as a mistake rather than a
-                   line break. Glued, the break falls after "the" instead. -->
-              <span class="hero-line__fixed">Hi, I'm Karlin, the kid&nbsp;who</span>
-              <span class="hero-line__swap">
-                <span class="hero-line__state is-on" data-hero-state="default">just wanted to game.</span>
-                <span class="hero-line__state" data-hero-state="revealed">made gaming mean something.</span>
-              </span>
-            </h1>
 
           </div>
 

@@ -589,8 +589,14 @@
   display: inline-grid;
 }
 
+/* The half of the sentence the switch rewrites, lit in the same colour as the
+   switch itself — so the thing that changes and the control that changes it
+   are visibly the same circuit. 4.90:1 on the off-black, and this is display
+   size, where the bar is 3:1. */
 .hero-line__state {
   grid-area: 1 / 1;
+  color: var(--color-live);
+  text-shadow: 0 0 28px color-mix(in srgb, var(--color-live) 45%, transparent);
   opacity: 0;
   /* visibility, not just opacity — it also takes the inactive line out of the
      accessibility tree, so a screen reader reads one headline, not both. */
@@ -718,11 +724,17 @@
   flex: 0 0 auto;
 }
 
+/* She is not a footnote. This was caption-sized muted grey, which read as
+   photo credit under the loudest thing on the page — so it takes the bubble's
+   own colour and enough size to be read rather than skimmed. */
 .shout__who {
   margin: 0 0 0.35rem;
-  font-family: var(--font-mono);
-  font-size: var(--step-caption);
-  color: var(--color-ink-muted);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 0.85rem + 0.7vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: var(--track-display);
+  color: var(--color-accent);
 }
 
 

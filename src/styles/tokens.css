@@ -55,11 +55,12 @@
      4.53:1 both ways, so a dark label reversed out of it also passes.
 
      LIVE is interactive. Current menu item, focus rings, the then/now switch,
-     hover. Acid green is the one unmistakably game-native colour on the page,
-     and putting it only on things that respond to you is what keeps the hint
-     subtle: it never decorates, it only ever means "this is live". */
+     link hover — and the half of the hero sentence that switch rewrites. It is
+     the one unmistakably game-native colour on the page, and putting it only on
+     things that respond to you is what keeps the hint subtle: it never
+     decorates, it only ever means "this is live". */
   --color-accent: #FF6B4A;     /* narrative accent               4.53:1       */
-  --color-live: #C6F24E;       /* interactive / current          9.85:1       */
+  --color-live: #2CB494;       /* interactive / current          4.90:1       */
 
   /* Struck through the same lift: each is the light-mode hue rotated up in
      value until it clears AA text on off-black. */

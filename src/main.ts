@@ -32,39 +32,92 @@ function initReveals() {
 }
 
 /**
- * Chapter nav active state — highlights whichever section is crossing the
- * middle of the viewport.
+ * Masthead menu.
  *
- * This used to use `threshold: 0.5`, which is a trap: the ratio is measured
- * against the *target's* own height, so a section taller than the viewport can
- * never be 50% visible and simply never activates. Sections 02 and 03 are both
- * well over a screen tall, so their numerals stayed dead.
+ * Three jobs: mark which door you are currently behind, fade the bar's
+ * background in once the page has moved off the hero, and hand focus to the
+ * section a link points at.
  *
- * Collapsing the root to a thin band across the viewport's middle and watching
- * for any intersection at all makes activation independent of section height.
+ * The active state is a *span*, not a section — "Origin" covers the intro,
+ * the childhood chapter and college, because that whole run is one story. So
+ * the observer reports a section id and a lookup turns that into a menu key.
+ *
+ * The observer's root is collapsed to a thin band across the middle of the
+ * viewport rather than using `threshold: 0.5`. The ratio in a threshold is
+ * measured against the *target's* own height, so a section taller than the
+ * viewport can never be 50% visible and would simply never activate — and
+ * sections 02 and 03 are both well over a screen tall.
  */
-function initChapterNav() {
-  const sections = document.querySelectorAll<HTMLElement>("main .section");
-  const links = document.querySelectorAll<HTMLAnchorElement>(
-    ".chapter-nav a"
-  );
+const MENU_SPANS: Record<string, string> = {
+  intro: "origin",
+  story: "origin",
+  college: "origin",
+  work: "work",
+  life: "play",
+  elsewhere: "contact",
+};
 
-  const setActive = (id: string) => {
+function initMenu() {
+  const bar = document.querySelector<HTMLElement>(".masthead");
+  const links = document.querySelectorAll<HTMLAnchorElement>("[data-menu]");
+  const sections = document.querySelectorAll<HTMLElement>("main .section");
+  if (!links.length) return;
+
+  const setCurrent = (key: string | null) => {
     links.forEach((link) => {
-      link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`);
+      const on = link.dataset.menu === key;
+      link.classList.toggle("is-current", on);
+      // aria-current is the spoken half of the vermilion.
+      if (on) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
     });
   };
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) setActive((entry.target as HTMLElement).id);
+        if (!entry.isIntersecting) return;
+        setCurrent(MENU_SPANS[(entry.target as HTMLElement).id] ?? null);
       });
     },
     { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
   );
-
   sections.forEach((section) => observer.observe(section));
+
+  // An in-page anchor moves the viewport but not the keyboard. Without this,
+  // tabbing after a click resumes from the menu rather than from the section
+  // the reader just asked for. tabindex -1 keeps it focusable by script only,
+  // and is removed again so the section never becomes a tab stop of its own.
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      const id = link.getAttribute("href")?.slice(1);
+      if (!id) return;
+      setCurrent(link.dataset.menu ?? null);
+      const target = document.getElementById(id);
+      if (!target) return;
+      target.setAttribute("tabindex", "-1");
+      target.focus({ preventScroll: true });
+      target.addEventListener("blur", () => target.removeAttribute("tabindex"), {
+        once: true,
+      });
+    });
+  });
+
+  // Sentinel rather than a scroll listener: the bar has left the top exactly
+  // when a marker pinned to the top of the document scrolls out of the
+  // viewport. Given real height so the background waits for a real scroll
+  // rather than appearing on the first pixel of one.
+  if (bar) {
+    const sentinel = document.createElement("div");
+    sentinel.setAttribute("aria-hidden", "true");
+    sentinel.style.cssText =
+      "position:absolute;top:0;height:48px;width:1px;pointer-events:none";
+    document.body.prepend(sentinel);
+    new IntersectionObserver(
+      ([entry]) => bar.classList.toggle("is-stuck", !entry.isIntersecting),
+      { threshold: 0 }
+    ).observe(sentinel);
+  }
 }
 
 /**
@@ -488,9 +541,9 @@ try {
 }
 
 try {
-  initChapterNav();
+  initMenu();
 } catch (err) {
-  console.error("Chapter nav failed to initialise.", err);
+  console.error("Menu failed to initialise.", err);
 }
 
 try {

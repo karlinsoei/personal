@@ -1,52 +1,125 @@
-/* ---- Chapter nav — real wayfinding for a long single scroll ---- */
-.chapter-nav {
-  position: fixed;
-  right: clamp(1rem, 3vw, 2.5rem);
-  top: 50%;
-  transform: translateY(-50%);
+/* ---- Masthead menu ---------------------------------------------------------
+   Four doors onto six sections, replacing the chapter rail that used to sit
+   down the right edge. The two could not coexist: the rail counted 01–06 by
+   section and this counts 01–04 by destination, so a reader would have seen
+   two different numbers for the same place.
+
+   Sticky rather than fixed, so it takes its own space at the top of the flow
+   and nothing has to be padded around it. The background only fades in once
+   the page has moved, which keeps it off the hero.
+--------------------------------------------------------------------------- */
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--color-bg) 0%, transparent);
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+
+.js .masthead.is-stuck {
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom-color: var(--color-border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .masthead { transition: none; }
+}
+
+.menu {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.menu__list {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  z-index: 10;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0 clamp(0.55rem, 1.6vw, 1.1rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.chapter-nav a {
+/* The "//" is decoration, not content. The `/ ""` half of the shorthand gives
+   it an empty accessible name, so a screen reader reads four links rather than
+   four links interleaved with "slash slash". */
+.menu__list li + li::before {
+  content: "//" / "";
+  margin-right: clamp(0.55rem, 1.6vw, 1.1rem);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.05em;
-  text-decoration: none;
-  color: var(--color-ink-muted);
-  transition: color 0.3s var(--ease-out);
+  font-size: var(--step-eyebrow);
+  color: var(--color-border);
 }
 
-.chapter-nav a.is-active {
-  color: var(--color-accent);
+.menu__link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4em;
+  /* 44px of tap target around ~11px of type. */
+  min-height: 44px;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--step-eyebrow);
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--track-eyebrow);
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--color-ink);
+  transition: color 0.25s var(--ease-out);
 }
 
-@media (max-width: 720px) {
-  .chapter-nav {
-    top: auto;
-    bottom: clamp(0.5rem, 3vw, 1.25rem);
-    right: 50%;
-    transform: translateX(50%);
-    flex-direction: row;
-    gap: 0;
-    background: color-mix(in srgb, var(--color-bg) 88%, transparent);
-    backdrop-filter: blur(6px);
-    padding: 0.15rem 0.4rem;
-    border-radius: 999px;
-  }
+/* Underline rather than a colour change: the labels already sit at full ink so
+   there is nowhere darker to go, and the accent is spoken for by "you are
+   here". */
+.menu__link:hover,
+.menu__link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+  text-decoration-thickness: 1px;
+}
 
-  /* The numerals are 15x17px of ink. On a phone the tap target has to be the
-     44px box around them, not the glyph itself. */
-  .chapter-nav a {
-    display: grid;
-    place-items: center;
-    min-width: 44px;
-    min-height: 44px;
+/* Muted ink is 4.63:1 on the off-white — close enough to the 4.5 floor that
+   there is no room to go lighter, which is why the hierarchy here comes from
+   the labels being full ink rather than from the numerals being faint. */
+.menu__n {
+  font-size: 0.85em;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-muted);
+}
+
+/* Vermilion is the page's "you are here" signal everywhere else, so it does
+   the job here too rather than inventing a second one. */
+.menu__link.is-current {
+  color: var(--color-accent);
+}
+
+.menu__link.is-current .menu__n {
+  color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu__link { transition: none; }
+}
+
+/* Under this the four labels plus their numerals stop fitting on one line.
+   The numerals go first: they are the ordinal, and the words are the
+   destination. */
+@media (max-width: 620px) {
+  .menu__list {
+    justify-content: center;
+    gap: 0 clamp(0.4rem, 2vw, 0.7rem);
   }
+  .menu__list li + li::before {
+    margin-right: clamp(0.4rem, 2vw, 0.7rem);
+  }
+  .menu__n { display: none; }
+  .menu__link { min-height: 40px; }
 }
 
 /* ---- Section shell ----
@@ -55,18 +128,16 @@
    idea per screen — too slow for a site meant to land in under a minute. */
 .section {
   padding: var(--section-pad-y) var(--gutter);
+  /* The masthead is sticky, so an anchor would otherwise drop its target
+     underneath the bar. Clears the bar plus a little air. */
+  scroll-margin-top: clamp(3.5rem, 8vw, 4.75rem);
 }
 
-/* The chapter nav is fixed to the right edge. Between the tablet breakpoint
-   and ~1330px the content's right edge runs underneath it — a measured 2–7px
-   overlap across that entire range, which clips the last character of
-   anything reaching the margin (the roster names were losing letters at
-   880px). Above ~1360px the centred 1200px measure clears it on its own. */
-@media (min-width: 721px) and (max-width: 1360px) {
-  .section {
-    padding-right: calc(var(--gutter) + 2.75rem);
-  }
-}
+/* The extra right padding that used to live here is gone with the chapter
+   rail it was dodging. It bought 2.75rem of clearance between 721px and
+   1360px, where the fixed rail overlapped the content's right edge and
+   clipped the last character of anything reaching the margin. Nothing is
+   pinned to that edge now, so the padding is symmetric again. */
 
 /* Still a commanding opening, but no longer sized to hold a hero photo it
    doesn't have. The headline and the shout carry this screen on their own. */

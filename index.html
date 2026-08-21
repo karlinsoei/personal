@@ -30,14 +30,21 @@
 </head>
 <body>
 
-  <nav class="chapter-nav" aria-label="Section navigation">
-    <a href="#intro" data-chapter="01" aria-label="01, Introduction"><span>01</span></a>
-    <a href="#story" data-chapter="02" aria-label="02, Where I came from"><span>02</span></a>
-    <a href="#college" data-chapter="03" aria-label="03, College"><span>03</span></a>
-    <a href="#work" data-chapter="04" aria-label="04, The work"><span>04</span></a>
-    <a href="#life" data-chapter="05" aria-label="05, Still learning"><span>05</span></a>
-    <a href="#elsewhere" data-chapter="06" aria-label="06, Elsewhere"><span>06</span></a>
-  </nav>
+  <!-- Four doors onto six sections. Origin covers the run from the childhood
+       chapter through college, since that whole stretch is one story; Work,
+       Play and Contact each land on a single section. The hero is not in the
+       list on purpose — it is what the page already opens on, so a link to it
+       would be a link to where you are. -->
+  <header class="masthead">
+    <nav class="menu" aria-label="Sections">
+      <ul class="menu__list">
+        <li><a class="menu__link" href="#story" data-menu="origin">Origin<span class="menu__n" aria-hidden="true">01</span></a></li>
+        <li><a class="menu__link" href="#work" data-menu="work">Work<span class="menu__n" aria-hidden="true">02</span></a></li>
+        <li><a class="menu__link" href="#life" data-menu="play">Play<span class="menu__n" aria-hidden="true">03</span></a></li>
+        <li><a class="menu__link" href="#elsewhere" data-menu="contact">Contact me<span class="menu__n" aria-hidden="true">04</span></a></li>
+      </ul>
+    </nav>
+  </header>
 
   <main>
 

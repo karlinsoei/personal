@@ -213,9 +213,13 @@
    right. Putting mom's shout directly under the headline rather than beside
    the photo keeps the tail pointing at her, so she still reads as the
    speaker rather than as a label on his picture. */
+/* 1.15/0.85 rather than 1.3/0.7. Measured at 1600 and 1280, this is the ratio
+   where the photograph and the text column come out the same height — 3px and
+   5px apart respectively — so the two halves read as one composition instead
+   of a tall column with a small picture floating beside it. */
 .intro-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   gap: clamp(1.5rem, 4vw, 3.5rem);
   align-items: center;
   width: 100%;
@@ -229,10 +233,12 @@
   min-width: 0;
 }
 
+/* No fixed cap. The old 340px sat 60px inside its own 400px column, so the
+   photograph was both small and surrounded by dead space; letting it fill the
+   column is most of the size increase on its own. */
 .hero-portrait {
   margin: 0;
   width: 100%;
-  max-width: 340px;
   justify-self: end;
 }
 
@@ -419,9 +425,12 @@
     grid-template-columns: minmax(0, 1fr);
     gap: clamp(1.75rem, 5vw, 2.5rem);
   }
+  /* Single column from here down, so the photograph is no longer competing
+     with the text for width — it gets a real size rather than the 260px it
+     needed when it sat beside something. */
   .hero-portrait {
     justify-self: start;
-    max-width: 260px;
+    max-width: min(420px, 100%);
   }
 }
 

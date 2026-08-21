@@ -70,10 +70,14 @@
                  photograph finishes the sentence a different way rather than
                  replacing the headline. -->
             <h1 class="hero-line">
-              <!-- Non-breaking space: without it the line breaks after "kid" and
-                   strands "who" alone, which reads as a mistake rather than a
-                   line break. Glued, the break falls after "the" instead. -->
-              <span class="hero-line__fixed">Hi, I'm Karlin, the kid&nbsp;who</span>
+              <!-- "the kid who" is glued into one unbreakable run. Left to itself
+                   the line broke after "kid", stranding "who"; gluing only
+                   "kid who" moved the break after "the" and left a two-word
+                   line. Welding all three sends the break to the comma, which
+                   is where the sentence actually pauses. The space after
+                   "Karlin," stays breakable on purpose — gluing that one too
+                   left "Hi, I'm" alone on the first line. -->
+              <span class="hero-line__fixed">Hi, I'm Karlin, the&nbsp;kid&nbsp;who</span>
               <span class="hero-line__swap">
                 <span class="hero-line__state is-on" data-hero-state="default">just wanted to game.</span>
                 <span class="hero-line__state" data-hero-state="revealed">made gaming mean something.</span>

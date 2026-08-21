@@ -298,6 +298,15 @@
   border-radius: 2px;
 }
 
+/* The source is 2:3 and the frame is 2:3, so `cover` was showing the whole
+   photograph edge to edge and he sat small inside a wide mall. Scaled up and
+   anchored above centre, which crops the ceiling and the floor and leaves him
+   filling the frame. The frame already clips. */
+.hero-swap__img--then {
+  transform: scale(1.34);
+  transform-origin: 50% 34%;
+}
+
 /* Framed so he sits where the portrait's face sits — the swap lands on the
    same spot rather than sliding the subject sideways. */
 .hero-swap__img--under {
@@ -560,6 +569,7 @@
   letter-spacing: -0.035em;
   text-transform: uppercase;
   margin: 0;
+  text-shadow: var(--shadow-display);
 }
 
 /* ---- 01 Intro ---- */
@@ -580,6 +590,69 @@
      is narrower than this, so the column sets the measure and this never
      binds. Kept as a guard for very wide viewports. */
   max-width: 23ch;
+  text-shadow: var(--shadow-display);
+}
+
+/* ---- The spawn ------------------------------------------------------------
+   The headline is no longer held back by anything — it plays on load, so it
+   never waits on a scroll that might not come.
+
+   It materialises rather than fades: from slightly small, offset and blurred
+   to solid, which reads as a unit finishing construction rather than as a
+   div sliding up. The blur is what sells it; opacity alone is just a fade.
+
+   .hero-line is the animated box on purpose. Transforms and filters do not
+   apply to a non-replaced inline box, so the obvious target — the inline
+   .hero-line__fixed span — silently ignores both; and making it inline-block
+   to fix that would stop the clause wrapping and blow the measure out.
+--------------------------------------------------------------------------- */
+@keyframes hero-spawn {
+  from {
+    opacity: 0;
+    transform: translateY(0.16em) scale(0.965);
+    filter: blur(12px);
+  }
+  55% { opacity: 1; }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+/* The lit half arrives a beat later and flares as it lands — drop-shadow
+   rather than text-shadow so it layers over the glow the state already sets
+   instead of replacing it. */
+@keyframes hero-spawn-charge {
+  from {
+    opacity: 0;
+    transform: translateY(0.22em);
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  60% {
+    opacity: 1;
+    filter: drop-shadow(0 0 26px color-mix(in srgb, var(--color-live) 80%, transparent));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: drop-shadow(0 0 0 transparent);
+  }
+}
+
+.hero-line {
+  animation: hero-spawn 0.9s var(--ease-out) both;
+}
+
+.hero-line__swap {
+  animation: hero-spawn-charge 0.85s var(--ease-out) 0.34s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-line,
+  .hero-line__swap {
+    animation: none;
+  }
 }
 
 /* Same size as the ending it hands off to — the two halves are one sentence,
@@ -665,6 +738,7 @@
   text-transform: uppercase;
   letter-spacing: 0.015em;
   color: var(--color-ink);
+  text-shadow: var(--shadow-display);
 }
 
 /* Mom sits under the bubble's tail, which drops from the lower left, so the
@@ -733,6 +807,46 @@
   flex: 0 0 auto;
 }
 
+/* ---- Mom, still going -----------------------------------------------------
+   Three sharp pushes and a rest, on a loop — the cadence of someone repeating
+   themselves rather than a steady wobble, which is what "on repeat" says. The
+   rotation is under 1.5° and the scale under 4%: at 150px that is a couple of
+   pixels of travel, enough to catch peripheral vision and not enough to pull
+   the eye off the headline.
+
+   Only the shouting face moves. The delighted one is not mid-sentence. */
+@keyframes mom-shout {
+  0%   { transform: rotate(0deg) scale(1); }
+  6%   { transform: rotate(1.4deg) scale(1.035); }
+  13%  { transform: rotate(-0.9deg) scale(1.008); }
+  20%  { transform: rotate(1.2deg) scale(1.03); }
+  27%  { transform: rotate(-0.7deg) scale(1.006); }
+  34%  { transform: rotate(1deg) scale(1.022); }
+  44%  { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+@keyframes mom-sparks {
+  0%, 44%, 100% { opacity: 0.4; }
+  6%, 20%, 34%  { opacity: 0.85; }
+}
+
+.mom[data-hero-state="default"] {
+  animation: mom-shout 2.9s var(--ease-out) infinite;
+  transform-origin: 50% 78%;
+}
+
+.mom[data-hero-state="default"] .dood__spark {
+  animation: mom-sparks 2.9s var(--ease-out) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mom[data-hero-state="default"],
+  .mom[data-hero-state="default"] .dood__spark {
+    animation: none;
+  }
+}
+
 /* She is not a footnote. This was caption-sized muted grey, which read as
    photo credit under the loudest thing on the page — so it takes the bubble's
    own colour and enough size to be read rather than skimmed. */
@@ -744,6 +858,7 @@
   line-height: 1.15;
   letter-spacing: var(--track-display);
   color: var(--color-accent);
+  text-shadow: var(--shadow-copy);
 }
 
 
@@ -775,12 +890,13 @@
 .story-beat {
   font-family: var(--font-display);
   font-size: var(--step-beat);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.18;
   letter-spacing: var(--track-display);
   text-wrap: balance;
   max-width: 26ch;
   margin: 0;
+  text-shadow: var(--shadow-copy);
 }
 
 /* The one accented phrase in the narrative — the hinge the whole site turns
@@ -1123,6 +1239,7 @@
   letter-spacing: var(--track-display);
   max-width: 26ch;
   margin: 0 0 0.4rem;
+  text-shadow: var(--shadow-display);
 }
 
 .punch__kicker {
@@ -1172,6 +1289,7 @@
   color: var(--color-ink);
   max-width: 24ch;
   text-wrap: balance;
+  text-shadow: var(--shadow-display);
 }
 
 /* Authority, stated as numbers rather than claimed in prose. */
@@ -1201,6 +1319,7 @@
   letter-spacing: var(--track-hero);
   font-variant-numeric: tabular-nums;
   margin: 0;
+  text-shadow: var(--shadow-display);
 }
 
 /* Section label — an exhibition caption, not a heading. */
@@ -1340,6 +1459,7 @@
      as a list rather than as a numbered argument. The accent gives the count
      presence without touching the statements themselves, which stay ink. */
   color: var(--color-accent);
+  text-shadow: var(--shadow-display);
 }
 
 .belief__text {
@@ -1351,6 +1471,7 @@
   text-wrap: balance;
   max-width: 30ch;
   margin: 0;
+  text-shadow: var(--shadow-display);
 }
 
 /* ---- 04 Outside the game ---- */
@@ -1363,6 +1484,7 @@
   text-wrap: balance;
   max-width: 28ch;
   margin-bottom: clamp(2rem, 5vw, 3rem);
+  text-shadow: var(--shadow-display);
 }
 
 .life-grid {
@@ -1402,6 +1524,7 @@
   text-wrap: balance;
   max-width: 26ch;
   margin-bottom: 2.5rem;
+  text-shadow: var(--shadow-display);
 }
 
 .elsewhere-links {
@@ -1480,6 +1603,7 @@
   line-height: 1.2;
   letter-spacing: var(--track-display);
   margin: 0;
+  text-shadow: var(--shadow-copy);
 }
 
 /* The opening beat of a section, a step up from the rest. */
@@ -1554,6 +1678,7 @@
   letter-spacing: 0.06em;
   color: var(--color-ink);
   margin: 0;
+  text-shadow: var(--shadow-display);
 }
 
 .lesson__arrow {
@@ -1642,6 +1767,7 @@
   letter-spacing: var(--track-hero);
   font-variant-numeric: tabular-nums;
   margin: 0 0 0.5rem;
+  text-shadow: var(--shadow-display);
 }
 
 .figure-big__label {
@@ -1672,6 +1798,7 @@
   letter-spacing: var(--track-hero);
   font-variant-numeric: tabular-nums;
   margin: 0;
+  text-shadow: var(--shadow-display);
 }
 
 /* Stats read top-down; the description belongs under its figure, not pushed
@@ -1853,6 +1980,7 @@
   font-size: clamp(1.75rem, 1.3rem + 2.1vw, 3.1rem);
   line-height: 1.12;
   max-width: 20ch;
+  text-shadow: var(--shadow-display);
 }
 
 .story-beat--aside {
@@ -1966,6 +2094,7 @@
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: var(--track-display);
+  text-shadow: var(--shadow-display);
 }
 
 /* The one phrase the sentence turns on, in the accent the page reserves for
@@ -2009,6 +2138,7 @@
   line-height: 1;
   letter-spacing: var(--track-hero);
   text-transform: uppercase;
+  text-shadow: var(--shadow-display);
 }
 
 /* The equals sign is the sentence — "game = life" is the whole realisation —
@@ -2084,6 +2214,7 @@
   letter-spacing: var(--track-hero);
   max-width: 17ch;
   margin: 0;
+  text-shadow: var(--shadow-display);
 }
 
 /* Compact reel, so the opening group still fits one screen with it. */
@@ -2107,11 +2238,6 @@
    where the module never boots. Any scroll, tap or keypress answers early;
    nobody is made to wait for a punchline they didn't ask for.
 --------------------------------------------------------------------------- */
-.js [data-overture] .hero-line {
-  opacity: 0;
-  transform: translateY(16px);
-}
-
 .js [data-overture] .shout {
   opacity: 0;
   transform: rotate(-2.2deg) scale(0.94);
@@ -2123,19 +2249,7 @@
   transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
 }
 
-.js [data-overture].is-answered .hero-line {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .js [data-overture] .hero-line,
-  .js [data-overture].is-answered .hero-line {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
   .js [data-overture] .shout,
   .js [data-overture].is-shouting .shout {
     opacity: 1;

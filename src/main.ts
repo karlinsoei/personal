@@ -121,38 +121,25 @@ function initMenu() {
 }
 
 /**
- * The overture.
+ * The shout's entrance.
  *
- * The page opens on mom's line and answers it a beat later — the reversal is
- * the point, so the headline is what gets held back, not the bubble.
+ * This used to be an "overture": mom's line landed first and the headline was
+ * held back for 2.2s, or until the visitor scrolled, pressed a key or clicked.
+ * The headline no longer takes part — it spawns on load from CSS, which means
+ * it is never waiting on anything and never depends on a scroll that may not
+ * come. All that is left here is fading the bubble in a beat after paint.
  *
- * The hidden state lives in CSS behind `.js`, so with no JavaScript both are
- * visible immediately and nothing here is load-bearing. The reply also lands
- * the instant the reader does anything at all: waiting is the joke, but only
- * for people who choose to wait.
+ * The hidden state lives in CSS behind `.js`, so with no JavaScript the shout
+ * is simply visible and nothing here is load-bearing.
  */
 function initOverture() {
   const root = document.querySelector<HTMLElement>("[data-overture]");
   if (!root) return;
-
-  const answer = () => root.classList.add("is-answered");
-
   if (prefersReducedMotion) {
     root.classList.add("is-shouting");
-    answer();
     return;
   }
-
   requestAnimationFrame(() => root.classList.add("is-shouting"));
-
-  const timer = window.setTimeout(answer, 2200);
-  const early = () => {
-    window.clearTimeout(timer);
-    answer();
-  };
-  addEventListener("scroll", early, { once: true, passive: true });
-  addEventListener("pointerdown", early, { once: true });
-  addEventListener("keydown", early, { once: true });
 }
 
 /**
@@ -549,9 +536,9 @@ try {
 try {
   initOverture();
 } catch (err) {
-  // Without this the headline stays hidden until the <head> failsafe fires.
-  console.error("Overture failed to initialise; showing the headline.", err);
-  document.querySelector("[data-overture]")?.classList.add("is-shouting", "is-answered");
+  // Without this the shout stays hidden until the <head> failsafe fires.
+  console.error("Shout entrance failed to initialise; showing it.", err);
+  document.querySelector("[data-overture]")?.classList.add("is-shouting");
 }
 
 try {

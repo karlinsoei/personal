@@ -299,47 +299,92 @@
           </p>
           <p class="story-beat">which is basically</p>
 
-          <!-- Three columns, read as a sum: each names the game it came from
-               and, under it, the thing League actually borrowed. Chess leads
-               because strategy is the closest of the three to the game itself.
-               The items are display:contents, so the glyphs, the chips and the
-               answers each share a real grid row — nothing drifts when the
-               longest answer wraps. -->
+          <!-- The answer to "how is League like these three", carried by the
+               icons alone: the game is the picture, the chip is what League
+               took from it. The source names came out — they were a second row
+               of words saying what the drawings already say.
+
+               The items are display:contents, so the three icons share one real
+               grid row and the three chips share the next; equal 1fr columns
+               then centre each icon on its column rather than on its own chip.
+               Read as a sum, because all three arrive at once. -->
           <div class="mix">
             <div class="mix__item">
-              <svg class="mix__glyph" viewBox="0 0 64 64" aria-hidden="true">
-                  <path d="M14 58 L14 52 C 15 48, 18 46, 20 44 C 17 40, 16 35, 18 30 C 16 28, 15 24, 17 20 C 19 24, 22 25, 24 22 C 22 19, 22 15, 25 12 C 26 15, 28 16, 28 13 C 29 9, 32 6, 31 12 C 34 12, 36 15, 38 19 C 43 20, 49 23, 53 28 L 50 34 C 47 33, 44 33, 41 31 C 39 34, 36 36, 33 37 L 35 45 C 39 46, 42 49, 43 53 L 43 58 Z"
-                        fill="var(--color-mix-chess)" stroke="#0C1A2B" stroke-width="1" stroke-linejoin="round" />
-                  <circle cx="26" cy="18" r="1.3" fill="var(--color-bg)" />
-                </svg>
-              <span class="tag tag--mix tag--chess">Chess</span>
-              <p class="mix__answer">Strategy</p>
+              <!-- Staunton knight: stepped plinth, blunt muzzle, and the mane
+                   cut as notches in the silhouette rather than as marks on top
+                   of it, so it survives at 44px. -->
+              <svg class="mix__glyph" viewBox="-0.5 2.5 64 64" role="img"
+                   aria-label="A chess knight">
+                <g fill="var(--color-mix-chess)">
+                  <path d="M11 60 L53 60 L53 54.5 L49 54.5 L49 50.5 L15 50.5 L15 54.5 L11 54.5 Z" />
+                  <path d="M18 50.5
+                           C18 44.5, 20 39.5, 21.2 36
+                           C22.4 32.5, 21.4 30.4, 19.4 29.4
+                           C16.8 31, 12.6 31, 10 29
+                           L12.4 25.4
+                           C13.6 22.4, 16.4 19.4, 19.4 17
+                           C21 15.6, 22.6 14.4, 24.2 13.4
+                           C23.4 11.2, 23.8 9.4, 25.2 9
+                           C26.6 8.6, 28 10.2, 28.4 12.4
+                           C29.4 11, 31 10.6, 31.9 11.5
+                           C32.8 12.4, 32.6 14.2, 31.6 15.6
+                           C36 17.2, 39.4 20, 41.6 23.6
+                           L36.8 24.4
+                           C39.4 27.2, 41.2 30.2, 42.4 33.4
+                           L37.6 34
+                           C39.6 37, 40.8 40.2, 41.4 43.6
+                           L37.8 44
+                           C39.4 46, 40.4 48.2, 40.9 50.5 Z" />
+                </g>
+                <circle cx="25" cy="21.4" r="1.9" fill="var(--color-bg)" />
+                <path d="M11.6 27.4 C13 27, 14.4 27.3, 15.4 28" fill="none"
+                      stroke="var(--color-bg)" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+              <span class="tag tag--mix tag--chess">Strategy</span>
             </div>
             <span class="mix__op" aria-hidden="true">+</span>
             <div class="mix__item">
-              <svg class="mix__glyph" viewBox="0 0 64 64" aria-hidden="true">
-                  <circle cx="32" cy="32" r="24" fill="var(--color-mix-basketball)" stroke="#3A1A08" stroke-width="1.4" />
-                  <path d="M32 8 C 24 20, 24 44, 32 56" fill="none" stroke="var(--color-bg)" stroke-width="2.4" />
-                  <path d="M32 8 C 40 20, 40 44, 32 56" fill="none" stroke="var(--color-bg)" stroke-width="2.4" />
-                  <path d="M8 32 C 20 25, 44 25, 56 32" fill="none" stroke="var(--color-bg)" stroke-width="2.4" />
-                  <path d="M8 32 C 20 39, 44 39, 56 32" fill="none" stroke="var(--color-bg)" stroke-width="2.4" />
-                </svg>
-              <span class="tag tag--mix tag--basketball">Basketball</span>
-              <p class="mix__answer">Team sports</p>
+              <!-- Straight cross seams with the two side seams bowing inward is
+                   what separates a basketball from a globe; four seams all
+                   meeting at the poles reads as latitude and longitude. -->
+              <svg class="mix__glyph" viewBox="0 0 64 64" role="img"
+                   aria-label="A basketball">
+                <circle cx="32" cy="32" r="24" fill="var(--color-mix-basketball)" />
+                <g fill="none" stroke="var(--color-bg)" stroke-width="3" stroke-linecap="round">
+                  <path d="M32 8.2 V55.8" />
+                  <path d="M8.4 32 H55.6" />
+                  <path d="M13.5 14 C 24 23, 24 41, 13.5 50" />
+                  <path d="M50.5 14 C 40 23, 40 41, 50.5 50" />
+                </g>
+              </svg>
+              <span class="tag tag--mix tag--basketball">Team sports</span>
             </div>
             <span class="mix__op" aria-hidden="true">+</span>
             <div class="mix__item">
-              <svg class="mix__glyph" viewBox="0 0 64 64" aria-hidden="true">
-                  <path d="M8 48 C 5 38, 8 26, 16 20 C 17 13, 22 7, 28 7 C 29 3, 33 0, 33 6 C 35 6, 35 9, 33 11 C 36 11, 40 13, 43 16 C 48 18, 53 20, 56 24 L 50 26 C 49 28, 47 29, 44 28 L 41 31 C 45 33, 51 33, 55 30 C 49 35, 43 35, 39 32 C 35 34, 29 36, 24 40 C 20 44, 14 46, 8 48 Z"
-                        fill="var(--color-mix-dnd)" stroke="#2E1148" stroke-width="1" stroke-linejoin="round" />
-                  <circle cx="34" cy="14" r="1.6" fill="var(--color-bg)" />
-                  <path d="M44 28 L47 24 L48 29 Z" fill="var(--color-bg)" />
-                  <path d="M56 24 C 63 22, 69 24, 67 19 C 65 24, 61 24, 58 22 Z" fill="#F0862E" />
-                  <path d="M55 30 C 62 32, 67 36, 63 40 C 63 35, 59 33, 55 33 Z" fill="#D9530F" />
-                  <path d="M56 26 C 64 26, 71 28, 66 31 C 65 28, 60 27, 56 28 Z" fill="#F6A23A" />
-                </svg>
-              <span class="tag tag--mix tag--dnd">D&amp;D</span>
-              <p class="mix__answer">Creative expression</p>
+              <!-- An original dragon-ampersand, drawn for this page rather than
+                   traced from the D&amp;D mark it takes its idea from: the body is
+                   a stroked "&amp;" skeleton, and the head, crest and tail barb are
+                   filled on top of its terminals. -->
+              <svg class="mix__glyph" viewBox="8.5 -0.6 100 100" role="img"
+                   aria-label="A dragon curled into the shape of an ampersand">
+                <path d="M78 80 C66 90, 48 92, 37 84 C25 75, 27 60, 40 52
+                         C50 46, 60 40, 60 32 C60 26, 55 23, 50 25
+                         C45 27, 45 33, 50 40 C58 50, 70 60, 79 64"
+                      fill="none" stroke="var(--color-mix-dnd)" stroke-width="13"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                <g fill="var(--color-mix-dnd)">
+                  <path d="M40 30 C38 21, 45 15, 55 16 C63 17, 68 22, 68 28
+                           C68 34, 63 37, 55 37 C47 37, 41 34, 40 30 Z" />
+                  <path d="M63 20 C72 21, 82 24, 91 29 L71 29 C66 28, 63 25, 63 20 Z" />
+                  <path d="M63 33 C72 34, 81 37, 89 42 C78 43, 67 41, 61 37 Z" />
+                  <path d="M52 17 C43 12, 31 9, 20 10 C30 14, 41 19, 50 23 Z" />
+                  <path d="M46 22 C38 20, 30 20, 24 22 C31 24, 39 26, 45 26 Z" />
+                  <path d="M43 28 C36 28, 30 30, 26 33 C32 32, 38 32, 43 31 Z" />
+                  <path d="M76 60 C86 56, 94 48, 97 39 C98 52, 91 64, 81 71 Z" />
+                </g>
+                <path d="M55 24 L62 25.5 L55 27.5 Z" fill="var(--color-bg)" />
+              </svg>
+              <span class="tag tag--mix tag--dnd">Creative</span>
             </div>
           </div>
         </div>

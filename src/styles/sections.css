@@ -450,26 +450,6 @@
   margin: 0 0 0 clamp(1rem, 7vw, 5.5rem);
 }
 
-/* Reads as a formula rather than a list — the operators carry the meaning. */
-.formula {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.55rem 0.7rem;
-}
-
-.formula .tag:nth-of-type(1) { transform: rotate(-1.4deg); }
-.formula .tag:nth-of-type(2) { transform: rotate(1deg); }
-.formula .tag:nth-of-type(3) { transform: rotate(-0.7deg); }
-
-.formula__op {
-  font-family: var(--font-display);
-  font-variation-settings: var(--fraunces-quiet);
-  font-size: clamp(1.2rem, 1rem + 0.8vw, 1.7rem);
-  line-height: 1;
-  color: var(--color-ink-muted);
-}
-
 /* ---- The pivot ------------------------------------------------------------
    Where the story turns from a game to what the game was actually teaching.
    Carried by scale and framing rather than colour: the accent is already
@@ -1709,8 +1689,7 @@
 }
 
 .stage--center .cadence,
-.stage--center .roster__names,
-.stage--center .formula {
+.stage--center .roster__names {
   align-items: center;
   justify-content: center;
 }
@@ -1794,58 +1773,132 @@
   max-width: 40ch;
 }
 
-/* ---- The triangle --------------------------------------------------------
-   Three things that make one thing, set as the shape they form rather than as
-   three arrows pouring into a fourth box. It points down because the three
-   resolve into something, and the tags sit on the vertices while the glyphs
-   are pushed outside the shape so the edges stay uninterrupted.
+/* ---- The mix --------------------------------------------------------------
+   The answer to "how is League like chess, basketball and D&D": each column
+   names the game and, under it, the thing League actually took from it. Set as
+   a sum rather than a list, because the point is that all three arrive at once.
 
-   Three equal columns put the tag centres at exactly 1/6, 1/2 and 5/6 of the
-   width, which is where the SVG draws the corners (50, 150 and 250 of a
-   300-unit viewBox) — so the corners land on the tags by construction rather
-   than by hand-tuning.
+   .mix__item is display:contents, so the glyph, the chip and the answer are
+   real grid items rather than three independent stacks. That is what keeps the
+   three glyphs on one line, the three chips on the next and the three answers
+   on the third — including when "Creative expression" wraps and the others
+   don't. Equal 1fr columns then centre each glyph on its column rather than on
+   its own chip, which is what made the old row look lopsided.
 --------------------------------------------------------------------------- */
-.tri {
+.mix {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: end;
-  width: 100%;
-  max-width: 460px;
-}
-
-.tri__item {
-  display: flex;
-  flex-direction: column;
+  /* item, +, item, +, item */
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  gap: 0.6rem;
-}
-
-.tri__item--a { grid-column: 1; grid-row: 1; }
-.tri__item--b { grid-column: 3; grid-row: 1; }
-
-/* Tag first, then the glyph: it keeps the point of the triangle touching the
-   tag and leaves the dragon outside the shape, matching the top two. */
-.tri__item--c {
-  grid-column: 2;
-  grid-row: 3;
-  flex-direction: column-reverse;
-}
-
-.tri__glyph {
-  width: clamp(46px, 7.5vw, 68px);
-  height: clamp(46px, 7.5vw, 68px);
-}
-
-.tri__lines {
-  grid-column: 1 / -1;
-  grid-row: 2;
+  justify-items: center;
+  column-gap: clamp(0.5rem, 2.4vw, 1.75rem);
+  row-gap: clamp(0.55rem, 1.4vw, 0.9rem);
   width: 100%;
-  height: clamp(52px, 8vw, 84px);
-  fill: none;
-  stroke: var(--color-ink-muted);
-  stroke-width: 1.6;
-  stroke-linejoin: round;
-  opacity: 0.55;
+  /* 840px is the point where "Creative expression" stops wrapping, so all three
+     answers sit on one line and share a baseline. 880 keeps a little headroom
+     for a fallback serif; if it wraps anyway the rows above stay put, since
+     each row is a real grid row. */
+  max-width: 880px;
+}
+
+.mix__item {
+  display: contents;
+}
+
+.mix__glyph {
+  grid-row: 1;
+  width: clamp(44px, 6.4vw, 68px);
+  height: clamp(44px, 6.4vw, 68px);
+}
+
+.mix .tag {
+  grid-row: 2;
+}
+
+/* Row three is the actual answer, so it is set in the voice rather than in the
+   apparatus — the chip above it is the citation. Aligned to the top of its row
+   so a wrapped answer grows downward and leaves the other two where they are. */
+.mix__answer {
+  grid-row: 3;
+  align-self: start;
+  margin: 0;
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-quiet);
+  font-size: clamp(1.05rem, 0.86rem + 0.85vw, 1.55rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: var(--track-display);
+  text-wrap: balance;
+}
+
+/* Sits on the chip row: the plus joins the three sources, not the answers. */
+.mix__op {
+  grid-row: 2;
+  font-family: var(--font-display);
+  font-variation-settings: var(--fraunces-quiet);
+  font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.75rem);
+  line-height: 1;
+  color: var(--color-ink-muted);
+}
+
+.mix__item:nth-of-type(1) > * { grid-column: 1; }
+.mix__op:nth-of-type(1) { grid-column: 2; }
+.mix__item:nth-of-type(2) > * { grid-column: 3; }
+.mix__op:nth-of-type(2) { grid-column: 4; }
+.mix__item:nth-of-type(3) > * { grid-column: 5; }
+
+/* Below this the three chips stop fitting side by side, so the sum turns into
+   a column: glyph on the left, chip and answer stacked beside it. The item
+   stops being display:contents and becomes its own little grid, so the
+   desktop row/column placement above has to be overridden rather than
+   inherited — hence the extra specificity on the three children. */
+@media (max-width: 560px) {
+  .mix {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(0.55rem, 2.2vw, 0.85rem);
+    max-width: 340px;
+  }
+
+  .mix__item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "glyph chip"
+      "glyph answer";
+    align-items: center;
+    column-gap: clamp(0.8rem, 3.5vw, 1.15rem);
+    row-gap: 0.3rem;
+    width: 100%;
+  }
+
+  .mix .mix__item > .mix__glyph { grid-area: glyph; }
+
+  .mix .mix__item > .tag {
+    grid-area: chip;
+    justify-self: start;
+    align-self: end;
+  }
+
+  /* The stage centres its text; here the answer sits beside the glyph rather
+     than under it, so it has to read off the chip's left edge instead. */
+  .mix .mix__item > .mix__answer {
+    grid-area: answer;
+    align-self: start;
+    text-align: left;
+  }
+
+  /* Parked on the glyph column's centre line so the three glyphs and the two
+     operators form one vertical spine, rather than the plus floating out in
+     the middle of the container. */
+  .mix > .mix__op {
+    grid-column: auto;
+    grid-row: auto;
+    align-self: flex-start;
+    margin-left: calc(clamp(44px, 6.4vw, 68px) / 2);
+    transform: translateX(-50%);
+  }
 }
 
 .tag--basketball { --tag: var(--color-mix-basketball); }

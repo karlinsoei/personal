@@ -299,11 +299,25 @@
           </p>
           <p class="story-beat">which is basically</p>
 
-          <!-- Three side by side. No connector: they are three things the
-               game felt like, not a system with a flow through it. -->
-          <div class="tri">
-            <div class="tri__item">
-              <svg class="tri__glyph" viewBox="0 0 64 64" aria-hidden="true">
+          <!-- Three columns, read as a sum: each names the game it came from
+               and, under it, the thing League actually borrowed. Chess leads
+               because strategy is the closest of the three to the game itself.
+               The items are display:contents, so the glyphs, the chips and the
+               answers each share a real grid row — nothing drifts when the
+               longest answer wraps. -->
+          <div class="mix">
+            <div class="mix__item">
+              <svg class="mix__glyph" viewBox="0 0 64 64" aria-hidden="true">
+                  <path d="M14 58 L14 52 C 15 48, 18 46, 20 44 C 17 40, 16 35, 18 30 C 16 28, 15 24, 17 20 C 19 24, 22 25, 24 22 C 22 19, 22 15, 25 12 C 26 15, 28 16, 28 13 C 29 9, 32 6, 31 12 C 34 12, 36 15, 38 19 C 43 20, 49 23, 53 28 L 50 34 C 47 33, 44 33, 41 31 C 39 34, 36 36, 33 37 L 35 45 C 39 46, 42 49, 43 53 L 43 58 Z"
+                        fill="var(--color-mix-chess)" stroke="#0C1A2B" stroke-width="1" stroke-linejoin="round" />
+                  <circle cx="26" cy="18" r="1.3" fill="var(--color-bg)" />
+                </svg>
+              <span class="tag tag--mix tag--chess">Chess</span>
+              <p class="mix__answer">Strategy</p>
+            </div>
+            <span class="mix__op" aria-hidden="true">+</span>
+            <div class="mix__item">
+              <svg class="mix__glyph" viewBox="0 0 64 64" aria-hidden="true">
                   <circle cx="32" cy="32" r="24" fill="var(--color-mix-basketball)" stroke="#3A1A08" stroke-width="1.4" />
                   <path d="M32 8 C 24 20, 24 44, 32 56" fill="none" stroke="var(--color-bg)" stroke-width="2.4" />
                   <path d="M32 8 C 40 20, 40 44, 32 56" fill="none" stroke="var(--color-bg)" stroke-width="2.4" />
@@ -311,17 +325,11 @@
                   <path d="M8 32 C 20 39, 44 39, 56 32" fill="none" stroke="var(--color-bg)" stroke-width="2.4" />
                 </svg>
               <span class="tag tag--mix tag--basketball">Basketball</span>
+              <p class="mix__answer">Team sports</p>
             </div>
-            <div class="tri__item">
-              <svg class="tri__glyph" viewBox="0 0 64 64" aria-hidden="true">
-                  <path d="M14 58 L14 52 C 15 48, 18 46, 20 44 C 17 40, 16 35, 18 30 C 16 28, 15 24, 17 20 C 19 24, 22 25, 24 22 C 22 19, 22 15, 25 12 C 26 15, 28 16, 28 13 C 29 9, 32 6, 31 12 C 34 12, 36 15, 38 19 C 43 20, 49 23, 53 28 L 50 34 C 47 33, 44 33, 41 31 C 39 34, 36 36, 33 37 L 35 45 C 39 46, 42 49, 43 53 L 43 58 Z"
-                        fill="var(--color-mix-chess)" stroke="#0C1A2B" stroke-width="1" stroke-linejoin="round" />
-                  <circle cx="26" cy="18" r="1.3" fill="var(--color-bg)" />
-                </svg>
-              <span class="tag tag--mix tag--chess">Chess</span>
-            </div>
-            <div class="tri__item">
-              <svg class="tri__glyph" viewBox="0 0 64 64" aria-hidden="true">
+            <span class="mix__op" aria-hidden="true">+</span>
+            <div class="mix__item">
+              <svg class="mix__glyph" viewBox="0 0 64 64" aria-hidden="true">
                   <path d="M8 48 C 5 38, 8 26, 16 20 C 17 13, 22 7, 28 7 C 29 3, 33 0, 33 6 C 35 6, 35 9, 33 11 C 36 11, 40 13, 43 16 C 48 18, 53 20, 56 24 L 50 26 C 49 28, 47 29, 44 28 L 41 31 C 45 33, 51 33, 55 30 C 49 35, 43 35, 39 32 C 35 34, 29 36, 24 40 C 20 44, 14 46, 8 48 Z"
                         fill="var(--color-mix-dnd)" stroke="#2E1148" stroke-width="1" stroke-linejoin="round" />
                   <circle cx="34" cy="14" r="1.6" fill="var(--color-bg)" />
@@ -331,6 +339,7 @@
                   <path d="M56 26 C 64 26, 71 28, 66 31 C 65 28, 60 27, 56 28 Z" fill="#F6A23A" />
                 </svg>
               <span class="tag tag--mix tag--dnd">D&amp;D</span>
+              <p class="mix__answer">Creative expression</p>
             </div>
           </div>
         </div>

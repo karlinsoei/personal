@@ -826,7 +826,10 @@
   aspect-ratio: 1;
   border: 0;
   border-radius: 2px;
-  background: color-mix(in srgb, var(--color-ink) 5%, var(--color-bg));
+  /* Sunken, not a light tint. A 5% ink wash read as a pale mat on off-white;
+     inverted it makes the well brighter than the page, so every photo that
+     doesn't fill its box sits in a grey frame. */
+  background: var(--color-sunken);
 }
 
 /* Absolutely positioned rather than width/height:100% — an <img> carrying its
@@ -943,7 +946,10 @@
    to a fixed 3:2 box. The tint fills whatever letterboxing that leaves. */
 .reel__slide .media-slot:has(img),
 .reel__slide .media-slot:has(video) {
-  background: color-mix(in srgb, var(--color-ink) 5%, var(--color-bg));
+  /* Sunken, not a light tint. A 5% ink wash read as a pale mat on off-white;
+     inverted it makes the well brighter than the page, so every photo that
+     doesn't fill its box sits in a grey frame. */
+  background: var(--color-sunken);
 }
 
 /* Absolutely positioned rather than a plain 100%/100%: an <img> that carries
@@ -1321,10 +1327,10 @@
   line-height: 0.9;
   letter-spacing: var(--track-hero);
   font-variant-numeric: tabular-nums;
-  /* A page-number ghost, but a legible one. This was 26% ink, which measured
-     1.76:1 and failed WCAG — these render at 30–54px, so they're large text
-     and owe 3:1. 50% gives 3.40:1 and still sits well behind the statement. */
-  color: color-mix(in srgb, var(--color-ink) 50%, var(--color-bg));
+  /* Was a grey ghost at 3.40:1 — legible, but it made the three beliefs read
+     as a list rather than as a numbered argument. The accent gives the count
+     presence without touching the statements themselves, which stay ink. */
+  color: var(--color-accent);
 }
 
 .belief__text {
@@ -1533,7 +1539,7 @@
 .lesson__from {
   font-family: var(--font-mono);
   font-size: clamp(1.15rem, 0.9rem + 1.15vw, 1.9rem);
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   /* Eyebrow tracking is too loose once the label is this big. */
   letter-spacing: 0.06em;
@@ -1614,11 +1620,15 @@
 /* Sized for "We won $80K" holding one line, not for a bare numeral — the words
    carry three more characters than the old "~$80,000" did, so the ceiling comes
    down to keep it from breaking on narrow screens. */
+/* The payoff of the whole college chapter. It was the same ink as the prose
+   around it and relying on size alone; the accent is what makes it land as the
+   thing the section was building to. */
 .figure-big__num {
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 1.4rem + 4vw, 5rem);
   white-space: nowrap;
-  font-weight: 700;
+  color: var(--color-accent);
+  font-weight: 800;
   line-height: 1;
   letter-spacing: var(--track-hero);
   font-variant-numeric: tabular-nums;
@@ -1992,15 +2002,20 @@
   text-transform: uppercase;
 }
 
+/* The equals sign is the sentence — "game = life" is the whole realisation —
+   and it was drawn as a 2.2px hairline beside two 92px words, which read as a
+   dash between them rather than as the verb. Weighted to sit with the type it
+   joins, and given the accent's glow so it reads as the charged part. */
 .equiv__link {
-  width: clamp(38px, 5vw, 68px);
+  width: clamp(44px, 6vw, 82px);
   height: auto;
   flex: 0 0 auto;
   fill: none;
   stroke: var(--color-accent);
-  stroke-width: 2.2;
+  stroke-width: 5;
   stroke-linecap: round;
   stroke-linejoin: round;
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--color-accent) 45%, transparent));
 }
 
 .equiv__lead {
@@ -2049,10 +2064,13 @@
 }
 
 /* The question the work grew out of. */
+/* The hinge the rest of the site answers. Accent, because this is the last
+   thing read before the work begins and it has to carry across the cut. */
 .ask {
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 1.15rem + 2.7vw, 3.5rem);
-  font-weight: 700;
+  color: var(--color-accent);
+  font-weight: 800;
   line-height: 1.06;
   letter-spacing: var(--track-hero);
   max-width: 17ch;

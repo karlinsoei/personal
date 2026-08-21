@@ -46,28 +46,38 @@
   --color-ink-muted: #A9A39A;  /* captions, secondary            5.10:1       */
   --color-border: color-mix(in srgb, var(--color-ink) 18%, var(--color-bg));
 
-  /* Two accents with strictly separate jobs, which is what keeps them from
-     fighting:
+  /* ---- Two classes of colour, which is what stops six hues fighting ------
 
-     ACCENT is narrative. The shout bubble, the hinge, the one phrase a
-     sentence turns on. Warm, and a direct descendant of the vermilion the
-     light version used — lifted until it clears AA on the dark ground.
-     4.53:1 both ways, so a dark label reversed out of it also passes.
+     SIGNAL — the two accents. High saturation (64–68%), and the only colours
+     on the page allowed to be that loud.
 
-     LIVE is interactive. Current menu item, focus rings, the then/now switch,
-     link hover — and the half of the hero sentence that switch rewrites. It is
-     the one unmistakably game-native colour on the page, and putting it only on
-     things that respond to you is what keeps the hint subtle: it never
-     decorates, it only ever means "this is live". */
-  --color-accent: #FF6B4A;     /* narrative accent               4.53:1       */
-  --color-live: #2CB494;       /* interactive / current          4.90:1       */
+       ACCENT is narrative: the shout, mom's name, the phrase a sentence turns
+       on, the $80k, the question the page hangs on. Warm, and a descendant of
+       the vermilion the light version used.
 
-  /* Struck through the same lift: each is the light-mode hue rotated up in
-     value until it clears AA text on off-black. */
-  --color-league: #E8C46A;         /* hextech gold              7.61:1        */
-  --color-mix-basketball: #FFA060; /* warm orange               6.35:1        */
-  --color-mix-chess: #8FB4E0;      /* cool blue                 5.94:1        */
-  --color-mix-dnd: #C79BF5;        /* violet                    5.73:1        */
+       LIVE is interactive, and interactive only: current menu item, focus
+       ring, the then/now switch, link hover, and the half of the hero sentence
+       that switch rewrites. Acid is the one game-native colour here, and
+       spending it exclusively on things that respond to you is what keeps it a
+       hint — it never decorates, it only ever means "this is live".
+
+     ILLUSTRATION — the four category hues. Deliberately held to 30–52%
+     saturation so they read as tinted drawing rather than as more accent.
+
+     That split is doing real work. A basketball is orange, which sits between
+     the accent's red and the league gold by definition — measured, the accent
+     and the basketball are 15° apart and the gold and the basketball 16°, and
+     no amount of hue-nudging fixes that without making a basketball the wrong
+     colour. Separating the two groups by saturation and value instead means
+     the eye sorts them by role before it ever compares their hues.
+  ------------------------------------------------------------------------- */
+  --color-accent: #FF7A5C;   /* narrative signal    4.97:1  hue  11  sat 64% */
+  --color-live: #C6F24E;     /* interactive signal  9.85:1  hue  76  sat 68% */
+
+  --color-league: #DFC07A;         /* hextech gold  7.26:1  hue  42  sat 45% */
+  --color-mix-basketball: #DDA173; /* leather       5.72:1  hue  26  sat 48% */
+  --color-mix-chess: #9BBBDE;      /* cool blue     6.41:1  hue 211  sat 30% */
+  --color-mix-dnd: #C9A6EE;        /* violet        6.18:1  hue 269  sat 30% */
 
   /* ---- Type scale ---- */
   --step-body: clamp(0.95rem, 0.9rem + 0.2vw, 1.05rem);
